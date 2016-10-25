@@ -86,7 +86,7 @@
         <!--Contacts-->
         <scene sceneID="aK8-nA-WdS">
             <objects>
-                <viewController id="uRe-RG-nn9" customClass="ThirdViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uRe-RG-nn9" customClass="ContactsViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W0J-3t-LBl"/>
                         <viewControllerLayoutGuide type="bottom" id="9Qe-mH-xHW"/>
