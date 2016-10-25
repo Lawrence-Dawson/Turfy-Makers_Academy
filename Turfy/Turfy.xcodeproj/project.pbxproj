@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */; };
 		89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */; };
 		89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */; };
 		89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A9711DBF699B00A080B1 /* MapViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		89F1A96A1DBF699B00A080B1 /* Turfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */,
 				89F1A97B1DBF699B00A080B1 /* Info.plist */,
 				89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */,
+				1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */,
 			);
 			path = Turfy;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
 				89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */,
+				1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
