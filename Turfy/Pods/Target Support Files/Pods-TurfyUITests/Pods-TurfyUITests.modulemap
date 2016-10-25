@@ -1,0 +1,6 @@
+framework module Pods_TurfyUITests {
+  umbrella header "Pods-TurfyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
