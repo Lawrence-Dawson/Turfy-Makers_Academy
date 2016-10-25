@@ -9,7 +9,7 @@
         <!--Messages-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="MessagesViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -47,7 +47,7 @@
         <!--Map-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="MapViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -85,7 +85,7 @@
         <!--Contacts-->
         <scene sceneID="aK8-nA-WdS">
             <objects>
-                <viewController id="uRe-RG-nn9" sceneMemberID="viewController">
+                <viewController id="uRe-RG-nn9" customClass="ThirdViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W0J-3t-LBl"/>
                         <viewControllerLayoutGuide type="bottom" id="9Qe-mH-xHW"/>
@@ -145,7 +145,7 @@
         <!--Settings-->
         <scene sceneID="Snd-ef-vAy">
             <objects>
-                <viewController id="akT-W3-qTm" sceneMemberID="viewController">
+                <viewController id="akT-W3-qTm" customClass="SettingsViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jc1-9Y-dy5"/>
                         <viewControllerLayoutGuide type="bottom" id="9sM-ZT-GRT"/>
