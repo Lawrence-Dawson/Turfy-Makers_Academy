@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */; };
-		89F1A9701DBF699B00A080B1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96F1DBF699B00A080B1 /* FirstViewController.swift */; };
-		89F1A9721DBF699B00A080B1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A9711DBF699B00A080B1 /* SecondViewController.swift */; };
+		89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */; };
+		89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A9711DBF699B00A080B1 /* MapViewController.swift */; };
 		89F1A9751DBF699B00A080B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89F1A9731DBF699B00A080B1 /* Main.storyboard */; };
 		89F1A9771DBF699B00A080B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89F1A9761DBF699B00A080B1 /* Assets.xcassets */; };
 		89F1A97A1DBF699B00A080B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */; };
 		89F1A9851DBF699B00A080B1 /* TurfyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A9841DBF699B00A080B1 /* TurfyTests.swift */; };
 		89F1A9901DBF699B00A080B1 /* TurfyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A98F1DBF699B00A080B1 /* TurfyUITests.swift */; };
+		89F1A9A01DBF99EA00A080B1 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A99F1DBF99EA00A080B1 /* ThirdViewController.swift */; };
+		89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +39,8 @@
 /* Begin PBXFileReference section */
 		89F1A96A1DBF699B00A080B1 /* Turfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		89F1A96F1DBF699B00A080B1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		89F1A9711DBF699B00A080B1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		89F1A9711DBF699B00A080B1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		89F1A9741DBF699B00A080B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		89F1A9761DBF699B00A080B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		89F1A9791DBF699B00A080B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		89F1A98B1DBF699B00A080B1 /* TurfyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TurfyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1A98F1DBF699B00A080B1 /* TurfyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurfyUITests.swift; sourceTree = "<group>"; };
 		89F1A9911DBF699B00A080B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89F1A99F1DBF99EA00A080B1 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */,
-				89F1A96F1DBF699B00A080B1 /* FirstViewController.swift */,
-				89F1A9711DBF699B00A080B1 /* SecondViewController.swift */,
+				89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */,
+				89F1A9711DBF699B00A080B1 /* MapViewController.swift */,
 				89F1A9731DBF699B00A080B1 /* Main.storyboard */,
 				89F1A9761DBF699B00A080B1 /* Assets.xcassets */,
 				89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */,
 				89F1A97B1DBF699B00A080B1 /* Info.plist */,
+				89F1A99F1DBF99EA00A080B1 /* ThirdViewController.swift */,
+				89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */,
 			);
 			path = Turfy;
 			sourceTree = "<group>";
@@ -265,9 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89F1A9721DBF699B00A080B1 /* SecondViewController.swift in Sources */,
+				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
-				89F1A9701DBF699B00A080B1 /* FirstViewController.swift in Sources */,
+				89F1A9A01DBF99EA00A080B1 /* ThirdViewController.swift in Sources */,
+				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
+				89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +524,7 @@
 				89F1A9961DBF699B00A080B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89F1A9971DBF699B00A080B1 /* Build configuration list for PBXNativeTarget "TurfyTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +533,7 @@
 				89F1A9991DBF699B00A080B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		89F1A99A1DBF699B00A080B1 /* Build configuration list for PBXNativeTarget "TurfyUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +542,7 @@
 				89F1A99C1DBF699B00A080B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
