@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="-162.40000000000001" y="-753.37331334332839"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="8Ua-FW-SIc">
             <objects>
-                <viewController id="cb6-Pn-7rR" sceneMemberID="viewController">
+                <viewController id="cb6-Pn-7rR" customClass="LoginViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cGr-pg-zSy"/>
                         <viewControllerLayoutGuide type="bottom" id="vhS-Uv-Xmf"/>
@@ -123,13 +123,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lkc-77-CFa">
-                                <frame key="frameInset" minX="305" minY="495" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Login" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWq-5J-d12">
                                 <frame key="frameInset" minY="28" width="375" height="50"/>
                                 <nil key="textColor"/>
