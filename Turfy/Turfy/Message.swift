@@ -29,9 +29,10 @@ struct Message {
 		self.expires = expires
 	}
 	
+    func init
+    
 	func toAnyObject() -> Any {
 		return [
-			"id": id,
             "sender": sender,
             "recipient": recipient,
             "text": text,
