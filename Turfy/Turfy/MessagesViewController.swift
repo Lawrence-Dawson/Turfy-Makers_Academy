@@ -19,9 +19,24 @@ class MessagesViewController: UIViewController {
         // The code below saves shit in the DB, created a field 'lastTested' and assigns a value 'testing_lalala' to it
 //        let testItemRef = self.ref.child("lastTested")
 //        testItemRef.setValue("testing_lalala")
-		let message = Message(id: 1, sender: "Johnny", recipient: "Lawrence", location: "Makers Academy", text: "Hey Lawrence you're the best guy in the world!", radius: 30)
+		let message = Message(id: "1", sender: "Johnny", recipient: "Lawrence", location: "Makers Academy", text: "Hey Lawrence you're the best guy in the world!", radius: 30)
 		let itemRef = self.ref.childByAutoId()
 		itemRef.setValue(message.toAnyObject())
+        print("the record is saved now")
+        
+        self.ref.observe(.value, with: { snapshot in
+            print("INSIDE BLOCK")
+        })
+        
+        print("WHAT IS GOING ON?!?")
+        
+        
+//            self.ref.observeSingleEventOfType(.value, withBlock: { (snapshot) in
+//            
+//            if !snapshot.exists() { return }
+//            print(snapshot)
+//            
+//        })
 	}
 
 	override func didReceiveMemoryWarning() {
