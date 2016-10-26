@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A32AAC61DC0C09D00BA35FE /* MapKit.framework */; };
+		1A5E062E1DC0EC69002EA04C /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E062D1DC0EC69002EA04C /* VCMapView.swift */; };
+		1AD16A811DC0E062007145AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD16A801DC0E062007145AC /* Pin.swift */; };
+		1AD16A821DC0E062007145AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD16A801DC0E062007145AC /* Pin.swift */; };
+		1AD16A831DC0E062007145AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD16A801DC0E062007145AC /* Pin.swift */; };
 		1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */; };
 		89A9E7501DC0C27800267676 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A9E74F1DC0C27800267676 /* Message.swift */; };
 		89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */; };
@@ -44,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		1A32AAC61DC0C09D00BA35FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A5E062D1DC0EC69002EA04C /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
+		1AD16A801DC0E062007145AC /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
 		1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		210B90E7280032BE40A9CE28 /* Pods_TurfyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurfyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA829D207B585AE8023308B /* Pods-TurfyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurfyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TurfyUITests/Pods-TurfyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				89F1A96C1DBF699B00A080B1 /* Turfy */,
-				89F1A9831DBF699B00A080B1 /* TurfyTests */,
 				89F1A98E1DBF699B00A080B1 /* TurfyUITests */,
 				89F1A96B1DBF699B00A080B1 /* Products */,
 				762555525E636092E6AE19A0 /* Pods */,
@@ -152,6 +157,9 @@
 				89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */,
 				89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */,
 				89F1A9711DBF699B00A080B1 /* MapViewController.swift */,
+				1A5E062D1DC0EC69002EA04C /* VCMapView.swift */,
+				89F1A9831DBF699B00A080B1 /* TurfyTests */,
+				1AD16A801DC0E062007145AC /* Pin.swift */,
 				89F1A9731DBF699B00A080B1 /* Main.storyboard */,
 				89F1A9761DBF699B00A080B1 /* Assets.xcassets */,
 				89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */,
@@ -170,7 +178,7 @@
 				89F1A9861DBF699B00A080B1 /* Info.plist */,
 			);
 			path = TurfyTests;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		89F1A98E1DBF699B00A080B1 /* TurfyUITests */ = {
 			isa = PBXGroup;
@@ -485,8 +493,10 @@
 				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
+				1AD16A811DC0E062007145AC /* Pin.swift in Sources */,
 				89A9E7501DC0C27800267676 /* Message.swift in Sources */,
 				89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */,
+				1A5E062E1DC0EC69002EA04C /* VCMapView.swift in Sources */,
 				1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +506,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F1A9851DBF699B00A080B1 /* TurfyTests.swift in Sources */,
+				1AD16A821DC0E062007145AC /* Pin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F1A9901DBF699B00A080B1 /* TurfyUITests.swift in Sources */,
+				1AD16A831DC0E062007145AC /* Pin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
