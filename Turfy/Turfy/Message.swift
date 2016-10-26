@@ -31,7 +31,14 @@ struct Message {
 	
 	func toAnyObject() -> Any {
 		return [
-			"sender": sender
+			"id": id,
+            "sender": sender,
+            "recipient": recipient,
+            "text": text,
+            "location": location,
+            "radius": radius,
+            "sentAt": sentAt.hashValue,
+            "expires": expires,
 		]
 	}
 }

@@ -20,7 +20,7 @@ class MessagesViewController: UIViewController {
 //        let testItemRef = self.ref.child("lastTested")
 //        testItemRef.setValue("testing_lalala")
 		let message = Message(id: 1, sender: "Johnny", recipient: "Lawrence", location: "Makers Academy", text: "Hey Lawrence you're the best guy in the world!", radius: 30)
-		let itemRef = self.ref.child("1")
+		let itemRef = self.ref.childByAutoId()
 		itemRef.setValue(message.toAnyObject())
 	}
 
