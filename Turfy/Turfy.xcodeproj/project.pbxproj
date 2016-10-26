@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */; };
+		89A9E7501DC0C27800267676 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A9E74F1DC0C27800267676 /* Message.swift */; };
 		89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */; };
 		89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */; };
 		89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A9711DBF699B00A080B1 /* MapViewController.swift */; };
@@ -45,6 +46,7 @@
 		210B90E7280032BE40A9CE28 /* Pods_TurfyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurfyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA829D207B585AE8023308B /* Pods-TurfyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurfyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TurfyUITests/Pods-TurfyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		870B4278F978D7E34CFD896F /* Pods_Turfy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turfy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89A9E74F1DC0C27800267676 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		89F1A96A1DBF699B00A080B1 /* Turfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		89A9E74E1DC0C24000267676 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				89A9E74F1DC0C27800267676 /* Message.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		89F1A9611DBF699B00A080B1 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 		89F1A96C1DBF699B00A080B1 /* Turfy */ = {
 			isa = PBXGroup;
 			children = (
+				89A9E74E1DC0C24000267676 /* Models */,
 				89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */,
 				89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */,
 				89F1A9711DBF699B00A080B1 /* MapViewController.swift */,
@@ -465,6 +476,7 @@
 				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
+				89A9E7501DC0C27800267676 /* Message.swift in Sources */,
 				89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */,
 				1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */,
 			);
