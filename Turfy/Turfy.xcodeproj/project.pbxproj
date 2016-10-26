@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A32AAC61DC0C09D00BA35FE /* MapKit.framework */; };
 		1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */; };
 		89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */; };
 		89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A32AAC61DC0C09D00BA35FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		210B90E7280032BE40A9CE28 /* Pods_TurfyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurfyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA829D207B585AE8023308B /* Pods-TurfyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurfyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TurfyUITests/Pods-TurfyUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */,
 				F75CB7FA9B9E5930FA0C20A4 /* Pods_Turfy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +173,7 @@
 		DC02B609884FD7153E2DA5C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1A32AAC61DC0C09D00BA35FE /* MapKit.framework */,
 				870B4278F978D7E34CFD896F /* Pods_Turfy.framework */,
 				9E537BB04DFB727C4F6F4F4F /* Pods_TurfyTests.framework */,
 				210B90E7280032BE40A9CE28 /* Pods_TurfyUITests.framework */,
@@ -256,6 +260,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = R2SMNDMXL6;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					89F1A97F1DBF699B00A080B1 = {
 						CreatedOnToolsVersion = 8.0;
