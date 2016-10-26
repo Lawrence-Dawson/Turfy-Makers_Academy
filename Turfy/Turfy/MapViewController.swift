@@ -12,6 +12,8 @@ import MapKit
 class MapViewController: UIViewController {
     
     let regionRadius: CLLocationDistance = 500
+    
+    
 
     @IBOutlet weak var map: MKMapView!
     
@@ -23,10 +25,15 @@ class MapViewController: UIViewController {
 
     
 	override func viewDidLoad() {
+        
 		super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let initialLocation = CLLocation(latitude: 51.508182, longitude: -0.126771)
         centerMapOnLocation(location: initialLocation)
+        map.delegate = self
+        let pin = Pin(title: "London", locationName: "Current Location", discipline: "Location", coordinate: CLLocationCoordinate2D (latitude: 51.508182, longitude: -0.126771))
+        map.addAnnotation(pin)
+        
 		
 	}
 
