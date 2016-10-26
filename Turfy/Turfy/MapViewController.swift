@@ -27,7 +27,7 @@ class MapViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let initialLocation = CLLocation(latitude: 51.508182, longitude: -0.126771)
         centerMapOnLocation(location: initialLocation)
-		
+
 	}
 
 	override func didReceiveMemoryWarning() {
