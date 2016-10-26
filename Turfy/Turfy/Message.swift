@@ -29,6 +29,18 @@ struct Message {
 		self.expires = expires
 	}
     
+    init(snapshot: FIRDataSnapshot) -> void {
+        id = snapshot.key
+    let snapshotValue = snapshot.value as! [String: AnyObject]
+    sender = snapshot.value as! String
+    recipient = snapshot.recipient as! String
+    text = snapshot.text as! String
+    location = snapshot.location as! String
+    radius: Int
+    sentAt: NSDate
+    expires: Int
+    }
+    
 	func toAnyObject() -> Any {
 		return [
             "sender": sender,
