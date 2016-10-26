@@ -28,8 +28,6 @@ struct Message {
 		self.sentAt = NSDate()
 		self.expires = expires
 	}
-	
-    func init
     
 	func toAnyObject() -> Any {
 		return [
