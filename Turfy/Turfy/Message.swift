@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import Firebase
 
 struct Message {
-	let id: Int
+	let id: String
 	let sender: String
 	let recipient: String
 	let text: String
@@ -18,7 +19,7 @@ struct Message {
 	let sentAt: NSDate
 	let expires: Int
 	
-	init(id: Int, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
+	init(id: String, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
 		self.id = id
 		self.sender = sender
 		self.recipient = recipient
@@ -29,16 +30,16 @@ struct Message {
 		self.expires = expires
 	}
     
-    init(snapshot: FIRDataSnapshot) -> void {
+    init(snapshot: FIRDataSnapshot) {
         id = snapshot.key
-    let snapshotValue = snapshot.value as! [String: AnyObject]
-    sender = snapshot.value as! String
-    recipient = snapshot.recipient as! String
-    text = snapshot.text as! String
-    location = snapshot.location as! String
-    radius: Int
-    sentAt: NSDate
-    expires: Int
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+            sender = snapshotValue["sender"] as! String
+            recipient = snapshotValue["recipient"] as! String
+            text = snapshotValue["text"] as! String
+            location = snapshotValue["location"] as! String
+            radius = snapshotValue["radius"] as! Int
+            sentAt = snapshotValue["sentAt"] as! NSDate
+            expires = snapshotValue["expires"] as! Int
     }
     
 	func toAnyObject() -> Any {
