@@ -11,25 +11,27 @@ import Firebase
 
 class MessagesViewController: UIViewController {
 	
+    let ref = FIRDatabase.database().reference().child("messages")
+    
+    func retrieveMessageAttributes(messageID: String) {
+        ref.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
+            print(snapshot)
+            for item in snapshot.children {
+                let data = (item as! FIRDataSnapshot).value! as! NSDictionary
+                
+            
+            }
+        })
+    }
+    
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		retrieveMessageAttributes(messageID: "-KV4T3PQzUuNuOKkjEX1")
 		
 	}
 
 	
-	let ref = FIRDatabase.database().reference().child("messages")
-
-	func retrieveMessageAttributes(messageID: String) {
-		ref.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
-			print(snapshot)
-			for item in snapshot.children {
-				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
-				print("*********************")
-				print((data["text"])!)
-			}
-		})
-	}
+	
 	
     
     func saveData(id: String, sender: String, recipient: String, location: String, text: String, radius: Int) {
