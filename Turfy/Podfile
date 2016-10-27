@@ -10,9 +10,10 @@ target 'Turfy' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FacebookShare'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+  
 
   target 'TurfyTests' do
     inherit! :search_paths
@@ -21,9 +22,11 @@ target 'Turfy' do
     pod 'Firebase/Database'
     pod 'Firebase/Auth'
     
-    pod 'FacebookCore'
-    pod 'FacebookLogin'
-    pod 'FacebookShare'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
+    pod 'FBSDKShareKit'
+    
+    
   end
 
   target 'TurfyUITests' do
