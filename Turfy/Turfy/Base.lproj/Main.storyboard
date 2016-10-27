@@ -24,8 +24,7 @@
                                     <segment title="Recieved"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" text="Messages" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <frame key="frameInset" minX="105" minY="28" width="164.5" height="41.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Messages" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -59,7 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt">
-                                <frame key="frameInset" minY="70" maxY="49"/>
+                                <frame key="frameInset" minY="78" maxY="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signs" translatesAutoresizingMaskIntoConstraints="NO" id="uAw-lf-clt">
@@ -68,29 +67,43 @@
                                     <constraint firstAttribute="width" constant="45" id="dUH-CC-zfe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Map" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <frame key="frameInset" minX="50.00%" minY="3.20%" width="71" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPF-UL-w2r">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dry Cleaner, Commercial Road" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixK-Pj-5Rn">
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ixK-Pj-5Rn" firstAttribute="leading" secondItem="cPF-UL-w2r" secondAttribute="leading" constant="8" id="5eu-Cc-hu2"/>
+                                    <constraint firstAttribute="height" constant="70" id="NME-Hp-Lda"/>
+                                    <constraint firstItem="ixK-Pj-5Rn" firstAttribute="top" secondItem="cPF-UL-w2r" secondAttribute="top" constant="16" id="Ok1-9S-qYT"/>
+                                    <constraint firstAttribute="bottom" secondItem="ixK-Pj-5Rn" secondAttribute="bottom" constant="15" id="VSP-OF-3i6"/>
+                                    <constraint firstItem="ixK-Pj-5Rn" firstAttribute="centerX" secondItem="cPF-UL-w2r" secondAttribute="centerX" id="edz-en-Nho"/>
+                                    <constraint firstAttribute="trailing" secondItem="ixK-Pj-5Rn" secondAttribute="trailing" constant="8" id="lp1-iw-RMN"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="cPF-UL-w2r" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="FCX-x9-EDx"/>
                             <constraint firstItem="uAw-lf-clt" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="K5i-1n-7ex"/>
                             <constraint firstItem="uAw-lf-clt" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Tjb-S3-2zN"/>
+                            <constraint firstAttribute="trailing" secondItem="cPF-UL-w2r" secondAttribute="trailing" id="bbP-aK-y7K"/>
+                            <constraint firstItem="cPF-UL-w2r" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="hPd-Mg-e32"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="second" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="address" destination="ixK-Pj-5Rn" id="lmi-tW-AFD"/>
                         <outlet property="map" destination="QNJ-z1-iQt" id="6qa-SZ-5Cz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="329.68515742128938"/>
+            <point key="canvasLocation" x="749.60000000000002" y="342.27886056971516"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="aK8-nA-WdS">
