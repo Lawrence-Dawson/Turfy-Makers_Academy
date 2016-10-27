@@ -9,37 +9,40 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
-import FacebookLogin
 import FBSDKShareKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = LoginButton(readPermissions: [ .publicProfile ])
+        let loginButton = FBSDKLoginButton()
         loginButton.center = view.center
         
         view.addSubview(loginButton)
+        
+        loginButton.delegate = self
 
         // Do any additional setup after loading the view.
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print ("did log out of fb")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+            return
+        }
+        print("successful login")
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func facebookLogin (sender: AnyObject){
-        let facebookLogin = FBSDKLoginManager()
-        print("Logging In")
-        facebookLogin.logIn(withReadPermissions: ["email"], from: self, handler:{(facebookResult, facebookError) -> Void in
-            if facebookError != nil { print("Facebook login failed. Error \(facebookError)")
-            } else if facebookResult!.isCancelled { print("Facebook login was cancelled.")
-            } else { print("You’re inz ;)")}
-        });
-    }
-    
 
     /*
     // MARK: - Navigation
