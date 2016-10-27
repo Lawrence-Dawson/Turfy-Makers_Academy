@@ -13,15 +13,16 @@ import FBSDKShareKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+    @IBOutlet weak var loginButton: FBSDKLoginButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = FBSDKLoginButton()
-        loginButton.center = view.center
+        loginButton!.delegate = self
+
+        view.addSubview(loginButton!)
+
+        loginButton!.center = view.center
         
-        view.addSubview(loginButton)
-        
-        loginButton.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -35,8 +36,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print(error)
             return
         }
-        print("successful login")
-        
+        else if result.isCancelled {
+            print("login cancelled")
+         
+        }
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+            print("successful login")
     }
 
     override func didReceiveMemoryWarning() {
