@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-extension MapViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate, UISearchBarDelegate {
     
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -36,5 +36,35 @@ extension MapViewController: MKMapViewDelegate {
         let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         geoCode(location: location)
     }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
+        //1
+        searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
+        
+        //2
+        localSearchRequest = MKLocalSearchRequest()
+        localSearchRequest.naturalLanguageQuery = searchBar.text
+        localSearch = MKLocalSearch(request: localSearchRequest)
+        localSearch.start { (localSearchResponse, error) -> Void in
+            
+            if localSearchResponse == nil{
+                let alertController = UIAlertController(title: nil, message: "Place Not Found", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+                return
+            }
+            //3
+            self.pointAnnotation = MKPointAnnotation()
+            self.pointAnnotation.title = searchBar.text
+            self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
+            
+            self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
+            self.map.centerCoordinate = self.pointAnnotation.coordinate
+            //            self.map.addAnnotation(self.pinAnnotationView.annotation!)
+        }
+    }
+
     
 }
