@@ -11,17 +11,28 @@ import Firebase
 
 class MessagesViewController: UIViewController {
     
-    let ref = FIRDatabase.database().reference(withPath: "messages")
+    let record = FIRDatabase.database().reference(withPath: "messages/james")
+    
+    func saveData() {
+        let message = Message(id: "1", sender: "James", recipient: "Lawrence", location: "Makers Academy", text: "Hey James is awesome!", radius: 30)
+        let itemRef = self.record.childByAutoId()
+        itemRef.setValue(message.toAnyObject())
+        
+
+    }
+    
+    func printData() {
+        record.observe(.value, with: { snapshot in
+            print(snapshot.value)
+        })
+
+    }
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-        // The code below saves shit in the DB, created a field 'lastTested' and assigns a value 'testing_lalala' to it
-//        let testItemRef = self.ref.child("lastTested")
-//        testItemRef.setValue("testing_lalala")
-		let message = Message(id: 1, sender: "Johnny", recipient: "Lawrence", location: "Makers Academy", text: "Hey Lawrence you're the best guy in the world!", radius: 30)
-		let itemRef = self.ref.childByAutoId()
-		itemRef.setValue(message.toAnyObject())
+        saveData()
+        print(printData())
+		
 	}
 
 	override func didReceiveMemoryWarning() {
