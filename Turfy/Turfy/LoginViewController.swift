@@ -7,7 +7,10 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 import FacebookLogin
+import FBSDKShareKit
 
 class LoginViewController: UIViewController {
 
@@ -25,6 +28,16 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func facebookLogin (sender: AnyObject){
+        let facebookLogin = FBSDKLoginManager()
+        print("Logging In")
+        facebookLogin.logIn(withReadPermissions: ["email"], from: self, handler:{(facebookResult, facebookError) -> Void in
+            if facebookError != nil { print("Facebook login failed. Error \(facebookError)")
+            } else if facebookResult!.isCancelled { print("Facebook login was cancelled.")
+            } else { print("You’re inz ;)")}
+        });
     }
     
 
