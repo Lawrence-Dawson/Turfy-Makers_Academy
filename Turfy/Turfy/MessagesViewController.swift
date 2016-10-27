@@ -10,10 +10,18 @@ import UIKit
 import Firebase
 
 class MessagesViewController: UIViewController {
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		retrieveMessageAttributes(messageID: "-KV4T3PQzUuNuOKkjEX1")
+		
+	}
+
+	
 	let ref = FIRDatabase.database().reference().child("messages")
 
-	func retrieveMessageAttributes() {
-		ref.queryOrderedByKey().queryEqual(toValue: "-KV4T3PQzUuNuOKkjEX1").observe(.value, with: { (snapshot) in
+	func retrieveMessageAttributes(messageID: String) {
+		ref.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
 			print(snapshot)
 			for item in snapshot.children {
 				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
@@ -24,33 +32,17 @@ class MessagesViewController: UIViewController {
 	}
 	
     
-    func saveData() {
-        let message = Message(id: "1", sender: "James", recipient: "Lawrence", location: "Makers Academy", text: "Hey James is awesome!", radius: 30)
+    func saveData(id: String, sender: String, recipient: String, location: String, text: String, radius: Int) {
+		
+        let message = Message(id: id, sender: sender, recipient: recipient, location: location, text: text, radius: radius)
         let itemRef = self.ref.childByAutoId()
         itemRef.setValue(message.toAnyObject())
-		
-
     }
-    
-    func printData() {
-        ref.observe(.value, with: { snapshot in
-			 print(snapshot.value)
-        })
-
-    }
-    
-	override func viewDidLoad() {
-		super.viewDidLoad()
-//        saveData()
-//        print(printData())
-		retrieveMessageAttributes()
-	}
-
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
 
 }
 
