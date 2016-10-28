@@ -68,6 +68,9 @@
                                     <constraint firstAttribute="height" constant="45" id="tqe-nl-Kb1"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="signs"/>
+                                <connections>
+                                    <segue destination="Npq-cI-Q28" kind="show" id="omU-0u-Ztx"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krl-y5-XAc">
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +113,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872.79999999999995" y="390.85457271364322"/>
+        </scene>
+        <!--Compose Message View Controller-->
+        <scene sceneID="WsB-u8-IGT">
+            <objects>
+                <viewController id="Npq-cI-Q28" customClass="ComposeMessageViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uES-tI-HLX"/>
+                        <viewControllerLayoutGuide type="bottom" id="IKa-SO-7Ho"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GvC-bH-AhT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G5V-4a-2f5">
+                                <frame key="frameInset" minY="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="KSD-oY-DTj"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IYd-Rd-lWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1748" y="391"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="aK8-nA-WdS">
