@@ -24,7 +24,7 @@ struct Message {
 	
 	init(id: String, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
 		let dateformatter = DateFormatter()
-		dateformatter.dateFormat = "MM/dd/yy h:mm a Z"
+		dateformatter.dateFormat = "dd/MM/yy h:mm"
 		let now = dateformatter.string(from: NSDate() as Date)
 
 		self.id = id
