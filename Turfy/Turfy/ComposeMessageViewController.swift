@@ -33,10 +33,7 @@ class ComposeMessageViewController: UIViewController {
     @IBOutlet weak var messageTitle: UITextField!
     
     @IBOutlet weak var messageBody: UITextView!
-    @IBAction func submitMessage(_ sender: AnyObject) {
-        message = Message.
-    }
-    
+ 
     
     /*
     // MARK: - Navigation
