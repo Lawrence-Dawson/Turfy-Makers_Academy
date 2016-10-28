@@ -24,7 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     var pointAnnotation:MKPointAnnotation!
     var pinAnnotationView:MKPinAnnotationView!
 
-
+  
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var map: MKMapView!
     @IBAction func showSearchBar(_ sender: AnyObject) {

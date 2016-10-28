@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ComposeMessageViewController: UIViewController {
 
@@ -14,8 +15,22 @@ class ComposeMessageViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let borderColor : UIColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        taskNotes.layer.borderWidth = 0.5
+        taskNotes.layer.borderColor = borderColor.cgColor
+        taskNotes.layer.cornerRadius = 5.0
     }
+    
+    
 
+    @IBAction func dismissPopover(_ sender: AnyObject) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as NextViewController
+        self.presentViewController(nextViewController, animated:true, completion:nil)    }
+    
+    @IBOutlet weak var taskNotes: UITextView!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
