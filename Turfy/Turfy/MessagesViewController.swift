@@ -25,8 +25,12 @@ class MessagesViewController: UIViewController {
 			print(snapshot)
 			for item in snapshot.children {
 				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
-				print("*********************")
-				print((data["text"])!)
+				let sender = (data["sender"])!
+				let recipient = (data["recipiet"])!
+				let location = (data["location"])!
+				let text = (data["text"])!
+				let radius = (data["radius"])!
+				let sentAt = (data["sentAt"])!
 			}
 		})
 	}
