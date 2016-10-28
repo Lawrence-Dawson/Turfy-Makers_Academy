@@ -18,6 +18,7 @@ struct Message {
 	let radius: Int
 	let sentAt: NSDate
 	let expires: Int
+	let formatter = DateFormatter()
 	
 	init(id: String, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
 		self.id = id
