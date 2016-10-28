@@ -131,11 +131,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Compose Message" id="KSD-oY-DTj">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FjY-qF-nrF">
-                                            <connections>
-                                                <action selector="dismissPopover:" destination="Npq-cI-Q28" id="qV7-2H-SKi"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FjY-qF-nrF"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

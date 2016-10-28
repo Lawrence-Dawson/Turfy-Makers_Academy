@@ -21,14 +21,7 @@ class ComposeMessageViewController: UIViewController {
         taskNotes.layer.cornerRadius = 5.0
     }
     
-    
 
-    @IBAction func dismissPopover(_ sender: AnyObject) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let nextViewController = storyBoard.instantiateViewControllerWithIdentifier("nextView") as NextViewController
-        self.presentViewController(nextViewController, animated:true, completion:nil)    }
-    
     @IBOutlet weak var taskNotes: UITextView!
     
     override func didReceiveMemoryWarning() {
