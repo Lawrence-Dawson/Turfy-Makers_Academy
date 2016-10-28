@@ -10,25 +10,39 @@ import UIKit
 import Firebase
 
 class MessagesViewController: UIViewController {
-    
-    let ref = FIRDatabase.database().reference(withPath: "messages")
-    
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-        // The code below saves shit in the DB, created a field 'lastTested' and assigns a value 'testing_lalala' to it
-//        let testItemRef = self.ref.child("lastTested")
-//        testItemRef.setValue("testing_lalala")
-		let message = Message(id: 1, sender: "Johnny", recipient: "Lawrence", location: "Makers Academy", text: "Hey Lawrence you're the best guy in the world!", radius: 30)
-		let itemRef = self.ref.childByAutoId()
-		itemRef.setValue(message.toAnyObject())
+		retrieveMessageAttributes(messageID: "-KV4T3PQzUuNuOKkjEX1")
+		
 	}
 
+	
+	let ref = FIRDatabase.database().reference().child("messages")
+
+	func retrieveMessageAttributes(messageID: String) {
+		ref.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
+			print(snapshot)
+			for item in snapshot.children {
+				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
+				print("*********************")
+				print((data["text"])!)
+			}
+		})
+	}
+	
+    
+    func saveData(id: String, sender: String, recipient: String, location: String, text: String, radius: Int) {
+		
+        let message = Message(id: id, sender: sender, recipient: recipient, location: location, text: text, radius: radius)
+        let itemRef = self.ref.childByAutoId()
+        itemRef.setValue(message.toAnyObject())
+    }
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
 
 }
 

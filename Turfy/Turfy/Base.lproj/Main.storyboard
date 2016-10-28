@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -139,6 +139,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azv-hH-1YV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-162.40000000000001" y="-753.37331334332839"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="8Ua-FW-SIc">
+            <objects>
+                <viewController id="cb6-Pn-7rR" customClass="LoginViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cGr-pg-zSy"/>
+                        <viewControllerLayoutGuide type="bottom" id="vhS-Uv-Xmf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8wj-OD-GSP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Login" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWq-5J-d12">
+                                <frame key="frameInset" minY="28" width="375" height="50"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7b-bC-IhO" customClass="FBSDKLoginButton">
+                                <frame key="frameInset" minX="16" minY="315" width="343" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="fb custom login button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IWq-5J-d12" firstAttribute="centerX" secondItem="8wj-OD-GSP" secondAttribute="centerX" id="Ft8-iU-Cag"/>
+                            <constraint firstItem="IWq-5J-d12" firstAttribute="top" secondItem="cGr-pg-zSy" secondAttribute="bottom" constant="8" id="RH2-YV-WVm"/>
+                            <constraint firstItem="IWq-5J-d12" firstAttribute="width" secondItem="8wj-OD-GSP" secondAttribute="width" id="hSd-2b-jhJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="J7b-bC-IhO" id="ply-fL-bGD"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loginSegue" id="XN7-uz-2V5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAM-NU-pV3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1175.2" y="8.5457271364317844"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
