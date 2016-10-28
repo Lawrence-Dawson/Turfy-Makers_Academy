@@ -13,12 +13,15 @@ class MessagesViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-//		retrieveMessageAttributes(messageID: "-KV4T3PQzUuNuOKkjEX1")
-//		saveData(id: "4", sender: "Lawrence", recipient: "Johnny", location: "Poland", text: "THE DATE WORKS YAY!!!", radius: 5)
+		retrieveMessageAttributes(messageID: "-KVA7xvDvdTQ61GMDyST")
+		saveData(id: "4", sender: "Lawrence", recipient: "Johnny", location: "Poland", text: "FINAL DATE TEST!", radius: 5)
 	}
 
 	
 	let ref = FIRDatabase.database().reference().child("messages")
+	let dateformatter = DateFormatter()
+
+	
 
 	func retrieveMessageAttributes(messageID: String) {
 		ref.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
@@ -30,7 +33,13 @@ class MessagesViewController: UIViewController {
 				let location = (data["location"])!
 				let text = (data["text"])!
 				let radius = (data["radius"])!
-				let sentAt = (data["sentAt"])!
+				
+				let sentAtStr = (data["sentAt"])!
+				self.dateformatter.dateFormat = "dd/MM/yy h:mm"
+				let date = self.dateformatter.date(from: sentAtStr as! String)
+				self.dateformatter.dateFormat = "dd/MM/yy h:mm"
+				let sentAt = self.dateformatter.string(from: date!)
+
 				print(sender)
 				print(recipient)
 				print(location)

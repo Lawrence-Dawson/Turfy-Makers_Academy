@@ -18,15 +18,14 @@ struct Message {
 	let radius: Int
 	let sentAt: String
 	let expires: Int
-	let date = Date()
-//	let myLocale = Locale(identifier: "bg_BG")
+	let dateformatter = DateFormatter()
 
 	
 	init(id: String, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
-		let dateformatter = DateFormatter()
-		dateformatter.dateFormat = "dd/MM/yy h:mm"
-		let now = dateformatter.string(from: NSDate() as Date)
-
+		
+		self.dateformatter.dateFormat = "dd/MM/yy h:mm"
+		let now = self.dateformatter.string(from: NSDate() as Date)
+		
 		self.id = id
 		self.sender = sender
 		self.recipient = recipient
