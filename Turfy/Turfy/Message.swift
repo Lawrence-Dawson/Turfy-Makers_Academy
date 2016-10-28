@@ -16,32 +16,41 @@ struct Message {
 	let text: String
 	let location: String
 	let radius: Int
-	let sentAt: NSDate
+	let sentAt: String
 	let expires: Int
+	let dateformatter = DateFormatter()
+
 	
 	init(id: String, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
+		
+		self.dateformatter.dateFormat = "dd/MM/yy h:mm"
+		let now = self.dateformatter.string(from: NSDate() as Date)
+		
 		self.id = id
 		self.sender = sender
 		self.recipient = recipient
 		self.text = text
 		self.location = location
 		self.radius = radius
-		self.sentAt = NSDate()
+		self.sentAt = now
 		self.expires = expires
+		
 	}
     
     init(snapshot: FIRDataSnapshot) {
-        id = snapshot.key
+		id = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
             sender = snapshotValue["sender"] as! String
             recipient = snapshotValue["recipient"] as! String
             text = snapshotValue["text"] as! String
             location = snapshotValue["location"] as! String
             radius = snapshotValue["radius"] as! Int
-            sentAt = snapshotValue["sentAt"] as! NSDate
+            sentAt = snapshotValue["sentAt"] as! String
             expires = snapshotValue["expires"] as! Int
-    }
-    
+		
+		}
+	
+	
 	func toAnyObject() -> Any {
 		return [
             "sender": sender,
@@ -49,7 +58,7 @@ struct Message {
             "text": text,
             "location": location,
             "radius": radius,
-            "sentAt": sentAt.hashValue,
+            "sentAt": sentAt,
             "expires": expires,
 		]
 	}
