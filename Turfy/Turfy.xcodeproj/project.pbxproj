@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A32AAC61DC0C09D00BA35FE /* MapKit.framework */; };
+		1A509EE51DC356A4006A4B40 /* ComposeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A509EE41DC356A4006A4B40 /* ComposeMessageViewController.swift */; };
+		1A509EE61DC356A4006A4B40 /* ComposeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A509EE41DC356A4006A4B40 /* ComposeMessageViewController.swift */; };
 		1A5D95421DC102F2006D59D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D95411DC102F2006D59D5 /* LoginViewController.swift */; };
 		1A5E062E1DC0EC69002EA04C /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E062D1DC0EC69002EA04C /* VCMapView.swift */; };
 		1AD16A811DC0E062007145AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD16A801DC0E062007145AC /* Pin.swift */; };
@@ -54,6 +56,7 @@
 /* Begin PBXFileReference section */
 		0FA5909B1DC218A100A79347 /* Turfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Turfy.entitlements; sourceTree = "<group>"; };
 		1A32AAC61DC0C09D00BA35FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1A509EE41DC356A4006A4B40 /* ComposeMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageViewController.swift; sourceTree = "<group>"; };
 		1A5D95411DC102F2006D59D5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1A5E062D1DC0EC69002EA04C /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 		1AD16A801DC0E062007145AC /* Pin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pin.swift; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 				0FA5909B1DC218A100A79347 /* Turfy.entitlements */,
 				89A9E74E1DC0C24000267676 /* Models */,
 				89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */,
+				1A509EE41DC356A4006A4B40 /* ComposeMessageViewController.swift */,
 				89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */,
 				89F1A9711DBF699B00A080B1 /* MapViewController.swift */,
 				1A5E062D1DC0EC69002EA04C /* VCMapView.swift */,
@@ -291,7 +295,7 @@
 				TargetAttributes = {
 					89F1A9691DBF699B00A080B1 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 65R2X4DWJ4;
+						DevelopmentTeam = R2SMNDMXL6;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -512,6 +516,7 @@
 				D4C9A2D51DC23E1400B5E800 /* ComposeViewController.swift in Sources */,
 				1A5D95421DC102F2006D59D5 /* LoginViewController.swift in Sources */,
 				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
+				1A509EE51DC356A4006A4B40 /* ComposeMessageViewController.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
 				1AD16A811DC0E062007145AC /* Pin.swift in Sources */,
@@ -528,6 +533,7 @@
 			files = (
 				89F1A9851DBF699B00A080B1 /* TurfyTests.swift in Sources */,
 				1AD16A821DC0E062007145AC /* Pin.swift in Sources */,
+				1A509EE61DC356A4006A4B40 /* ComposeMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,7 +677,6 @@
 			baseConfigurationReference = C40319E6207843F38E7C0E90 /* Pods-Turfy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 65R2X4DWJ4;
 				CODE_SIGN_ENTITLEMENTS = Turfy/Turfy.entitlements;
 				DEVELOPMENT_TEAM = R2SMNDMXL6;
 				INFOPLIST_FILE = Turfy/Info.plist;
@@ -687,7 +692,6 @@
 			baseConfigurationReference = F70F8B0D04F4C7EEA40A382C /* Pods-Turfy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 65R2X4DWJ4;
 				CODE_SIGN_ENTITLEMENTS = Turfy/Turfy.entitlements;
 				DEVELOPMENT_TEAM = R2SMNDMXL6;
 				INFOPLIST_FILE = Turfy/Info.plist;
