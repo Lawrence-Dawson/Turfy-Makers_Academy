@@ -13,8 +13,8 @@ class MessagesViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		retrieveMessageAttributes(messageID: "-KV4T3PQzUuNuOKkjEX1")
-		
+//		retrieveMessageAttributes(messageID: "-KV4T3PQzUuNuOKkjEX1")
+//		saveData(id: "4", sender: "Lawrence", recipient: "Johnny", location: "Poland", text: "THE DATE WORKS YAY!!!", radius: 5)
 	}
 
 	
@@ -26,11 +26,17 @@ class MessagesViewController: UIViewController {
 			for item in snapshot.children {
 				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
 				let sender = (data["sender"])!
-				let recipient = (data["recipiet"])!
+				let recipient = (data["recipient"])!
 				let location = (data["location"])!
 				let text = (data["text"])!
 				let radius = (data["radius"])!
 				let sentAt = (data["sentAt"])!
+				print(sender)
+				print(recipient)
+				print(location)
+				print(text)
+				print(radius)
+				print(sentAt)
 			}
 		})
 	}
