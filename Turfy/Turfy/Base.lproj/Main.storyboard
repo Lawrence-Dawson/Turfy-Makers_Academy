@@ -167,11 +167,16 @@
                                 <frame key="frameInset" minX="268" minY="398" width="49" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitMessage:" destination="Npq-cI-Q28" eventType="touchUpInside" id="MFr-hF-Eok"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="messageBody" destination="sNA-bA-uuy" id="lML-1R-8gk"/>
+                        <outlet property="messageTitle" destination="OXJ-Oh-Fom" id="wpu-bg-4uA"/>
                         <outlet property="taskNotes" destination="sNA-bA-uuy" id="Kke-zf-nDE"/>
                     </connections>
                 </viewController>
