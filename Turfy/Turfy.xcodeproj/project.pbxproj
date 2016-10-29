@@ -291,7 +291,7 @@
 				TargetAttributes = {
 					89F1A9691DBF699B00A080B1 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 65R2X4DWJ4;
+						DevelopmentTeam = T4GU882RXE;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -671,9 +671,8 @@
 			baseConfigurationReference = C40319E6207843F38E7C0E90 /* Pods-Turfy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 65R2X4DWJ4;
 				CODE_SIGN_ENTITLEMENTS = Turfy/Turfy.entitlements;
-				DEVELOPMENT_TEAM = R2SMNDMXL6;
+				DEVELOPMENT_TEAM = T4GU882RXE;
 				INFOPLIST_FILE = Turfy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.turfy;
@@ -687,9 +686,8 @@
 			baseConfigurationReference = F70F8B0D04F4C7EEA40A382C /* Pods-Turfy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 65R2X4DWJ4;
 				CODE_SIGN_ENTITLEMENTS = Turfy/Turfy.entitlements;
-				DEVELOPMENT_TEAM = R2SMNDMXL6;
+				DEVELOPMENT_TEAM = T4GU882RXE;
 				INFOPLIST_FILE = Turfy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.turfy;
