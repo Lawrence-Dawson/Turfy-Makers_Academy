@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
@@ -15,10 +16,15 @@ import FBSDKLoginKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
+    let locationManager = CLLocationManager()
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+        // Override point for customization after application launch.
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+        UIApplication.shared.cancelAllLocalNotifications()
+		// consider reactivating the line below with removing of init() function below.
         // FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 		return true
@@ -59,6 +65,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Firebase Init overwrites the default init function calling on super and then adding FIRApp config required to connect to the DB
         FIRApp.configure()
     }
+    
+    //Event handlers for notifications
+    
+    func handleEvent(forRegion region: CLRegion!) {
+        // Show an alert if application is active
+        if UIApplication.shared.applicationState == .active {
+            guard let message = note(fromRegionIdentifier: region.identifier) else { return }
+            window?.rootViewController?.showAlert(withTitle: nil, message: message)
+            print("AN ALERT SHOULD BE DISPLAYED NOW")
+        } else {
+            // Otherwise present a local notification
+            let notification = UILocalNotification()
+            notification.alertBody = note(fromRegionIdentifier: region.identifier)
+            notification.soundName = "Default"
+            UIApplication.shared.presentLocalNotificationNow(notification)
+        }
+    }
+    
+    func note(fromRegionIdentifier identifier: String) -> String? {
+        //eventually this method will take an instance of message class and create a meaningful notification out of it.
+        //now it just returns a string. sample code below.
+        //let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
+        //let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
+        //let index = geotifications?.index { $0?.identifier == identifier }
+        //return index != nil ? geotifications?[index!]?.note : nil
+        return "I AM AWSOME!!!"
+        
+    }
 
+}
+
+//extending CLLocationManagerDelegate with functions responding to user did enter a region and exit a region(this one may not be needed actually, let's see if that's the case anyway. 
+
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+        handleEvent(forRegion: region)
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+        handleEvent(forRegion: region)
+        }
+    }
 }
 
