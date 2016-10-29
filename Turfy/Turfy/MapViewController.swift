@@ -10,10 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController {
     
     let regionRadius: CLLocationDistance = 500
-    
     
     var searchController:UISearchController!
     var annotation:MKAnnotation!
@@ -35,7 +34,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     var geoCoder: CLGeocoder!
-    var locationManager: CLLocationManager!
+    let locationManager = CLLocationManager()
     var previousAddress: String!
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
@@ -43,16 +42,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        let location: CLLocation = locations.first!
-        self.map.centerCoordinate = location.coordinate
-        let reg = MKCoordinateRegionMakeWithDistance(location.coordinate, 1500, 1500)
-        self.map.setRegion(reg, animated: true)
-        geoCode(location: location)
-    }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print ("Your thing failed")
-    }
+
     
     func geoCode(location : CLLocation!){
         /* Only one reverse geocoding can be in progress at a time hence we need to cancel existing
@@ -77,7 +67,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -98,5 +87,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
 		// Dispose of any resources that can be recreated.
 	}
     
+}
+
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        let location: CLLocation = locations.first!
+        self.map.centerCoordinate = location.coordinate
+        let reg = MKCoordinateRegionMakeWithDistance(location.coordinate, 1500, 1500)
+        self.map.setRegion(reg, animated: true)
+        geoCode(location: location)
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        map.showsUserLocation = (status == .authorizedAlways)
+    }
+    //Prints error when monitoring fails
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
+        print("Monitoring failed for region with identifier: \(region!.identifier)")
+    }
+    //Prints error when locationManager fails
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager failed with the following error: \(error)")
+    }
 }
 
