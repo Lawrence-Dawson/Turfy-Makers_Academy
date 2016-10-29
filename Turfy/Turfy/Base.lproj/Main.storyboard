@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -68,6 +68,9 @@
                                     <constraint firstAttribute="height" constant="45" id="tqe-nl-Kb1"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="signs"/>
+                                <connections>
+                                    <segue destination="CIq-iH-bdl" kind="show" id="3s4-0z-B6I"/>
+                                </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krl-y5-XAc">
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,6 +113,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872.79999999999995" y="390.85457271364322"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="sKj-c0-cdX">
+            <objects>
+                <viewController id="CIq-iH-bdl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vJH-6K-DtP"/>
+                        <viewControllerLayoutGuide type="bottom" id="ahi-jd-VxJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bsz-1y-NdF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvt-Rw-D9i">
+                                <frame key="frameInset" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Write Your Message" id="mD8-9Q-0ij">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IWt-9S-0Fh">
+                                            <connections>
+                                                <segue destination="8rJ-Kc-sve" kind="show" id="19n-jd-JYK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" placeholder="Message recipient" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-6w-ypF">
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CIq-iH-bdl" id="MtU-cj-roC"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-Ya-xOn">
+                                <frame key="frameInset" minX="92" minY="464" width="190" height="30"/>
+                                <state key="normal" title="Submit Message"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ahi-jd-VxJ" firstAttribute="top" secondItem="rDr-Ya-xOn" secondAttribute="bottom" constant="173" id="Bwc-D1-9aX"/>
+                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="CgZ-xq-d5Y"/>
+                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="Jhc-YL-JlP"/>
+                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" constant="83" id="rXO-Hi-Reg"/>
+                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="s3s-Kk-pg1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="neF-Jd-jRQ" id="eY9-uu-f97"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mub-to-xlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="neF-Jd-jRQ">
+                    <connections>
+                        <outlet property="delegate" destination="CIq-iH-bdl" id="HDI-R9-YNb"/>
+                        <outlet property="searchBar" destination="o8Y-6w-ypF" id="msb-T8-A89"/>
+                        <outlet property="searchContentsController" destination="CIq-iH-bdl" id="AIw-6p-Uu6"/>
+                        <outlet property="searchResultsDataSource" destination="CIq-iH-bdl" id="KMj-Qj-pzY"/>
+                        <outlet property="searchResultsDelegate" destination="CIq-iH-bdl" id="Y9Y-KS-Znu"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1757.5999999999999" y="390.85457271364322"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="aK8-nA-WdS">
@@ -236,4 +301,7 @@
         <image name="second" width="30" height="30"/>
         <image name="signs" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="19n-jd-JYK"/>
+    </inferredMetricsTieBreakers>
 </document>
