@@ -42,60 +42,42 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else if result.isCancelled {
             print("login cancelled")
-            
         }
         else {
-            print("successful login")
-            
-            
             self.performSegue(withIdentifier: "loginSegue", sender: self)
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            print (credential.description)
-            print( "credential above")
-            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                //...
-                if (user != nil) {
-                    print ("user exists")
-                }
-                else if (error != nil) {
-                    let myerror = error?.localizedDescription
-                    print("error above")
-                }
-                else {
-                    print("user does not exist")
-                }
-                print("firebase sign in auth called")
-                
-            }
-            FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
-                if user != nil {
-                    print(user)
-                } else {
-                    print("Not signed in")
-                }
-            }
             
-            
-            print("final successful login")
+            firebaseSignIn(credential: credential)
+            signedInListener()
             
         }
     }
     
-    func getUserData(user: FIRUser){
-        for profile in user.providerData {
-            let providerID = profile.providerID
-            let uid = profile.uid;  // Provider-specific UID
-            let name = profile.displayName
-            let email = profile.email
-            let photoURL = profile.photoURL
+    func firebaseSignIn(credential: FIRAuthCredential){
+        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+            //...
+            if (user != nil) {
+                print ("user exists")
+            }
+            else if (error != nil) {
+                let myerror = error?.localizedDescription
+                print("error above")
+            }
+            
         }
     }
     
-    func saveData(providerID: String, uid: String, name: String, email: String, photoURL: String) {
-      //  let user = User(providerID: providerID, uid: uid, name: name, email: email, photoURL: photoURL)
-        //    let itemRef = self.ref.childByAutoId()
-        //    itemRef.setValue(user.toAnyObject())
+    func signedInListener() {
+        FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
+            if user != nil {
+                print(user)
+                print ("user above")
+            } else {
+                print("Not signed in")
+            }
+        }
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
