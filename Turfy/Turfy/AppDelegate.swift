@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
         //let index = geotifications?.index { $0?.identifier == identifier }
         //return index != nil ? geotifications?[index!]?.note : nil
-        return "somesortofnonsence"
+        return "I AM AWSOME!!!"
         
     }
 

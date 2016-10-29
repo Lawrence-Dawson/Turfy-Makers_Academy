@@ -56,7 +56,7 @@ class Notification: NSObject, NSCoding, MKAnnotation {
         self.eventType = eventType
     }
     
-    // MARK: NSCoding
+    //NSCoding protocol implementation
     required init?(coder decoder: NSCoder) {
         let latitude = decoder.decodeDouble(forKey: GeoKey.latitude)
         let longitude = decoder.decodeDouble(forKey: GeoKey.longitude)
