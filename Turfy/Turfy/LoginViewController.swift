@@ -21,16 +21,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     var login = FBSDKLoginManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (FBSDKAccessToken.current() != nil) {
+            print("yeahhh")
+            DispatchQueue.main.async(){ //do not ask me what is going on here
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+
+            }
+            self.loginButton.isHidden = true
+        } else {
         loginButton!.delegate = self
         view.addSubview(loginButton!)
         loginButton!.center = view.center
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        
         // Do any additional setup after loading the view.
+        }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { //move this to settings
-        try! FIRAuth.auth()!.signOut()
+       // try! FIRAuth.auth()!.signOut()
         print ("did log out of fb")
     }
     
@@ -44,28 +52,33 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("login cancelled")
         }
         else {
-            self.performSegue(withIdentifier: "loginSegue", sender: self)
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
-            firebaseSignIn(credential: credential)
-            signedInListener()
+            firebaseSignInIfNotAlready(credential: credential)
+            //signedInListener()
             
         }
     }
     
-    func firebaseSignIn(credential: FIRAuthCredential){
+    func firebaseSignInIfNotAlready(credential: FIRAuthCredential){
+        if let user = FIRAuth.auth()?.currentUser {
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+        } else {
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
             //...
             if (user != nil) {
                 print ("user exists")
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
             else if (error != nil) {
-                let myerror = error?.localizedDescription
+                print(error?.localizedDescription)
                 print("error above")
             }
             
         }
     }
+    }
+    
     
     func signedInListener() {
         FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
