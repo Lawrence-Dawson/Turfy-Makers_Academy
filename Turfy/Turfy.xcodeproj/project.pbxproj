@@ -30,6 +30,7 @@
 		D4C9A2D91DC240EC00B5E800 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4C9A2D81DC240EC00B5E800 /* GoogleService-Info.plist */; };
 		D4C9A2DA1DC240EC00B5E800 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4C9A2D81DC240EC00B5E800 /* GoogleService-Info.plist */; };
 		D4C9A2DB1DC240EC00B5E800 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4C9A2D81DC240EC00B5E800 /* GoogleService-Info.plist */; };
+		D71078F01DC4ACD50015C38A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71078EF1DC4ACD50015C38A /* Notification.swift */; };
 		D89DCCA4FF8753C90CB294D5 /* Pods_TurfyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210B90E7280032BE40A9CE28 /* Pods_TurfyUITests.framework */; };
 		F75CB7FA9B9E5930FA0C20A4 /* Pods_Turfy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 870B4278F978D7E34CFD896F /* Pods_Turfy.framework */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		D4C9A2D41DC23E1400B5E800 /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		D4C9A2D61DC2406F00B5E800 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D4C9A2D81DC240EC00B5E800 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D71078EF1DC4ACD50015C38A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E10A8E4E50581A6DAA0F76DB /* Pods-TurfyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurfyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TurfyUITests/Pods-TurfyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F70F8B0D04F4C7EEA40A382C /* Pods-Turfy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Turfy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Turfy/Pods-Turfy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				89A9E74F1DC0C27800267676 /* Message.swift */,
+				D71078EF1DC4ACD50015C38A /* Notification.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				1AD16A811DC0E062007145AC /* Pin.swift in Sources */,
 				89A9E7501DC0C27800267676 /* Message.swift in Sources */,
 				89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */,
+				D71078F01DC4ACD50015C38A /* Notification.swift in Sources */,
 				1A5E062E1DC0EC69002EA04C /* VCMapView.swift in Sources */,
 				1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */,
 			);
