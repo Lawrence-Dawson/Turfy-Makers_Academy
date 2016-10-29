@@ -72,8 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Show an alert if application is active
         if UIApplication.shared.applicationState == .active {
             guard let message = note(fromRegionIdentifier: region.identifier) else { return }
-            //the following syntax is deprecated in iOS10, requred additional research to display alerts in this version.
-            //window?.rootViewController?.showAlert(withTitle: nil, message: message)
+            window?.rootViewController?.showAlert(withTitle: nil, message: message)
             print("AN ALERT SHOULD BE DISPLAYED NOW")
         } else {
             // Otherwise present a local notification
