@@ -114,10 +114,10 @@
             </objects>
             <point key="canvasLocation" x="872.79999999999995" y="390.85457271364322"/>
         </scene>
-        <!--View Controller-->
+        <!--Compose View Controller-->
         <scene sceneID="sKj-c0-cdX">
             <objects>
-                <viewController id="CIq-iH-bdl" sceneMemberID="viewController">
+                <viewController id="CIq-iH-bdl" customClass="ComposeViewController" customModule="Turfy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vJH-6K-DtP"/>
                         <viewControllerLayoutGuide type="bottom" id="ahi-jd-VxJ"/>

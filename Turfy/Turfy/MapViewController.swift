@@ -15,7 +15,7 @@ struct PreferencesKeys {
 }
 
 class MapViewController: UIViewController {
-    
+
     let regionRadius: CLLocationDistance = 500
     
     var searchController:UISearchController!
@@ -29,7 +29,13 @@ class MapViewController: UIViewController {
     
     var notifications: [Notification] = []
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let composeViewController = segue.destination as! ComposeViewController
+        composeViewController.latitude = self.map.centerCoordinate.latitude
+        composeViewController.longitude = self.map.centerCoordinate.longitude
+    }
 
+    
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var map: MKMapView!
     @IBAction func showSearchBar(_ sender: AnyObject) {
