@@ -55,8 +55,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
             firebaseSignInIfNotAlready(credential: credential)
-            //signedInListener()
-            
+            saveIfSignedIn()
         }
     }
     
@@ -80,13 +79,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
-    func signedInListener() {
+    func saveIfSignedIn() {
         FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
             if user != nil {
-                print(user)
-                print ("user above")
+                self.getAndSaveData(user: user!)
             } else {
-                print("Not signed in")
+                print("no user")
             }
         }
     }
