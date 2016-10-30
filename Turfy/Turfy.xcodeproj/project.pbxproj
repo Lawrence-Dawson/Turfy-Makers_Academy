@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F98957A1DC61B4700345094 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9895791DC61B4700345094 /* User.swift */; };
 		1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A32AAC61DC0C09D00BA35FE /* MapKit.framework */; };
 		1A5D95421DC102F2006D59D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D95411DC102F2006D59D5 /* LoginViewController.swift */; };
 		1A5E062E1DC0EC69002EA04C /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E062D1DC0EC69002EA04C /* VCMapView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F9895791DC61B4700345094 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0FA5909B1DC218A100A79347 /* Turfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Turfy.entitlements; sourceTree = "<group>"; };
 		1A32AAC61DC0C09D00BA35FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A5D95411DC102F2006D59D5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				89A9E74F1DC0C27800267676 /* Message.swift */,
 				D71078EF1DC4ACD50015C38A /* Notification.swift */,
+				0F9895791DC61B4700345094 /* User.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
 				D71078F51DC4BBF70015C38A /* Utilities.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
+				0F98957A1DC61B4700345094 /* User.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
 				1AD16A811DC0E062007145AC /* Pin.swift in Sources */,
 				89A9E7501DC0C27800267676 /* Message.swift in Sources */,

@@ -15,7 +15,7 @@ import FBSDKShareKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    // let ref = FIRDatabase.database().reference().child("user")
+    let ref = FIRDatabase.database().reference().child("user")
     
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var login = FBSDKLoginManager()
@@ -89,6 +89,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 print("Not signed in")
             }
         }
+    }
+    
+    func getAndSaveData(user: FIRUser) {
+        for profile in user.providerData {
+            let providernameID = profile.providerID
+            let uid = profile.uid
+            let name = profile.displayName
+            let email = profile.email
+            let photoURL = profile.photoURL
+        }
+        let user = User(providerID: providerID, uid: uid, name: name, email: email, photoURL: photoURL)
+        let itemRef = self.ref.childByAutoId()
+        itemRef.setValue(user.toAnyObject())
     }
     
     
