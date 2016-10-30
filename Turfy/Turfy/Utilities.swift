@@ -13,7 +13,15 @@ extension UIViewController {
     func showAlert(withTitle title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Dismiss", style: .cancel, handler: nil)
+        let topController = topMostController()
         alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        topController.present(alert, animated: true, completion: nil)
+    }
+    func topMostController() -> UIViewController {
+        var topController: UIViewController = UIApplication.shared.keyWindow!.rootViewController!
+        while (topController.presentedViewController != nil) {
+            topController = topController.presentedViewController!
+        }
+        return topController
     }
 }
