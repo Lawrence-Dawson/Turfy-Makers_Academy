@@ -83,7 +83,7 @@ class Message: NSObject, NSCoding {
             "text": text,
             "latitude": coordinate.latitude,
             "longitude": coordinate.longitude,
-            "radius": radius.distance,
+            "radius": radius,
             "eventType": eventType.rawValue,
             "sentAt": sentAt,
             "expires": expires,
