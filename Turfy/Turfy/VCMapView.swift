@@ -31,7 +31,10 @@ extension MapViewController: MKMapViewDelegate, UISearchBarDelegate {
         }
         return nil
     }
-    
+    @IBAction func backFromModal(segue: UIStoryboardSegue) {
+        // Switch to the second tab (tabs are numbered 0, 1, 2)
+        self.tabBarController?.selectedIndex = 1
+    }
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let location = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
         geoCode(location: location)
