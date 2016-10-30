@@ -13,6 +13,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
+//below code will become redundant
 struct GeoKey {
     static let latitude = "latitude"
     static let longitude = "longitude"
@@ -22,6 +23,20 @@ struct GeoKey {
     static let text = "message"
     static let eventType = "eventType"
 }
+
+struct MessageKey {
+	static let id = "id"
+	static let sender = "sender"
+	static let recipient = "recipient"
+	static let text = "text"
+	static let latitude = "latitude"
+	static let longitude = "longitude"
+	static let radius = "radius"
+	static let eventType = "eventType"
+	static let sentAt = "sentAt"
+	static let expires = "expires"
+}
+
 
 enum EventType: String {
     case onEntry = "On Entry"
@@ -93,11 +108,30 @@ class Message: NSObject, NSCoding {
 		}
     
     required init?(coder decoder: NSCoder) {
-        
+		id = decoder.decodeObject(forKey: MessageKey.id) as! String
+		sender = decoder.decodeObject(forKey: MessageKey.sender) as! String
+		recipient = decoder.decodeObject(forKey: MessageKey.recipient) as! String
+		text = decoder.decodeObject(forKey: MessageKey.text) as! String
+		let latitude = decoder.decodeDouble(forKey: MessageKey.latitude)
+		let longitude = decoder.decodeDouble(forKey: MessageKey.longitude)
+		coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+		radius = CLLocationDistance(decoder.decodeDouble(forKey: MessageKey.radius))
+		eventType = EventType(rawValue: decoder.decodeObject(forKey: MessageKey.eventType) as! String)!
+		sentAt = decoder.decodeObject(forKey: MessageKey.sentAt) as! String
+		expires = decoder.decodeObject(forKey: MessageKey.expires) as! String
     }
-    
+	
     func encode(with coder: NSCoder) {
-        
+		coder.encode(id, forKey: MessageKey.id)
+		coder.encode(sender, forKey: MessageKey.sender)
+		coder.encode(recipient, forKey: MessageKey.recipient)
+		coder.encode(text, forKey: MessageKey.text)
+		coder.encode(coordinate.latitude, forKey: MessageKey.latitude)
+		coder.encode(coordinate.longitude, forKey: MessageKey.longitude)
+		coder.encode(radius.distance, forKey: MessageKey.radius)
+		coder.encode(eventType.rawValue, forKey: MessageKey.eventType)
+		coder.encode(sentAt, forKey: MessageKey.sentAt)
+		coder.encode(expires, forKey: MessageKey.expires)
     }
 
 }
