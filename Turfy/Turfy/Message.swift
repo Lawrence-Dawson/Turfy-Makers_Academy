@@ -128,7 +128,7 @@ class Message: NSObject, NSCoding {
 		coder.encode(text, forKey: MessageKey.text)
 		coder.encode(coordinate.latitude, forKey: MessageKey.latitude)
 		coder.encode(coordinate.longitude, forKey: MessageKey.longitude)
-		coder.encode(radius.distance, forKey: MessageKey.radius)
+		coder.encode(radius, forKey: MessageKey.radius)
 		coder.encode(eventType.rawValue, forKey: MessageKey.eventType)
 		coder.encode(sentAt, forKey: MessageKey.sentAt)
 		coder.encode(expires, forKey: MessageKey.expires)
