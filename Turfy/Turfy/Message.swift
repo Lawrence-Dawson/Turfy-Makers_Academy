@@ -28,7 +28,7 @@ enum EventType: String {
     case onExit = "On Exit"
 }
 
-struct Message {
+class Message: NSObject, NSCoding {
 	let id: String
 	let sender: String
 	let recipient: String
@@ -60,29 +60,44 @@ struct Message {
 		
 	}
     
+    //Parsing to FIR-friendly format
+    func toAnyObject() -> Any {
+        return [
+            "sender": sender,
+            "recipient": recipient,
+            "text": text,
+            "latitude": coordinate.latitude,
+            "longitude": coordinate.longitude,
+            "radius": radius.distance,
+            "eventType": eventType.rawValue,
+            "sentAt": sentAt,
+            "expires": expires,
+        ]
+    }
+    
+    //Importing from FIRDataSnapshot object
     init(snapshot: FIRDataSnapshot) {
 		id = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
             sender = snapshotValue["sender"] as! String
             recipient = snapshotValue["recipient"] as! String
             text = snapshotValue["text"] as! String
-			eventType = snapshotValue
-            radius = snapshotValue["radius"] as! Int
+        
+            coordinate = CLLocationCoordinate2D(latitude: snapshotValue["latitude"] as! Double, longitude: snapshotValue["longitude"] as! Double)
+            radius = CLLocationDistance(snapshotValue["radius"] as! Double)
+			eventType = EventType(rawValue: snapshotValue["eventType"] as! String)!
+        
             sentAt = snapshotValue["sentAt"] as! String
-            expires = snapshotValue["expires"] as! Int
+            expires = snapshotValue["expires"] as! String
 		
 		}
-	
-	
-	func toAnyObject() -> Any {
-		return [
-            "sender": sender,
-            "recipient": recipient,
-            "text": text,
+    
+    required init?(coder decoder: NSCoder) {
+        
+    }
+    
+    func encode(with coder: NSCoder) {
+        
+    }
 
-            "radius": radius,
-            "sentAt": sentAt,
-            "expires": expires,
-		]
-	}
 }
