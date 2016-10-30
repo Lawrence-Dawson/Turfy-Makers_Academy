@@ -12,20 +12,20 @@ import UIKit
 import MapKit
 import CoreLocation
 
-struct GeoKey {
-    static let latitude = "latitude"
-    static let longitude = "longitude"
-    static let radius = "radius"
-    static let id = "id"
-    static let sender = "sender"
-    static let text = "message"
-    static let eventType = "eventType"
-}
-
-enum EventType: String {
-    case onEntry = "On Entry"
-    case onExit = "On Exit"
-}
+//struct GeoKey {
+//    static let latitude = "latitude"
+//    static let longitude = "longitude"
+//    static let radius = "radius"
+//    static let id = "id"
+//    static let sender = "sender"
+//    static let text = "message"
+//    static let eventType = "eventType"
+//}
+//
+//enum EventType: String {
+//    case onEntry = "On Entry"
+//    case onExit = "On Exit"
+//}
 
 class Notification: NSObject, NSCoding, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
