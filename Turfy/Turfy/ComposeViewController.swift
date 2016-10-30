@@ -9,12 +9,15 @@
 import UIKit
 
 class ComposeViewController: UIViewController {
-
+    var longitude: Double = 0
+    var latitude: Double = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
