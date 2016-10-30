@@ -14,7 +14,7 @@ class MessagesViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		//retrieveMessageAttributes(messageID: "-KVA7xvDvdTQ61GMDyST")
-		//saveData(id: "4", sender: "Lawrence", recipient: "Johnny", location: "Poland", text: "FINAL DATE TEST!", radius: 5)
+        saveData(id: "test message", sender: "Johnny", recipient: "Lawrence", text: "This app is going to be great!", latitude: 50.00, longitude: 0.00 , radius: 500, eventType: "On Entry")
 	}
 
 	
