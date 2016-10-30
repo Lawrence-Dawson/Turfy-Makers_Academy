@@ -91,11 +91,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //eventually this method will take an instance of message class and create a meaningful notification out of it.
         //now it just returns a string. sample code below.
         //let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
+        let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
         //let geotifications = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Geotification }
+        let messages = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Message }
         //let index = geotifications?.index { $0?.identifier == identifier }
+        let index = messages?.index { $0?.id == identifier }
         //return index != nil ? geotifications?[index!]?.note : nil
-        return "I AM AWSOME!!!"
-        
+        let messageBody: String = (index != nil ? messages?[index!]?.text : nil)!
+        let messageSender: String = (index != nil ? messages?[index!]?.sender : nil)!
+        return "\(messageSender): \(messageBody)"
     }
     
  

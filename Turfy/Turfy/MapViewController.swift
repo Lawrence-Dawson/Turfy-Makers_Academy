@@ -109,7 +109,7 @@ class MapViewController: UIViewController {
         
         let clampedRadius = min(radiusOfFence, locationManager.maximumRegionMonitoringDistance)
 		
-		let messageToAdd: Message = Message(id: "ID", sender: "sender", recipient: "recipient", text: "text", latitude: 51.5173, longitude: 0.0733, radius: radiusOfFence, eventType: eventType)
+		let messageToAdd: Message = Message(id: "ID", sender: "Johnny", recipient: "recipient", text: "This is a test message hardoded in this program to Makers Academy location", latitude: 51.5173, longitude: -0.0733, radius: radiusOfFence, eventType: eventType)
 		
         addNewMessage(message: messageToAdd)
         
@@ -143,6 +143,7 @@ class MapViewController: UIViewController {
             let item = NSKeyedArchiver.archivedData(withRootObject: message)
             items.append(item)
         }
+        UserDefaults.standard.set(items, forKey: PreferencesKeys.savedItems)
     }
     
     func add(message: Message) {
