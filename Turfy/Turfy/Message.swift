@@ -34,28 +34,29 @@ struct Message {
 	let recipient: String
 	let text: String
 
-    let latitude: Double
-    let longitude: Double
+	let coordinate: CLLocationCoordinate2D
     let radius: CLLocationDistance
     let eventType: EventType
 	let sentAt: String
-	let expires: Int
+	let expires: String
 	let dateformatter = DateFormatter()
 
 	
-    init(id: String, sender: String, recipient: String, text: String, latitude: Double, longitude: Double, radius: CLLocationDistance, eventType: EventType,   expires: Int = 10) {
+    init(id: String, sender: String, recipient: String, text: String, latitude: Double, longitude: Double, radius: Double, eventType: String, expires: Int = 2) {
 		
+		let timeInterval = expires*86400
 		self.dateformatter.dateFormat = "dd/MM/yy h:mm"
-		let now = self.dateformatter.string(from: NSDate() as Date)
 		
 		self.id = id
 		self.sender = sender
 		self.recipient = recipient
 		self.text = text
-
-		self.radius = radius
-		self.sentAt = now
-		self.expires = expires
+		self.eventType = EventType(rawValue: eventType)!
+		self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+		
+		self.radius = CLLocationDistance(radius)
+		self.sentAt = self.dateformatter.string(from: NSDate() as Date)
+		self.expires = self.dateformatter.string(from: NSDate(timeIntervalSinceNow: Double(timeInterval)) as Date)
 		
 	}
     
@@ -65,7 +66,7 @@ struct Message {
             sender = snapshotValue["sender"] as! String
             recipient = snapshotValue["recipient"] as! String
             text = snapshotValue["text"] as! String
-
+			eventType = snapshotValue
             radius = snapshotValue["radius"] as! Int
             sentAt = snapshotValue["sentAt"] as! String
             expires = snapshotValue["expires"] as! Int
