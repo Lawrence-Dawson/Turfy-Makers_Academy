@@ -13,8 +13,8 @@ class MessagesViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		retrieveMessageAttributes(messageID: "-KVA7xvDvdTQ61GMDyST")
-		saveData(id: "4", sender: "Lawrence", recipient: "Johnny", location: "Poland", text: "FINAL DATE TEST!", radius: 5)
+		//retrieveMessageAttributes(messageID: "-KVA7xvDvdTQ61GMDyST")
+		//saveData(id: "4", sender: "Lawrence", recipient: "Johnny", location: "Poland", text: "FINAL DATE TEST!", radius: 5)
 	}
 
 	
