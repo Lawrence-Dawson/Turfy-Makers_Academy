@@ -28,32 +28,47 @@ class MessagesViewController: UIViewController {
 			print(snapshot)
 			for item in snapshot.children {
 				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
-				let sender = (data["sender"])!
-				let recipient = (data["recipient"])!
-				let location = (data["location"])!
-				let text = (data["text"])!
-				let radius = (data["radius"])!
-				
+                
+                let id = messageID
+                let sender = (data["sender"])!
+                let recipient = (data["recipient"])!
+                let text = (data["text"])!
+                let latitude = (data["latitude"])!
+                let longitude = (data["longitude"])!
+                let radius = (data["radius"])!
+                let eventType = (data["eventType"])!
+        
+                
 				let sentAtStr = (data["sentAt"])!
 				self.dateformatter.dateFormat = "dd/MM/yy h:mm"
-				let date = self.dateformatter.date(from: sentAtStr as! String)
+				let sentAtDate = self.dateformatter.date(from: sentAtStr as! String)
 				self.dateformatter.dateFormat = "dd/MM/yy h:mm"
-				let sentAt = self.dateformatter.string(from: date!)
-
+				let sentAt = self.dateformatter.string(from: sentAtDate!)
+                
+                let expiresAtStr = (data["expires"])!
+                let expiresDate = self.dateformatter.date(from: expiresAtStr as! String)
+                self.dateformatter.dateFormat = "dd/MM/yy h:mm"
+                let expires = self.dateformatter.string(from: expiresDate!)
+                
+                print(id)
 				print(sender)
 				print(recipient)
-				print(location)
 				print(text)
 				print(radius)
 				print(sentAt)
+                print(latitude)
+                print(longitude)
+                print(eventType)
+                print(expires)
 			}
 		})
 	}
 	
     
-    func saveData(id: String, sender: String, recipient: String, location: String, text: String, radius: Int) {
-		
-        let message = Message(id: id, sender: sender, recipient: recipient, location: location, text: text, radius: radius)
+    func saveData(id: String, sender: String, recipient: String, text: String, latitude: Double, longitude: Double, radius: Double, eventType: String, expires: Int = 2) {
+
+        let message = Message(id: id, sender: sender, recipient: recipient, text: text, latitude: latitude, longitude: longitude, radius: radius, eventType: eventType, expires: expires)
+        
         let itemRef = self.ref.childByAutoId()
         itemRef.setValue(message.toAnyObject())
     }

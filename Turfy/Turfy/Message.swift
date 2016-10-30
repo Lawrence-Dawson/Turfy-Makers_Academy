@@ -7,59 +7,131 @@
 //
 
 import Foundation
-import Firebase
 
-struct Message {
+import Firebase
+import UIKit
+import MapKit
+import CoreLocation
+
+//below code will become redundant
+struct GeoKey {
+    static let latitude = "latitude"
+    static let longitude = "longitude"
+    static let radius = "radius"
+    static let id = "id"
+    static let sender = "sender"
+    static let text = "message"
+    static let eventType = "eventType"
+}
+
+struct MessageKey {
+	static let id = "id"
+	static let sender = "sender"
+	static let recipient = "recipient"
+	static let text = "text"
+	static let latitude = "latitude"
+	static let longitude = "longitude"
+	static let radius = "radius"
+	static let eventType = "eventType"
+	static let sentAt = "sentAt"
+	static let expires = "expires"
+}
+
+
+enum EventType: String {
+    case onEntry = "On Entry"
+    case onExit = "On Exit"
+}
+
+class Message: NSObject, NSCoding {
 	let id: String
 	let sender: String
 	let recipient: String
 	let text: String
-	let location: String
-	let radius: Int
+
+	let coordinate: CLLocationCoordinate2D
+    let radius: CLLocationDistance
+    let eventType: EventType
 	let sentAt: String
-	let expires: Int
+	let expires: String
 	let dateformatter = DateFormatter()
 
 	
-	init(id: String, sender: String, recipient: String, location: String, text:String, radius: Int, expires: Int = 10) {
+    init(id: String, sender: String, recipient: String, text: String, latitude: Double, longitude: Double, radius: Double, eventType: String, expires: Int = 2) {
 		
+		let timeInterval = expires*86400
 		self.dateformatter.dateFormat = "dd/MM/yy h:mm"
-		let now = self.dateformatter.string(from: NSDate() as Date)
 		
 		self.id = id
 		self.sender = sender
 		self.recipient = recipient
 		self.text = text
-		self.location = location
-		self.radius = radius
-		self.sentAt = now
-		self.expires = expires
+		self.eventType = EventType(rawValue: eventType)!
+		self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+		
+		self.radius = CLLocationDistance(radius)
+		self.sentAt = self.dateformatter.string(from: NSDate() as Date)
+		self.expires = self.dateformatter.string(from: NSDate(timeIntervalSinceNow: Double(timeInterval)) as Date)
 		
 	}
     
+    //Parsing to FIR-friendly format
+    func toAnyObject() -> Any {
+        return [
+            "sender": sender,
+            "recipient": recipient,
+            "text": text,
+            "latitude": coordinate.latitude,
+            "longitude": coordinate.longitude,
+            "radius": radius.distance,
+            "eventType": eventType.rawValue,
+            "sentAt": sentAt,
+            "expires": expires,
+        ]
+    }
+    
+    //Importing from FIRDataSnapshot object
     init(snapshot: FIRDataSnapshot) {
 		id = snapshot.key
         let snapshotValue = snapshot.value as! [String: AnyObject]
             sender = snapshotValue["sender"] as! String
             recipient = snapshotValue["recipient"] as! String
             text = snapshotValue["text"] as! String
-            location = snapshotValue["location"] as! String
-            radius = snapshotValue["radius"] as! Int
+        
+            coordinate = CLLocationCoordinate2D(latitude: snapshotValue["latitude"] as! Double, longitude: snapshotValue["longitude"] as! Double)
+            radius = CLLocationDistance(snapshotValue["radius"] as! Double)
+			eventType = EventType(rawValue: snapshotValue["eventType"] as! String)!
+        
             sentAt = snapshotValue["sentAt"] as! String
-            expires = snapshotValue["expires"] as! Int
+            expires = snapshotValue["expires"] as! String
 		
 		}
+    
+    required init?(coder decoder: NSCoder) {
+		id = decoder.decodeObject(forKey: MessageKey.id) as! String
+		sender = decoder.decodeObject(forKey: MessageKey.sender) as! String
+		recipient = decoder.decodeObject(forKey: MessageKey.recipient) as! String
+		text = decoder.decodeObject(forKey: MessageKey.text) as! String
+		let latitude = decoder.decodeDouble(forKey: MessageKey.latitude)
+		let longitude = decoder.decodeDouble(forKey: MessageKey.longitude)
+		coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+		radius = CLLocationDistance(decoder.decodeDouble(forKey: MessageKey.radius))
+		eventType = EventType(rawValue: decoder.decodeObject(forKey: MessageKey.eventType) as! String)!
+		sentAt = decoder.decodeObject(forKey: MessageKey.sentAt) as! String
+		expires = decoder.decodeObject(forKey: MessageKey.expires) as! String
+    }
 	
-	
-	func toAnyObject() -> Any {
-		return [
-            "sender": sender,
-            "recipient": recipient,
-            "text": text,
-            "location": location,
-            "radius": radius,
-            "sentAt": sentAt,
-            "expires": expires,
-		]
-	}
+    func encode(with coder: NSCoder) {
+		coder.encode(id, forKey: MessageKey.id)
+		coder.encode(sender, forKey: MessageKey.sender)
+		coder.encode(recipient, forKey: MessageKey.recipient)
+		coder.encode(text, forKey: MessageKey.text)
+		coder.encode(coordinate.latitude, forKey: MessageKey.latitude)
+		coder.encode(coordinate.longitude, forKey: MessageKey.longitude)
+		coder.encode(radius, forKey: MessageKey.radius)
+		coder.encode(eventType.rawValue, forKey: MessageKey.eventType)
+		coder.encode(sentAt, forKey: MessageKey.sentAt)
+		coder.encode(expires, forKey: MessageKey.expires)
+    }
+
 }
