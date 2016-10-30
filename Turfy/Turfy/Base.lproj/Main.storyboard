@@ -149,6 +149,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
+                                <frame key="frameInset" minX="128" minY="385" width="118" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="radiusSlider:" destination="CIq-iH-bdl" eventType="valueChanged" id="Nha-qU-QCT"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
+                                <frame key="frameInset" minX="177" minY="423" width="21" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -160,6 +174,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="radius" destination="ahX-yE-qo9" id="fQf-xM-P6s"/>
                         <outlet property="searchDisplayController" destination="neF-Jd-jRQ" id="eY9-uu-f97"/>
                     </connections>
                 </viewController>

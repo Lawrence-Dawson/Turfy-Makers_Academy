@@ -12,6 +12,12 @@ class ComposeViewController: UIViewController {
     var longitude: Double = 0
     var latitude: Double = 0
     
+    @IBAction func radiusSlider(_ sender: UISlider) {
+        radius.text = String(Int(sender.value))
+    }
+    
+    @IBOutlet weak var radius: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
