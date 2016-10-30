@@ -79,7 +79,7 @@ class MapViewController: UIViewController {
         locationManager.requestLocation()
         geoCoder = CLGeocoder()
         
-        loadAllNotifications()
+        loadAllMessages()
         
         let initialLocation = CLLocation(latitude: 51.508182, longitude: -0.126771)
         centerMapOnLocation(location: initialLocation)
@@ -102,10 +102,10 @@ class MapViewController: UIViewController {
         let eventType = "On Entry"
         
         let clampedRadius = min(radiusOfFence, locationManager.maximumRegionMonitoringDistance)
-        
-        let notificationToAdd : Notification = Notification(coordinate: coordinateToWatch, radius: radiusOfFence, identifier: notificationId, sender: messageSender, message: messageContent, eventType: EventType(rawValue: eventType)!)
-        
-        addNewNotification(notification: notificationToAdd)
+		
+		let messageToAdd: Message = Message(id: "ID", sender: "sender", recipient: "recipient", text: "text", latitude: 51.5173, longitude: 0.0733, radius: radiusOfFence, eventType: eventType)
+		
+        addNewMessage(message: messageToAdd)
         
     }
 
@@ -114,78 +114,5 @@ class MapViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
     
-    func addNewNotification(notification: Notification) {
-        add(notification: notification)
-        startMonitoring(notification: notification)
-        saveAllNotifications()
-    }
-    
-    func loadAllNotifications() {
-        notifications = []
-        guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
-        for savedItem in savedItems {
-            guard let notification = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Notification else { continue }
-            add(notification: notification)
-        }
-    }
-    
-    func saveAllNotifications() {
-        var items: [Data] = []
-        for notification in notifications {
-            let item = NSKeyedArchiver.archivedData(withRootObject: notification)
-            items.append(item)
-        }
-    }
-    
-    func add(notification: Notification) {
-        notifications.append(notification)
-        // should we display them on the map too???
-        // map.addAnnotation(notification)
-        // addRadiusOverlay(forNotification: notifications)
-        // also, may be good to call a method updating status of the message to 'delivered'?
-        // (tbd)
-        updateNotificationsCount()
-    }
-    
-    func remove(notification: Notification) {
-        if let indexInArray = notifications.index(of: notification) {
-            notifications.remove(at: indexInArray)
-        }
-        // map.removeAnnotion(notification)
-        // removeRadiusOverlay(forNotification: notification)
-        updateNotificationsCount()
-    }
-    
-    func updateNotificationsCount() {
-        //title = "Notifications (\(notifications.count))"
-        //add a logic to ensure notifications.count < 20, iOS cannot handle more than that and may stop displaying them at all
-        print("Notifications (\(notifications.count))")
-    }
-    
-    func region(withNotification notification: Notification) -> CLCircularRegion {
-        let region = CLCircularRegion(center: notification.coordinate, radius: notification.radius, identifier: notification.id)
-        region.notifyOnEntry = (notification.eventType == .onEntry)
-        region.notifyOnExit = !region.notifyOnEntry
-        return region
-    }
-    
-    func startMonitoring(notification: Notification) {
-        if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-            showAlert(withTitle:"Error", message: "This device does not fully support Türfy, some functionalities may not work correctly")
-            return
-        }
-        if CLLocationManager.authorizationStatus() != .authorizedAlways {
-            showAlert(withTitle:"Warning", message: "Please grant Türfy permission to access the device location (Always on) in order for the app to work correctly")
-        }
-        let region = self.region(withNotification: notification)
-        locationManager.startMonitoring(for: region)
-    }
-    
-    func stopMonitoring(notification: Notification) {
-        for region in locationManager.monitoredRegions {
-            guard let circularRegion = region as? CLCircularRegion, circularRegion.identifier == notification.id else { continue }
-            locationManager.stopMonitoring(for: circularRegion)
-        }
-    }
-    
+       
 }

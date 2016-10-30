@@ -14,6 +14,7 @@
 		1AD16A821DC0E062007145AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD16A801DC0E062007145AC /* Pin.swift */; };
 		1AD16A831DC0E062007145AC /* Pin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD16A801DC0E062007145AC /* Pin.swift */; };
 		1AFD4AA31DBFAD25003B3355 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */; };
+		898D07111DC661A800869BE1 /* MessageFunctionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898D07101DC661A800869BE1 /* MessageFunctionality.swift */; };
 		89A9E7501DC0C27800267676 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89A9E74F1DC0C27800267676 /* Message.swift */; };
 		89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */; };
 		89F1A9701DBF699B00A080B1 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */; };
@@ -64,6 +65,7 @@
 		210B90E7280032BE40A9CE28 /* Pods_TurfyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TurfyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA829D207B585AE8023308B /* Pods-TurfyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TurfyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TurfyUITests/Pods-TurfyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		870B4278F978D7E34CFD896F /* Pods_Turfy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Turfy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		898D07101DC661A800869BE1 /* MessageFunctionality.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageFunctionality.swift; sourceTree = "<group>"; };
 		89A9E74F1DC0C27800267676 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		89F1A96A1DBF699B00A080B1 /* Turfy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Turfy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */,
 				D4C9A2D41DC23E1400B5E800 /* ComposeViewController.swift */,
 				1A5D95411DC102F2006D59D5 /* LoginViewController.swift */,
+				898D07101DC661A800869BE1 /* MessageFunctionality.swift */,
 			);
 			path = Turfy;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				D71078F21DC4B67A0015C38A /* VCMapLocationManager.swift in Sources */,
 				D4C9A2D51DC23E1400B5E800 /* ComposeViewController.swift in Sources */,
 				1A5D95421DC102F2006D59D5 /* LoginViewController.swift in Sources */,
+				898D07111DC661A800869BE1 /* MessageFunctionality.swift in Sources */,
 				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
 				D71078F51DC4BBF70015C38A /* Utilities.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
