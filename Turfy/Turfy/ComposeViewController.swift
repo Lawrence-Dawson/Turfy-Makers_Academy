@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ComposeViewController: UIViewController {
     var longitude: Double = 0
     var latitude: Double = 0
+    var radius: Float = 0
+    let user = FIRAuth.auth()?.currentUser
+    var message: Message?
     
     @IBOutlet weak var radiusText: UILabel!
     @IBOutlet weak var radiusSlider: UISlider!
@@ -18,23 +22,26 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var messageText: UITextView!
     
     @IBAction func radiusSlider(_ sender: UISlider) {
-        radiusText.text = "\(radiusSlider.value)"
+        radiusText.text = "\(Int(radiusSlider.value))"
+        radius = radiusSlider.value
     }
     
     @IBAction func submitMessage(_ sender: AnyObject) {
-    
+ 
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         // some styling for the text field
         messageText!.layer.borderWidth = 1
-        
-        radiusText.text = "\(radiusSlider.value)"
+
+        radiusText.text = "\(Int(radiusSlider.value))"
+        radius = radiusSlider.value
     }
 
 
@@ -53,5 +60,8 @@ class ComposeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // helper methods
+    
 
 }
