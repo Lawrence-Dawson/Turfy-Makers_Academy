@@ -15,19 +15,19 @@ import FBSDKShareKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    // let ref = FIRDatabase.database().reference().child("user")
+    var name: String = "", email: String = "", uid: String = "";
+    let ref = FIRDatabase.database().reference().child("user")
     
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var login = FBSDKLoginManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (FBSDKAccessToken.current() != nil) {
-            print("yeahhh")
-            DispatchQueue.main.async(){ //do not ask me what is going on here
+        if let user = FIRAuth.auth()?.currentUser {
+            DispatchQueue.main.async(){
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
                 
             }
-            self.loginButton.isHidden = true
         } else {
             loginButton!.delegate = self
             view.addSubview(loginButton!)
@@ -37,13 +37,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { //move this to settings
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { //should be triggered by event in settings view
         // try! FIRAuth.auth()!.signOut()
         print ("did log out of fb")
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        //let itemRef = self.ref.childByAutoId()
         if error != nil {
             print(error.localizedDescription)
             return
@@ -53,10 +52,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            
             firebaseSignInIfNotAlready(credential: credential)
-            //signedInListener()
-            
         }
     }
     
@@ -67,8 +63,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 //...
                 if (user != nil) {
-                    print ("user exists")
+                    print("sign in was called")
+                    self.getUserProfile()
+                    self.saveData(uid: self.uid, name: self.name, email: self.email)
                     self.performSegue(withIdentifier: "loginSegue", sender: self)
+                    
                 }
                 else if (error != nil) {
                     print(error?.localizedDescription)
@@ -80,17 +79,23 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     
-    func signedInListener() {
-        FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                print(user)
-                print ("user above")
-            } else {
-                print("Not signed in")
-            }
+    func getUserProfile() {
+        print("get user profile was called")
+        var user = FIRAuth.auth()?.currentUser;
+        if (user != nil) {
+            self.name = (user?.displayName)!;
+            self.email = (user?.email)!;
+            // photoUrl = user.photoURL;
+            self.uid = (user?.uid)!;
         }
     }
     
+    func saveData(uid: String, name: String, email: String) {
+        print("save user profile was called")
+        let user = User(uid: uid, name: name, email: email)
+        let itemRef = self.ref.childByAutoId()
+        itemRef.setValue(user.toAnyObject())
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -110,4 +115,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 }
 
 
+//
+//    func getIfSignedIn() {
+//FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
+//    if user != nil {
+//        print("there's a user")
+//    } else {
+//        print("no user")
+//    }
+//}
+//}
+//
 
