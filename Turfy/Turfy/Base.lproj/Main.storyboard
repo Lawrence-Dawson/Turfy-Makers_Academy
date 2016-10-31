@@ -167,16 +167,26 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="R8Z-N4-X0m"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <searchBar contentMode="redraw" placeholder="Message recipient" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-6w-ypF">
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="CIq-iH-bdl" id="MtU-cj-roC"/>
-                                </connections>
-                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EuO-Jq-L0d">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85" id="exQ-pq-w2d"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sj1-kn-9so">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sj1-kn-9so" id="GOc-Hc-HHA">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -184,18 +194,18 @@
                             <constraint firstItem="Ndd-hy-Tnk" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="0i8-Y4-49h"/>
                             <constraint firstItem="iRS-6u-eu7" firstAttribute="top" secondItem="sbu-SM-pdo" secondAttribute="bottom" constant="8" id="5an-Bw-VNT"/>
                             <constraint firstItem="Ndd-hy-Tnk" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="AIX-tB-Mbj"/>
-                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="FzW-50-Oid"/>
+                            <constraint firstItem="EuO-Jq-L0d" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="Bx4-8N-d6m"/>
                             <constraint firstItem="ahX-yE-qo9" firstAttribute="top" secondItem="iRS-6u-eu7" secondAttribute="bottom" constant="8" id="L1y-sF-ehI"/>
                             <constraint firstItem="iRS-6u-eu7" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="N4Q-7J-ONr"/>
                             <constraint firstItem="sbu-SM-pdo" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="NPw-2Z-ZFD"/>
-                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="SBL-Mf-9kR"/>
-                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="top" secondItem="o8Y-6w-ypF" secondAttribute="bottom" constant="20" id="XQk-CC-LZd"/>
+                            <constraint firstItem="EuO-Jq-L0d" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" constant="52" id="Uji-QI-qDf"/>
                             <constraint firstItem="rDr-Ya-xOn" firstAttribute="top" secondItem="ahX-yE-qo9" secondAttribute="bottom" constant="29" id="ZyO-uu-Aih"/>
                             <constraint firstItem="rDr-Ya-xOn" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="b6G-wS-g8Y"/>
                             <constraint firstItem="ahX-yE-qo9" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="d7r-IN-0S3"/>
                             <constraint firstItem="rDr-Ya-xOn" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="dSV-nZ-voc"/>
-                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" constant="88" id="eKo-Pp-1d3"/>
+                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="top" secondItem="EuO-Jq-L0d" secondAttribute="bottom" constant="15" id="guB-DC-jST"/>
                             <constraint firstItem="iRS-6u-eu7" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="jpH-g7-Xch"/>
+                            <constraint firstItem="EuO-Jq-L0d" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="mvw-SO-1Po"/>
                             <constraint firstItem="sbu-SM-pdo" firstAttribute="top" secondItem="Ndd-hy-Tnk" secondAttribute="bottom" constant="41" id="upN-Hb-1wS"/>
                             <constraint firstItem="ahX-yE-qo9" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="uza-0E-3ha"/>
                         </constraints>
@@ -205,7 +215,7 @@
                         <outlet property="radiusSlider" destination="iRS-6u-eu7" id="SCw-7g-fIg"/>
                         <outlet property="radiusText" destination="ahX-yE-qo9" id="25V-Ck-Bd6"/>
                         <outlet property="searchDisplayController" destination="neF-Jd-jRQ" id="eY9-uu-f97"/>
-                        <outletCollection property="recipientDropdown" destination="o8Y-6w-ypF" collectionClass="NSMutableArray" id="W2q-XL-6vc"/>
+                        <outlet property="tblSearchResults" destination="EuO-Jq-L0d" id="rv1-lA-Rzf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mub-to-xlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,14 +223,13 @@
                 <searchDisplayController id="neF-Jd-jRQ">
                     <connections>
                         <outlet property="delegate" destination="CIq-iH-bdl" id="HDI-R9-YNb"/>
-                        <outlet property="searchBar" destination="o8Y-6w-ypF" id="msb-T8-A89"/>
                         <outlet property="searchContentsController" destination="CIq-iH-bdl" id="AIw-6p-Uu6"/>
                         <outlet property="searchResultsDataSource" destination="CIq-iH-bdl" id="KMj-Qj-pzY"/>
                         <outlet property="searchResultsDelegate" destination="CIq-iH-bdl" id="Y9Y-KS-Znu"/>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1757.5999999999999" y="390.85457271364322"/>
+            <point key="canvasLocation" x="1757.5" y="390.5"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="aK8-nA-WdS">
