@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
 	let ref = FIRDatabase.database().reference().child("messages")
 	let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
 	
-	let sampleMessage : Message = Message(id: "test message", sender: (FIRAuth.auth()?.currentUser?.uid)!, recipient: "zwcxlPQwDAhYIxX9k4hDn77LvQY2", text: "Hey Johnny!", latitude: 50.00, longitude: 0.00, radius: 500, eventType: "On Entry")
+    let sampleMessage : Message = Message(id: "test message", sender: (FIRAuth.auth()?.currentUser?.uid)!, recipient: "zwcxlPQwDAhYIxX9k4hDn77LvQY2", text: "Hey Johnny!", latitude: 50.00, longitude: 0.00, radius: 500, eventType: "On Entry", status: "Sent")
 
 	//DB stuff above needs extraction
 	
@@ -93,7 +93,7 @@ class MapViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
         geoCoder = CLGeocoder()
-        
+        messages = []
         loadAllMessages()
         
         let initialLocation = CLLocation(latitude: 51.508182, longitude: -0.126771)
@@ -138,6 +138,7 @@ class MapViewController: UIViewController {
     func loadAllMessages() {
         messages = []
         guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
+        print(savedItems)
         for savedItem in savedItems {
             guard let message = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Message else { continue }
             add(message: message)
@@ -175,6 +176,7 @@ class MapViewController: UIViewController {
     func updateMessagesCount() {
         //title = "Notifications (\(notifications.count))"
         //add a logic to ensure notifications.count < 20, iOS cannot handle more than that and may stop displaying them at all
+        print(messages)
         print("Messages (\(messages.count))")
     }
     

@@ -13,17 +13,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-//below code will become redundant
-struct GeoKey {
-    static let latitude = "latitude"
-    static let longitude = "longitude"
-    static let radius = "radius"
-    static let id = "id"
-    static let sender = "sender"
-    static let text = "message"
-    static let eventType = "eventType"
-}
-
 struct MessageKey {
 	static let id = "id"
 	static let sender = "sender"
@@ -35,12 +24,18 @@ struct MessageKey {
 	static let eventType = "eventType"
 	static let sentAt = "sentAt"
 	static let expires = "expires"
+    static let status = "status"
 }
 
 
 enum EventType: String {
     case onEntry = "On Entry"
     case onExit = "On Exit"
+}
+
+enum Status: String {
+    case sent = "Sent"
+    case delivered = "Delivered"
 }
 
 class Message: NSObject, NSCoding {
@@ -54,10 +49,11 @@ class Message: NSObject, NSCoding {
     let eventType: EventType
 	let sentAt: String
 	let expires: String
-	let dateformatter = DateFormatter()
-
+    let status: Status
+    let dateformatter = DateFormatter()
+    
 	
-    init(id: String, sender: String, recipient: String, text: String, latitude: Double, longitude: Double, radius: Double, eventType: String, expires: Int = 2) {
+    init(id: String, sender: String, recipient: String, text: String, latitude: Double, longitude: Double, radius: Double, eventType: String, expires: Int = 2, status: String = "Sent") {
 		
 		let timeInterval = expires*86400
 		self.dateformatter.dateFormat = "dd/MM/yy h:mm"
@@ -72,7 +68,7 @@ class Message: NSObject, NSCoding {
 		self.radius = CLLocationDistance(radius)
 		self.sentAt = self.dateformatter.string(from: NSDate() as Date)
 		self.expires = self.dateformatter.string(from: NSDate(timeIntervalSinceNow: Double(timeInterval)) as Date)
-		
+		self.status = Status(rawValue: status)!
 	}
     
     //Parsing to FIR-friendly format
@@ -87,6 +83,7 @@ class Message: NSObject, NSCoding {
             "eventType": eventType.rawValue,
             "sentAt": sentAt,
             "expires": expires,
+            "status": status.rawValue
         ]
     }
     
@@ -104,7 +101,7 @@ class Message: NSObject, NSCoding {
         
             sentAt = snapshotValue["sentAt"] as! String
             expires = snapshotValue["expires"] as! String
-		
+            status = Status(rawValue: snapshotValue["status"] as! String)!
 		}
     
     required init?(coder decoder: NSCoder) {
@@ -119,6 +116,7 @@ class Message: NSObject, NSCoding {
 		eventType = EventType(rawValue: decoder.decodeObject(forKey: MessageKey.eventType) as! String)!
 		sentAt = decoder.decodeObject(forKey: MessageKey.sentAt) as! String
 		expires = decoder.decodeObject(forKey: MessageKey.expires) as! String
+        status = Status(rawValue: decoder.decodeObject(forKey: MessageKey.status) as! String)!
     }
 	
     func encode(with coder: NSCoder) {
@@ -132,6 +130,7 @@ class Message: NSObject, NSCoding {
 		coder.encode(eventType.rawValue, forKey: MessageKey.eventType)
 		coder.encode(sentAt, forKey: MessageKey.sentAt)
 		coder.encode(expires, forKey: MessageKey.expires)
+        coder.encode(status.rawValue, forKey: MessageKey.status)
     }
 
 }
