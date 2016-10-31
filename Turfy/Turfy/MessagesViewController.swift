@@ -10,21 +10,30 @@ import UIKit
 import Firebase
 
 class MessagesViewController: UIViewController {
-	
+    
+    let ref = FIRDatabase.database().reference().child("messages")
+    let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+    let dateformatter = DateFormatter()
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		//retrieveMessageAttributes(messageID: "-KVA7xvDvdTQ61GMDyST")
         saveData(id: "test message", sender: "Johnny", recipient: "Lawrence", text: "This app is going to be great!", latitude: 50.00, longitude: 0.00 , radius: 500, eventType: "On Entry")
+        inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
+            //self.comments.append(snapshot)
+            //self.tableView.insertRows(at: [IndexPath(row: self.comments.count-1, section: self.kSectionComments)], with: UITableViewRowAnimation.automatic)
+            //self.retrieveMessageAttributes(messageID: snapshot)
+            print(snapshot)
+        })
+        
 	}
 
 	
-	let ref = FIRDatabase.database().reference().child("messages")
-	let dateformatter = DateFormatter()
 
-	
+
+
 
 	func retrieveMessageAttributes(messageID: String) {
-		ref.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
+		inboxRef.queryOrderedByKey().queryEqual(toValue: messageID).observe(.value, with: { (snapshot) in
 			print(snapshot)
 			for item in snapshot.children {
 				let data = (item as! FIRDataSnapshot).value! as! NSDictionary
