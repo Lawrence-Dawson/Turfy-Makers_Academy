@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -126,12 +126,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Message recipient" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-6w-ypF">
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="CIq-iH-bdl" id="MtU-cj-roC"/>
-                                </connections>
-                            </searchBar>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvt-Rw-D9i">
                                 <frame key="frameInset" minY="20" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -145,44 +139,73 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
-                                <frame key="frameInset" minX="81" minY="392" width="213" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
                                 <connections>
                                     <action selector="radiusSlider:" destination="CIq-iH-bdl" eventType="valueChanged" id="Nha-qU-QCT"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
                                 <frame key="frameInset" minY="430" width="375" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-SM-pdo">
-                                <frame key="frameInset" minY="363" width="375" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-SM-pdo">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-Ya-xOn">
-                                <frame key="frameInset" minX="92" minY="484" width="190" height="30"/>
+                                <frame key="frameInset" minY="484" width="375" height="30"/>
                                 <state key="normal" title="Submit Message"/>
+                                <connections>
+                                    <action selector="submitMessage:" destination="CIq-iH-bdl" eventType="touchUpInside" id="7u7-hy-Idm"/>
+                                </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-hy-Tnk">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="R8Z-N4-X0m"/>
+                                </constraints>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <searchBar contentMode="redraw" placeholder="Message recipient" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-6w-ypF">
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CIq-iH-bdl" id="MtU-cj-roC"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ahi-jd-VxJ" firstAttribute="top" secondItem="rDr-Ya-xOn" secondAttribute="bottom" constant="173" id="Bwc-D1-9aX"/>
-                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="CgZ-xq-d5Y"/>
-                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="Jhc-YL-JlP"/>
-                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" constant="83" id="rXO-Hi-Reg"/>
-                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="s3s-Kk-pg1"/>
+                            <constraint firstItem="sbu-SM-pdo" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="06U-fJ-h1O"/>
+                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="0i8-Y4-49h"/>
+                            <constraint firstItem="iRS-6u-eu7" firstAttribute="top" secondItem="sbu-SM-pdo" secondAttribute="bottom" constant="8" id="5an-Bw-VNT"/>
+                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="AIX-tB-Mbj"/>
+                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="FzW-50-Oid"/>
+                            <constraint firstItem="ahX-yE-qo9" firstAttribute="top" secondItem="iRS-6u-eu7" secondAttribute="bottom" constant="8" id="L1y-sF-ehI"/>
+                            <constraint firstItem="iRS-6u-eu7" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="N4Q-7J-ONr"/>
+                            <constraint firstItem="sbu-SM-pdo" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="NPw-2Z-ZFD"/>
+                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="SBL-Mf-9kR"/>
+                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="top" secondItem="o8Y-6w-ypF" secondAttribute="bottom" constant="20" id="XQk-CC-LZd"/>
+                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="top" secondItem="ahX-yE-qo9" secondAttribute="bottom" constant="29" id="ZyO-uu-Aih"/>
+                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="b6G-wS-g8Y"/>
+                            <constraint firstItem="ahX-yE-qo9" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="d7r-IN-0S3"/>
+                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="dSV-nZ-voc"/>
+                            <constraint firstItem="o8Y-6w-ypF" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" constant="88" id="eKo-Pp-1d3"/>
+                            <constraint firstItem="iRS-6u-eu7" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="jpH-g7-Xch"/>
+                            <constraint firstItem="sbu-SM-pdo" firstAttribute="top" secondItem="Ndd-hy-Tnk" secondAttribute="bottom" constant="41" id="upN-Hb-1wS"/>
+                            <constraint firstItem="ahX-yE-qo9" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="uza-0E-3ha"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="radius" destination="ahX-yE-qo9" id="fQf-xM-P6s"/>
+                        <outlet property="messageText" destination="Ndd-hy-Tnk" id="kpY-Hc-mYa"/>
+                        <outlet property="radiusSlider" destination="iRS-6u-eu7" id="SCw-7g-fIg"/>
+                        <outlet property="radiusText" destination="ahX-yE-qo9" id="25V-Ck-Bd6"/>
                         <outlet property="searchDisplayController" destination="neF-Jd-jRQ" id="eY9-uu-f97"/>
+                        <outletCollection property="recipientDropdown" destination="o8Y-6w-ypF" collectionClass="NSMutableArray" id="W2q-XL-6vc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mub-to-xlO" userLabel="First Responder" sceneMemberID="firstResponder"/>
