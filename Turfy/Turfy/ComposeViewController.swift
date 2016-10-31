@@ -12,16 +12,29 @@ class ComposeViewController: UIViewController {
     var longitude: Double = 0
     var latitude: Double = 0
     
+    @IBOutlet weak var radiusText: UILabel!
+    @IBOutlet weak var radiusSlider: UISlider!
+    @IBOutlet var recipientDropdown: [UISearchBar]!
+    @IBOutlet weak var messageText: UITextView!
+    
     @IBAction func radiusSlider(_ sender: UISlider) {
-        radius.text = String(Int(sender.value))
+        radiusText.text = "\(radiusSlider.value)"
     }
     
-    @IBOutlet weak var radius: UILabel!
+    @IBAction func submitMessage(_ sender: AnyObject) {
+    
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // some styling for the text field
+        messageText!.layer.borderWidth = 1
+        
+        radiusText.text = "\(radiusSlider.value)"
     }
 
 
