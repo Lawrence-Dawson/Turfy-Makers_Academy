@@ -23,18 +23,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     //   if let user = FIRAuth.auth()?.currentUser {
-     //       DispatchQueue.main.async(){
-    //            self.performSegue(withIdentifier: "loginSegue", sender: self)
+        if let user = FIRAuth.auth()?.currentUser {
+            DispatchQueue.main.async(){
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
                 
-         //   }
-     //   } else {
+            }
+        } else {
             loginButton!.delegate = self
             view.addSubview(loginButton!)
             loginButton!.center = view.center
             loginButton.readPermissions = ["public_profile", "email", "user_friends"]
             // Do any additional setup after loading the view.
-        //}
+        }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) { //should be triggered by event in settings view
@@ -57,9 +57,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func firebaseSignInIfNotAlready(credential: FIRAuthCredential){
-       // if let user = FIRAuth.auth()?.currentUser {
-          //  self.performSegue(withIdentifier: "loginSegue", sender: self)
-      //  } else {
+        if let user = FIRAuth.auth()?.currentUser {
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
+        } else {
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 //...
                 if (user != nil) {
@@ -74,17 +74,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     print("error above")
                 }
                 
-           // }
-        }
-    }
-    
-    
-    func getIfSignedIn() {
-        FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
-            if user != nil {
-                print("there's a user")
-            } else {
-                print("no user")
             }
         }
     }
@@ -126,5 +115,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 }
 
 
-
+//
+//    func getIfSignedIn() {
+//FIRAuth.auth()?.addStateDidChangeListener() { auth, user in
+//    if user != nil {
+//        print("there's a user")
+//    } else {
+//        print("no user")
+//    }
+//}
+//}
+//
 
