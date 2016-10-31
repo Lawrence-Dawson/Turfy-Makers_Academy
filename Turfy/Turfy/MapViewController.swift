@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 struct PreferencesKeys {
     static let savedItems = "savedItems"
@@ -35,7 +36,15 @@ class MapViewController: UIViewController {
         composeViewController.longitude = self.map.centerCoordinate.longitude
     }
 
-    
+	
+	//DB stuff below needs extraction
+	let ref = FIRDatabase.database().reference().child("messages")
+	let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+	
+	let sampleMessage : Message = Message(id: "test message", sender: (FIRAuth.auth()?.currentUser?.uid)!, recipient: "zwcxlPQwDAhYIxX9k4hDn77LvQY2", text: "Hey Johnny!", latitude: 50.00, longitude: 0.00, radius: 500, eventType: "On Entry")
+
+	//DB stuff above needs extraction
+	
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var map: MKMapView!
     @IBAction func showSearchBar(_ sender: AnyObject) {
@@ -92,27 +101,25 @@ class MapViewController: UIViewController {
         map.delegate = self
         let pin = Pin(title: "London", locationName: "Current Location", discipline: "Location", coordinate: CLLocationCoordinate2D (latitude: 51.508182, longitude: -0.126771))
         map.addAnnotation(pin)
-        
+		
+		// DB Stuff below, needs extraction
+		
+		saveData(message: sampleMessage)
+		
+		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
+			print(snapshot)
+			
+			let message = Message(snapshot: snapshot)
+			print(message.toAnyObject())
+			self.addNewMessage(message: message)
+		})
+		
+
+		
 	}
-    
+	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //Hardcoded radius, coordinates (Makers Academy)
-        
-        let coordinateToWatch : CLLocationCoordinate2D = CLLocationCoordinate2D (latitude: 51.5173, longitude: 0.0733)
-        let radiusOfFence : Double = 5000
-        let notificationId = "ATestNotification"
-        let messageSender = "Johnny"
-        let messageContent = "I AM WATCHING YOU!"
-        let eventType = "On Entry"
-        
-        let clampedRadius = min(radiusOfFence, locationManager.maximumRegionMonitoringDistance)
-		
-		let messageToAdd: Message = Message(id: "ID", sender: "Johnny", recipient: "recipient", text: "This is a test message hardoded in this program to Makers Academy location", latitude: 51.5173, longitude: -0.0733, radius: radiusOfFence, eventType: eventType)
-		
-        addNewMessage(message: messageToAdd)
-        
     }
 
 	override func didReceiveMemoryWarning() {
@@ -196,5 +203,15 @@ class MapViewController: UIViewController {
             locationManager.stopMonitoring(for: circularRegion)
         }
     }
+	
+	func saveData(message: Message) {
+		
+		let recipient: String = message.recipient
+		let messageContent = message.toAnyObject()
+		
+		let itemRef = self.ref.child(recipient).childByAutoId()
+		itemRef.setValue(messageContent)
+	}
+
 
 }
