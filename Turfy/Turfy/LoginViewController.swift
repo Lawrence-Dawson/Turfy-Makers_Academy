@@ -14,7 +14,8 @@ import FBSDKLoginKit
 import FBSDKShareKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-    
+   // var allUsers = ["": ""]
+    var emptyArrayOfDictionary = [[String : String]]()
     var name: String = "", email: String = "", uid: String = "";
     let ref = FIRDatabase.database().reference().child("user")
     
@@ -24,6 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let user = FIRAuth.auth()?.currentUser {
+            retrieveData()
             DispatchQueue.main.async(){
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
                 
@@ -97,6 +99,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         itemRef.setValue(user.toAnyObject())
     }
     
+    func retrieveData() {
+        ref.observe(.value, with: { snapshot in
+            for child in snapshot.children {
+                let data = (child as! FIRDataSnapshot).value! as! [String:String]
+                let uid = (data["uid"])!
+                let name = (data["name"])!
+                let email = (data["email"])!
+                self.emptyArrayOfDictionary.append(["uid": uid , "name": name, "email": email])
+                print(self.emptyArrayOfDictionary)
+                print("dict above")
+            }
+        })
+    
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -126,4 +144,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 //}
 //}
 //
+
+
+//ref.queryOrderedByKey().queryEqual(toValue: userPrimaryKey).observe(.value, with: { (snapshot) in
+//    for item in snapshot.children {
+//        
+//}
 
