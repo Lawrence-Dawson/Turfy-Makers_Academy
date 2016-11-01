@@ -26,7 +26,7 @@ class AllMessagesViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    let ref = FIR
+//    let ref = FIR
     // MARK: - Table view data source
     var fruits = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry",
     "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
