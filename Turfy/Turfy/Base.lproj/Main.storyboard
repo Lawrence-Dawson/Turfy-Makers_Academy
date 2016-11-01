@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -174,8 +174,8 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
-                                <frame key="frameInset" minX="148" minY="82" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <frame key="frameInset" minX="16" minY="59" width="351" height="26"/>
+                                <state key="normal" title="Select recipient"/>
                                 <connections>
                                     <segue destination="pYm-HK-3ep" kind="show" id="bDU-kZ-6co"/>
                                 </connections>
@@ -205,6 +205,7 @@
                         <outlet property="messageText" destination="Ndd-hy-Tnk" id="kpY-Hc-mYa"/>
                         <outlet property="radiusSlider" destination="iRS-6u-eu7" id="SCw-7g-fIg"/>
                         <outlet property="radiusText" destination="ahX-yE-qo9" id="25V-Ck-Bd6"/>
+                        <outlet property="recipientButtonField" destination="m75-6H-8Iq" id="rSR-Xc-afx"/>
                         <outlet property="searchDisplayController" destination="neF-Jd-jRQ" id="eY9-uu-f97"/>
                     </connections>
                 </viewController>
