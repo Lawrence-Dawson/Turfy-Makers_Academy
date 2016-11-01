@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Firebase
+
 
 class RecipientListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let data:[String] = ["James","Tam","Jimmy"]
     var selectedRecipient: String = "DEFAULT"
     
+    var emptyArrayOfDictionary = [[String : String]]()
+    var name: String = "", email: String = "", uid: String = "";
+    let ref = FIRDatabase.database().reference().child("user")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        retrieveData()
         // Do any additional setup after loading the view.
     }
 
@@ -57,6 +63,22 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
         let composeVC:ComposeViewController = segue.destination as! ComposeViewController
         print("In prepare part \(selectedRecipient)")
         composeVC.recipient = selectedRecipient
+        
+    }
+    
+    func retrieveData() {
+        ref.observe(.value, with: { snapshot in
+            for child in snapshot.children {
+                let data = (child as! FIRDataSnapshot).value! as! [String:String]
+                let uid = (data["uid"])!
+                let name = (data["name"])!
+                let email = (data["email"])!
+                self.emptyArrayOfDictionary.append(["uid": uid , "name": name, "email": email])
+                print(self.emptyArrayOfDictionary)
+                print("dict above")
+            }
+        })
+        
         
     }
     
