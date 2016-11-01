@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
 	let ref = FIRDatabase.database().reference().child("messages")
 	let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
 	
-	let sampleMessage : Message = Message(id: "test message", sender: (FIRAuth.auth()?.currentUser?.uid)!, recipient: "zwcxlPQwDAhYIxX9k4hDn77LvQY2", text: "Hey Johnny!", latitude: 50.00, longitude: 0.00, radius: 500, eventType: "On Entry")
+    //let sampleMessage : Message = Message(id: "test message", sender: (FIRAuth.auth()?.currentUser?.uid)!, recipient: "zwcxlPQwDAhYIxX9k4hDn77LvQY2", text: "Hey Johnny!", latitude: 50.00, longitude: 0.00, radius: 500, eventType: "On Entry", status: "Sent")
 
 	//DB stuff above needs extraction
 	
@@ -93,7 +93,7 @@ class MapViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
         geoCoder = CLGeocoder()
-        
+        messages = []
         loadAllMessages()
         
         let initialLocation = CLLocation(latitude: 51.508182, longitude: -0.126771)
@@ -104,14 +104,15 @@ class MapViewController: UIViewController {
 		
 		// DB Stuff below, needs extraction
 		
-		saveData(message: sampleMessage)
-		
 		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
-			print(snapshot)
-			
 			let message = Message(snapshot: snapshot)
-			print(message.toAnyObject())
-			self.addNewMessage(message: message)
+			if message.status.rawValue != "Sent" {
+				self.messages.append(message)
+            } else {
+                message.status = Status(rawValue: "Delivered")!
+                self.addNewMessage(message: message)
+                self.inboxRef.child(message.id).setValue(message.toAnyObject())
+			}
 		})
 		
 
@@ -136,10 +137,12 @@ class MapViewController: UIViewController {
     }
     
     func loadAllMessages() {
-        messages = []
+		messages = []
         guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
+		print("Saved Items \(savedItems.count)")
         for savedItem in savedItems {
             guard let message = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Message else { continue }
+			
             add(message: message)
         }
     }
@@ -154,7 +157,8 @@ class MapViewController: UIViewController {
     }
     
     func add(message: Message) {
-        messages.append(message)
+		messages.append(message)
+
         // should we display them on the map too???
         // map.addAnnotation(notification)
         // addRadiusOverlay(forNotification: notifications)
@@ -194,7 +198,13 @@ class MapViewController: UIViewController {
             //showAlert(withTitle:"Warning", message: "Please grant Türfy permission to access the device location (Always on) in order for the app to work correctly")
         }
         let region = self.region(withMessage: message)
-        locationManager.startMonitoring(for: region)
+		
+		if message.status.rawValue == "Delivered" {
+			locationManager.startMonitoring(for: region)
+			message.status = Status(rawValue: "Processed")!
+			self.inboxRef.child(message.id).setValue(message.toAnyObject())
+		}
+		
     }
     
     func stopMonitoring(message: Message) {

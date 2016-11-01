@@ -14,11 +14,14 @@ class ComposeViewController: UIViewController {
     var latitude: Double = 0
     var radius: Float = 0
     let user = FIRAuth.auth()?.currentUser
+    
+    var recipient: [String:String] = ["name":"Select Recipient"]
+    
+    @IBOutlet weak var recipientButtonField: UIButton!
     var message: Message?
     
     @IBOutlet weak var radiusText: UILabel!
     @IBOutlet weak var radiusSlider: UISlider!
-    @IBOutlet var recipientDropdown: [UISearchBar]!
     @IBOutlet weak var messageText: UITextView!
     
     @IBAction func radiusSlider(_ sender: UISlider) {
@@ -34,8 +37,12 @@ class ComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         // Do any additional setup after loading the view.
+        
+        recipientButtonField.setTitle("Recipient: \(recipient["name"]!)", for: UIControlState.normal)
+        
+        print(recipient)
         
         // some styling for the text field
         messageText!.layer.borderWidth = 1
@@ -47,10 +54,10 @@ class ComposeViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resources that can be recreated.§
     }
-    
 
+    
     /*
     // MARK: - Navigation
 

@@ -68,32 +68,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         super.init()
         // Firebase Init overwrites the default init function calling on super and then adding FIRApp config required to connect to the DB
         FIRApp.configure()
+        
     }
     
     //Event handlers for notifications
     
     func handleEvent(forRegion region: CLRegion!) {
-        // Show an alert if application is active
-        if UIApplication.shared.applicationState == .active {
-            guard let message = note(fromRegionIdentifier: region.identifier) else { return }
-            window?.rootViewController?.showAlert(withTitle: nil, message: message)
-            print("AN ALERT SHOULD BE DISPLAYED NOW")
+        if checkNotificationStatus(fromRegionIdentifier: region.identifier)! {
+            // Show an alert if application is active
+            if UIApplication.shared.applicationState == .active {
+                guard let message = note(fromRegionIdentifier: region.identifier) else { return }
+                window?.rootViewController?.showAlert(withTitle: nil, message: message)
+                print("AN ALERT SHOULD BE DISPLAYED NOW")
+            } else {
+                // Otherwise present a local notification
+                let notification = UILocalNotification()
+                notification.alertBody = note(fromRegionIdentifier: region.identifier)
+                notification.soundName = "Default"
+                UIApplication.shared.presentLocalNotificationNow(notification)
+            }
         } else {
-            // Otherwise present a local notification
-            let notification = UILocalNotification()
-            notification.alertBody = note(fromRegionIdentifier: region.identifier)
-            notification.soundName = "Default"
-            UIApplication.shared.presentLocalNotificationNow(notification)
-        }
+            print("Notification for this message was already displayed")
+		}
+		locationManager.stopMonitoring(for: region)
     }
     
     func note(fromRegionIdentifier identifier: String) -> String? {
         let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
         let messages = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Message }
         let index = messages?.index { $0?.id == identifier }
+        
         let messageBody: String = (index != nil ? messages?[index!]?.text : nil)!
         let messageSender: String = (index != nil ? messages?[index!]?.sender : nil)!
         return "\(messageSender): \(messageBody)"
+    }
+    
+    func checkNotificationStatus(fromRegionIdentifier identifier: String) -> Bool? {
+        let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) as? [NSData]
+        let messages = savedItems?.map { NSKeyedUnarchiver.unarchiveObject(with: $0 as Data) as? Message }
+        let index = messages?.index { $0?.id == identifier }
+        
+        let messageID: String = (index != nil ? messages?[index!]?.id : nil)!
+        let messageStatus: String = (index != nil ? messages?[index!]?.status.rawValue : nil)!
+        
+        if messageStatus == "Processed" {
+            let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+            inboxRef.child(messageID).updateChildValues(["status": "Notified"])
+            return true
+        } else {
+            return false
+        }
+
     }
     
  
