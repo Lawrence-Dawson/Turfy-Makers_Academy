@@ -108,13 +108,12 @@ class MapViewController: UIViewController {
 		
 		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
 			var message = Message(snapshot: snapshot)
-			if message.status.rawValue == "Processed"{
+			if message.status.rawValue != "Sent" {
 				self.messages.append(message)
-			}
-			else{
-				message.status = Status(rawValue: "Processed")!
-				self.addNewMessage(message: message)
-				self.inboxRef.child(message.id).setValue(message.toAnyObject())
+            } else {
+                message.status = Status(rawValue: "Delivered")!
+                self.addNewMessage(message: message)
+                self.inboxRef.child(message.id).setValue(message.toAnyObject())
 			}
 		})
 		
@@ -202,9 +201,9 @@ class MapViewController: UIViewController {
         }
         let region = self.region(withMessage: message)
 		
-		if message.status.rawValue != "Notified" {
+		if message.status.rawValue == "Delivered" {
 			locationManager.startMonitoring(for: region)
-			message.status = Status(rawValue: "Notified")!
+			message.status = Status(rawValue: "Processed")!
 			self.inboxRef.child(message.id).setValue(message.toAnyObject())
 		}
 		

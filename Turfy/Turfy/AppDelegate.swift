@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let messageID: String = (index != nil ? messages?[index!]?.id : nil)!
         let messageStatus: String = (index != nil ? messages?[index!]?.status.rawValue : nil)!
         
-        if messageStatus != "Notified" {
+        if messageStatus == "Processed" {
             let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
             inboxRef.child(messageID).updateChildValues(["Status": "Notified"])
             return true
