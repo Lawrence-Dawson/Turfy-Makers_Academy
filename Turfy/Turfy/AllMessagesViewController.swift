@@ -10,8 +10,8 @@ import UIKit
 import Firebase
 
 class AllMessagesViewController: UITableViewController {
-    let uid = "UdnAPLzDrsTG7hjnot696e00Rhh2"
-    let inboxRef = FIRDatabase.database().reference().child("messages").child("UdnAPLzDrsTG7hjnot696e00Rhh2")
+    
+    let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
     var messages: [Message] = []
     
     override func viewDidLoad() {
@@ -19,32 +19,38 @@ class AllMessagesViewController: UITableViewController {
         super.viewDidLoad()
         inboxRef.observe(.value, with: { snapshot in
             print("This is the snapshot \(snapshot.value)")
-            let message = Message(snapshot: snapshot)
-            self.messages.append(message)
+            var newMessages: [Message] = []
+            for allMessages in snapshot.children{
+                let message = Message(snapshot: allMessages as! FIRDataSnapshot)
+                newMessages.append(message)
+
+            }
+            print(self.messages)
+            self.messages = newMessages
+            self.tableView.reloadData()
         })
-        print("array of messages")
-        print(messages)
+
+
 
         
-        inboxRef.observe(.childAdded, with: { snapshot in
+       // inboxRef.observe(.childAdded, with: { snapshot in
             // 2
-            var newMessages: [Message] = []
+         //   var newMessages: [Message] = []
             
             // 3
-            let message = Message(snapshot: snapshot)
-            newMessages.append(message)
+           // let message = Message(snapshot: snapshot)
+            //newMessages.append(message)
             //for text in snapshot.children {
                 
 //                let message = Message(snapshot: messages as! FIRDataSnapshot)
-                //newMessages.append(message)
             //}
             
             // 5
             
-            self.messages = newMessages
-            self.tableView.reloadData()
+            //self.messages = newMessages
+            //self.tableView.reloadData()
             
-        })
+        //})
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -71,14 +77,14 @@ class AllMessagesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return messages.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
 
-        cell.textLabel?.text = "hello"
+        cell.textLabel?.text = messages[indexPath.row].text
         
         return cell
     }

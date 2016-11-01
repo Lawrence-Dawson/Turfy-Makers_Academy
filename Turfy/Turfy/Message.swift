@@ -104,6 +104,7 @@ class Message: NSObject, NSCoding {
             sentAt = snapshotValue["sentAt"] as! String
             expires = snapshotValue["expires"] as! String
             status = Status(rawValue: snapshotValue["status"] as! String)!
+        
 		}
     
     required init?(coder decoder: NSCoder) {
