@@ -8,28 +8,29 @@
 
 import UIKit
 
-class RecipientSearchTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource{
+class RecipientSearchTableViewController: UITableViewController, UITableViewDataSource {
     
-    var dataArray = [String]()
+    var dataArray: [String] = ["ONE", "TWO"]
     var filteredArray = [String]()
     var shouldShowSearchResults = false
+    
     @IBOutlet weak var tblSearchResults: UITableView!
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-  tblSearchResults.register(UINib(nibName: "RecipientSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "RecipientSearchTableViewCell")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        dataArray = ["Onee"]
         
         tblSearchResults.delegate = self
         tblSearchResults.dataSource = self
         tblSearchResults.reloadData()
+        
         DispatchQueue.main.async(execute: {self.refreshTable()})
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,15 +47,20 @@ class RecipientSearchTableViewController: UITableViewController, UITableViewDele
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        /*
         if shouldShowSearchResults {
             return filteredArray.count
         }
         else {
             return dataArray.count
         }
+         */
+        
+        return dataArray.count
     }
     
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("in tableView")
         
@@ -76,21 +82,23 @@ class RecipientSearchTableViewController: UITableViewController, UITableViewDele
         
         return cell
     }
+    */
     
     func refreshTable(){
         self.tableView.reloadData()
     }
 
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = "CEll"
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
