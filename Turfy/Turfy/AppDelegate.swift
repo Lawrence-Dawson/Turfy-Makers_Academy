@@ -89,8 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             print("Notification for this message was already displayed")
-            locationManager.stopMonitoring(for: region)
-        }
+		}
+		locationManager.stopMonitoring(for: region)
     }
     
     func note(fromRegionIdentifier identifier: String) -> String? {
@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if messageStatus == "Processed" {
             let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
-            inboxRef.child(messageID).updateChildValues(["Status": "Notified"])
+            inboxRef.child(messageID).updateChildValues(["status": "Notified"])
             return true
         } else {
             return false
