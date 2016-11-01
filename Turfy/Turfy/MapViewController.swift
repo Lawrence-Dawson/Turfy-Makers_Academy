@@ -108,11 +108,11 @@ class MapViewController: UIViewController {
 		
 		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
 			var message = Message(snapshot: snapshot)
-			if message.status.rawValue == "Delivered"{
+			if message.status.rawValue == "Processed"{
 				self.messages.append(message)
 			}
 			else{
-				message.status = Status(rawValue: "Delivered")!
+				message.status = Status(rawValue: "Processed")!
 				self.addNewMessage(message: message)
 				self.inboxRef.child(message.id).setValue(message.toAnyObject())
 			}

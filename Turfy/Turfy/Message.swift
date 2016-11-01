@@ -36,6 +36,7 @@ enum EventType: String {
 enum Status: String {
     case sent = "Sent"
     case delivered = "Delivered"
+    case processed = "Processed"
 	case notified = "Notified"
 }
 
