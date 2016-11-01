@@ -11,37 +11,40 @@ import Firebase
 
 class AllMessagesViewController: UITableViewController {
     let uid = "UdnAPLzDrsTG7hjnot696e00Rhh2"
-    let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+    let inboxRef = FIRDatabase.database().reference().child("messages").child("UdnAPLzDrsTG7hjnot696e00Rhh2")
     var messages: [Message] = []
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-                    print("thisis the snapshot")
+        inboxRef.observe(.value, with: { snapshot in
+            print("This is the snapshot \(snapshot.value)")
+            let message = Message(snapshot: snapshot)
+            self.messages.append(message)
+        })
+        print("array of messages")
+        print(messages)
+
+        
         inboxRef.observe(.childAdded, with: { snapshot in
             // 2
             var newMessages: [Message] = []
             
             // 3
-            for messages in snapshot.children {
-                // 4
-                let message = Message(snapshot: messages as! FIRDataSnapshot)
-                newMessages.append(message)
-            }
+            let message = Message(snapshot: snapshot)
+            newMessages.append(message)
+            //for text in snapshot.children {
+                
+//                let message = Message(snapshot: messages as! FIRDataSnapshot)
+                //newMessages.append(message)
+            //}
             
             // 5
+            
             self.messages = newMessages
             self.tableView.reloadData()
+            
         })
-        inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
-                        print(snapshot)
-            
-            			let message = Message(snapshot: snapshot)
-                        let textMessage = message.text
-            
-            			print(textMessage)
-            			//addNewMessage(message: message)
-                    })
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -68,14 +71,14 @@ class AllMessagesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fruits.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
 
-        cell.textLabel?.text = fruits[indexPath.row]
+        cell.textLabel?.text = "hello"
         
         return cell
     }
