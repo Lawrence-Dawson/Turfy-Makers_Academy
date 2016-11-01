@@ -12,7 +12,6 @@ import Firebase
 
 class RecipientListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-   // let data:[String] = ["James","Tam","Jimmy"]
     var selectedRecipient: [String:String] = ["":""]
     var emptyArrayOfDictionary = [[String : String]]()
     var name: String = "", email: String = "", uid: String = "";
@@ -30,9 +29,6 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //let cell = UITableViewCell()
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = emptyArrayOfDictionary[indexPath.row]["name"]
@@ -45,13 +41,9 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("Selected \(emptyArrayOfDictionary[indexPath.row])")
         selectedRecipient = emptyArrayOfDictionary[indexPath.row]
-        
     
         self.performSegue(withIdentifier: "goToCompose", sender:self)
-        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -60,9 +52,7 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let composeVC:ComposeViewController = segue.destination as! ComposeViewController
-        print("In prepare part \(selectedRecipient)")
         composeVC.recipient = selectedRecipient
-        
     }
     
     func retrieveData() {
@@ -73,12 +63,8 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
                 let name = (data["name"])!
                 let email = (data["email"])!
                 self.emptyArrayOfDictionary.append(["uid": uid , "name": name, "email": email])
-              //  print(self.emptyArrayOfDictionary)
-                print("dict above")
             }
         })
-        
-        
     }
     
 

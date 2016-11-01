@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0FE44A011DC75C4D00E10623 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE44A001DC75C4D00E10623 /* User.swift */; };
-		0FE44A031DC7B81700E10623 /* RecipientSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE44A021DC7B81700E10623 /* RecipientSearchTableViewCell.swift */; };
 		1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A32AAC61DC0C09D00BA35FE /* MapKit.framework */; };
 		1A5D95421DC102F2006D59D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5D95411DC102F2006D59D5 /* LoginViewController.swift */; };
 		1A5E062E1DC0EC69002EA04C /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E062D1DC0EC69002EA04C /* VCMapView.swift */; };
@@ -59,7 +58,6 @@
 /* Begin PBXFileReference section */
 		0FA5909B1DC218A100A79347 /* Turfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Turfy.entitlements; sourceTree = "<group>"; };
 		0FE44A001DC75C4D00E10623 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0FE44A021DC7B81700E10623 /* RecipientSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientSearchTableViewCell.swift; sourceTree = "<group>"; };
 		1A32AAC61DC0C09D00BA35FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1A5D95411DC102F2006D59D5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1A5E062D1DC0EC69002EA04C /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */,
 				D4C9A2D41DC23E1400B5E800 /* ComposeViewController.swift */,
 				1A5D95411DC102F2006D59D5 /* LoginViewController.swift */,
-				0FE44A021DC7B81700E10623 /* RecipientSearchTableViewCell.swift */,
 				1A95D7DB1DC8A478006A09B7 /* RecipientListViewController.swift */,
 			);
 			path = Turfy;
@@ -530,7 +527,6 @@
 				D4C9A2D51DC23E1400B5E800 /* ComposeViewController.swift in Sources */,
 				1A5D95421DC102F2006D59D5 /* LoginViewController.swift in Sources */,
 				89F1A9721DBF699B00A080B1 /* MapViewController.swift in Sources */,
-				0FE44A031DC7B81700E10623 /* RecipientSearchTableViewCell.swift in Sources */,
 				D71078F51DC4BBF70015C38A /* Utilities.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,

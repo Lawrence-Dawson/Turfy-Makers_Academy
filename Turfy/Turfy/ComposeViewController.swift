@@ -14,15 +14,11 @@ class ComposeViewController: UIViewController {
     var latitude: Double = 0
     var radius: Float = 0
     let user = FIRAuth.auth()?.currentUser
-    //let recipient: FIRUser? = nil
     
     var recipient: [String:String] = ["name":"Select Recipient"]
     
     @IBOutlet weak var recipientButtonField: UIButton!
     var message: Message?
-    
-    
-    //recipientButtonField.setTitle("Select Recipient", forState: UIControlState.Normal)
     
     @IBOutlet weak var radiusText: UILabel!
     @IBOutlet weak var radiusSlider: UISlider!
@@ -44,11 +40,8 @@ class ComposeViewController: UIViewController {
       
         // Do any additional setup after loading the view.
         
-        
         recipientButtonField.setTitle("Recipient: \(recipient["name"]!)", for: UIControlState.normal)
         
-
-       // messageText.text = recipient["name"]
         print(recipient)
         
         // some styling for the text field
@@ -56,7 +49,6 @@ class ComposeViewController: UIViewController {
 
         radiusText.text = "\(Int(radiusSlider.value))"
         radius = radiusSlider.value
- 
     }
 
 
