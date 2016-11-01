@@ -8,13 +8,15 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class ComposeViewController: UIViewController {
-    var longitude: Double = 0
-    var latitude: Double = 0
+	var longitude: Double = 0
+	var latitude: Double = 0
     var radius: Float = 0
     let user = FIRAuth.auth()?.currentUser
-    
+	let ref = FIRDatabase.database().reference().child("messages")
+	
     var recipient: [String:String] = ["name":"Select Recipient"]
     
     @IBOutlet weak var recipientButtonField: UIButton!
@@ -30,10 +32,11 @@ class ComposeViewController: UIViewController {
     }
     
     @IBAction func submitMessage(_ sender: AnyObject) {
- 
-        
+		let messageRecipient = recipient["uid"]
+		let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: Coordinates.latitude, longitude: Coordinates.longitude, radius: Double(radius), eventType: "On Entry")
+		saveData(message: message)
     }
-    
+	
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +53,13 @@ class ComposeViewController: UIViewController {
         radiusText.text = "\(Int(radiusSlider.value))"
         radius = radiusSlider.value
     }
+	
+	func saveData(message: Message) {
+		        let recipient: String = message.recipient
+		        let messageContent = message.toAnyObject()
+		        let itemRef = self.ref.child(recipient).childByAutoId()
+		        itemRef.setValue(messageContent)
+		    }
 
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +67,7 @@ class ComposeViewController: UIViewController {
         // Dispose of any resources that can be recreated.§
     }
 
-    
+	
     /*
     // MARK: - Navigation
 

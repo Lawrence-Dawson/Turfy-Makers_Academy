@@ -15,6 +15,11 @@ struct PreferencesKeys {
     static let savedItems = "savedItems"
 }
 
+struct Coordinates {
+	static var latitude : Double = 0
+	static var longitude : Double = 0
+}
+
 class MapViewController: UIViewController {
 
     let regionRadius: CLLocationDistance = 500
@@ -34,6 +39,8 @@ class MapViewController: UIViewController {
         let composeViewController = segue.destination as! ComposeViewController
         composeViewController.latitude = self.map.centerCoordinate.latitude
         composeViewController.longitude = self.map.centerCoordinate.longitude
+		Coordinates.latitude = self.map.centerCoordinate.latitude
+		Coordinates.longitude = self.map.centerCoordinate.longitude
     }
 
 	
