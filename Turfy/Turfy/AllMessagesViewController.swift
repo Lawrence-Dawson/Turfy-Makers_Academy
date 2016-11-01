@@ -13,6 +13,8 @@ class AllMessagesViewController: UITableViewController {
     
     let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
     var messages: [Message] = []
+
+    
     
     override func viewDidLoad() {
         
@@ -81,10 +83,12 @@ class AllMessagesViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
 
 
         cell.textLabel?.text = messages[indexPath.row].text
+        cell.detailTextLabel?.text = messages[indexPath.row].sender
         
         return cell
     }
