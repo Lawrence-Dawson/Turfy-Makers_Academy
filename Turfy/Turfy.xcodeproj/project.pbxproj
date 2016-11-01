@@ -130,6 +130,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A3C7F671DC900E900D8E7D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */,
+				1A5E062D1DC0EC69002EA04C /* VCMapView.swift */,
+				1AD16A801DC0E062007145AC /* Pin.swift */,
+				89F1A9731DBF699B00A080B1 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		1A3C7F681DC9011A00D8E7D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */,
+				D4C9A2D41DC23E1400B5E800 /* ComposeViewController.swift */,
+				1A5D95411DC102F2006D59D5 /* LoginViewController.swift */,
+				89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */,
+				89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */,
+				D489BE261DC79A2500DC820A /* SingleMessageViewController.swift */,
+				89F1A9711DBF699B00A080B1 /* MapViewController.swift */,
+				D48308A71DC7CE5900BB8EED /* AllMessagesViewController.swift */,
+				1A95D7DB1DC8A478006A09B7 /* RecipientListViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		1A3C7F691DC901A500D8E7D3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				89F1A97B1DBF699B00A080B1 /* Info.plist */,
+				D4C9A2D81DC240EC00B5E800 /* GoogleService-Info.plist */,
+				89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */,
+				D71078F11DC4B67A0015C38A /* VCMapLocationManager.swift */,
+				D71078F41DC4BBF70015C38A /* Utilities.swift */,
+			);
+			name = Other;
+			path = Turfy;
+			sourceTree = "<group>";
+		};
 		762555525E636092E6AE19A0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				89F1A96C1DBF699B00A080B1 /* Turfy */,
+				1A3C7F691DC901A500D8E7D3 /* Other */,
 				89F1A98E1DBF699B00A080B1 /* TurfyUITests */,
 				89F1A96B1DBF699B00A080B1 /* Products */,
 				762555525E636092E6AE19A0 /* Pods */,
@@ -178,26 +219,10 @@
 			children = (
 				0FA5909B1DC218A100A79347 /* Turfy.entitlements */,
 				89A9E74E1DC0C24000267676 /* Models */,
-				89F1A96D1DBF699B00A080B1 /* AppDelegate.swift */,
-				89F1A96F1DBF699B00A080B1 /* MessagesViewController.swift */,
-				D489BE261DC79A2500DC820A /* SingleMessageViewController.swift */,
-				89F1A9711DBF699B00A080B1 /* MapViewController.swift */,
-				D71078F11DC4B67A0015C38A /* VCMapLocationManager.swift */,
-				D71078F41DC4BBF70015C38A /* Utilities.swift */,
-				1A5E062D1DC0EC69002EA04C /* VCMapView.swift */,
+				1A3C7F671DC900E900D8E7D3 /* Views */,
+				1A3C7F681DC9011A00D8E7D3 /* Controllers */,
 				89F1A9831DBF699B00A080B1 /* TurfyTests */,
-				1AD16A801DC0E062007145AC /* Pin.swift */,
-				89F1A9731DBF699B00A080B1 /* Main.storyboard */,
 				89F1A9761DBF699B00A080B1 /* Assets.xcassets */,
-				89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */,
-				89F1A97B1DBF699B00A080B1 /* Info.plist */,
-				89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */,
-				D4C9A2D81DC240EC00B5E800 /* GoogleService-Info.plist */,
-				1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */,
-				D4C9A2D41DC23E1400B5E800 /* ComposeViewController.swift */,
-				1A5D95411DC102F2006D59D5 /* LoginViewController.swift */,
-				D48308A71DC7CE5900BB8EED /* AllMessagesViewController.swift */,
-				1A95D7DB1DC8A478006A09B7 /* RecipientListViewController.swift */,
 			);
 			path = Turfy;
 			sourceTree = "<group>";

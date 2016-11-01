@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (FIRAuth.auth()?.currentUser) != nil {
-            
+            retrieveData()
             DispatchQueue.main.async(){
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
                 
