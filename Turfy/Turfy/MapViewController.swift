@@ -41,8 +41,6 @@ class MapViewController: UIViewController {
 	let ref = FIRDatabase.database().reference().child("messages")
 	let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
 	
-    let sampleMessage : Message = Message(id: "test message", sender: (FIRAuth.auth()?.currentUser?.uid)!, recipient: "zwcxlPQwDAhYIxX9k4hDn77LvQY2", text: "Hey Johnny!", latitude: 50.00, longitude: 0.00, radius: 500, eventType: "On Entry", status: "Sent")
-
 	//DB stuff above needs extraction
 	
     @IBOutlet weak var address: UILabel!
@@ -104,10 +102,8 @@ class MapViewController: UIViewController {
 		
 		// DB Stuff below, needs extraction
 		
-		saveData(message: sampleMessage)
-		
 		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
-			var message = Message(snapshot: snapshot)
+			let message = Message(snapshot: snapshot)
 			if message.status.rawValue != "Sent" {
 				self.messages.append(message)
             } else {
