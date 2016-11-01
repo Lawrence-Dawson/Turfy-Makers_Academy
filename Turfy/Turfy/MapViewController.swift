@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
 
 struct PreferencesKeys {
     static let savedItems = "savedItems"
@@ -35,7 +36,13 @@ class MapViewController: UIViewController {
         composeViewController.longitude = self.map.centerCoordinate.longitude
     }
 
-    
+	
+	//DB stuff below needs extraction
+	let ref = FIRDatabase.database().reference().child("messages")
+	let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+	
+	//DB stuff above needs extraction
+	
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var map: MKMapView!
     @IBAction func showSearchBar(_ sender: AnyObject) {
@@ -84,7 +91,7 @@ class MapViewController: UIViewController {
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
         geoCoder = CLGeocoder()
-        
+        messages = []
         loadAllMessages()
         
         let initialLocation = CLLocation(latitude: 51.508182, longitude: -0.126771)
@@ -92,27 +99,26 @@ class MapViewController: UIViewController {
         map.delegate = self
         let pin = Pin(title: "London", locationName: "Current Location", discipline: "Location", coordinate: CLLocationCoordinate2D (latitude: 51.508182, longitude: -0.126771))
         map.addAnnotation(pin)
-        
+		
+		// DB Stuff below, needs extraction
+		
+		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
+			let message = Message(snapshot: snapshot)
+			if message.status.rawValue != "Sent" {
+				self.messages.append(message)
+            } else {
+                message.status = Status(rawValue: "Delivered")!
+                self.addNewMessage(message: message)
+                self.inboxRef.child(message.id).setValue(message.toAnyObject())
+			}
+		})
+		
+
+		
 	}
-    
+	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //Hardcoded radius, coordinates (Makers Academy)
-        
-        let coordinateToWatch : CLLocationCoordinate2D = CLLocationCoordinate2D (latitude: 51.5173, longitude: 0.0733)
-        let radiusOfFence : Double = 5000
-        let notificationId = "ATestNotification"
-        let messageSender = "Johnny"
-        let messageContent = "I AM WATCHING YOU!"
-        let eventType = "On Entry"
-        
-        let clampedRadius = min(radiusOfFence, locationManager.maximumRegionMonitoringDistance)
-		
-		let messageToAdd: Message = Message(id: "ID", sender: "sender", recipient: "recipient", text: "text", latitude: 51.5173, longitude: 0.0733, radius: radiusOfFence, eventType: eventType)
-		
-        addNewMessage(message: messageToAdd)
-        
     }
 
 	override func didReceiveMemoryWarning() {
@@ -129,10 +135,12 @@ class MapViewController: UIViewController {
     }
     
     func loadAllMessages() {
-        messages = []
+		messages = []
         guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
+		print("Saved Items \(savedItems.count)")
         for savedItem in savedItems {
             guard let message = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Message else { continue }
+			
             add(message: message)
         }
     }
@@ -143,10 +151,12 @@ class MapViewController: UIViewController {
             let item = NSKeyedArchiver.archivedData(withRootObject: message)
             items.append(item)
         }
+        UserDefaults.standard.set(items, forKey: PreferencesKeys.savedItems)
     }
     
     func add(message: Message) {
-        messages.append(message)
+		messages.append(message)
+
         // should we display them on the map too???
         // map.addAnnotation(notification)
         // addRadiusOverlay(forNotification: notifications)
@@ -186,7 +196,13 @@ class MapViewController: UIViewController {
             //showAlert(withTitle:"Warning", message: "Please grant Türfy permission to access the device location (Always on) in order for the app to work correctly")
         }
         let region = self.region(withMessage: message)
-        locationManager.startMonitoring(for: region)
+		
+		if message.status.rawValue == "Delivered" {
+			locationManager.startMonitoring(for: region)
+			message.status = Status(rawValue: "Processed")!
+			self.inboxRef.child(message.id).setValue(message.toAnyObject())
+		}
+		
     }
     
     func stopMonitoring(message: Message) {
@@ -195,5 +211,15 @@ class MapViewController: UIViewController {
             locationManager.stopMonitoring(for: circularRegion)
         }
     }
+	
+	func saveData(message: Message) {
+		
+		let recipient: String = message.recipient
+		let messageContent = message.toAnyObject()
+		
+		let itemRef = self.ref.child(recipient).childByAutoId()
+		itemRef.setValue(messageContent)
+	}
+
 
 }

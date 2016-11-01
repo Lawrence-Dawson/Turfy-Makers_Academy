@@ -7,30 +7,57 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ComposeViewController: UIViewController {
     var longitude: Double = 0
     var latitude: Double = 0
+    var radius: Float = 0
+    let user = FIRAuth.auth()?.currentUser
+    
+    var recipient: [String:String] = ["name":"Select Recipient"]
+    
+    @IBOutlet weak var recipientButtonField: UIButton!
+    var message: Message?
+    
+    @IBOutlet weak var radiusText: UILabel!
+    @IBOutlet weak var radiusSlider: UISlider!
+    @IBOutlet weak var messageText: UITextView!
     
     @IBAction func radiusSlider(_ sender: UISlider) {
-        radius.text = String(Int(sender.value))
+        radiusText.text = "\(Int(radiusSlider.value))"
+        radius = radiusSlider.value
     }
     
-    @IBOutlet weak var radius: UILabel!
+    @IBAction func submitMessage(_ sender: AnyObject) {
+ 
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
         // Do any additional setup after loading the view.
+        
+        recipientButtonField.setTitle("Recipient: \(recipient["name"]!)", for: UIControlState.normal)
+        
+        print(recipient)
+        
+        // some styling for the text field
+        messageText!.layer.borderWidth = 1
+
+        radiusText.text = "\(Int(radiusSlider.value))"
+        radius = radiusSlider.value
     }
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resources that can be recreated.§
     }
-    
 
+    
     /*
     // MARK: - Navigation
 
@@ -40,5 +67,8 @@ class ComposeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // helper methods
+    
 
 }
