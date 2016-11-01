@@ -24,7 +24,7 @@ struct MessageKey {
 	static let eventType = "eventType"
 	static let sentAt = "sentAt"
 	static let expires = "expires"
-    static let status = "status"
+    static var status = "status"
 }
 
 
@@ -36,6 +36,7 @@ enum EventType: String {
 enum Status: String {
     case sent = "Sent"
     case delivered = "Delivered"
+	case notified = "Notified"
 }
 
 class Message: NSObject, NSCoding {
@@ -49,7 +50,7 @@ class Message: NSObject, NSCoding {
     let eventType: EventType
 	let sentAt: String
 	let expires: String
-    let status: Status
+    var status: Status
     let dateformatter = DateFormatter()
     
 	
@@ -83,7 +84,7 @@ class Message: NSObject, NSCoding {
             "eventType": eventType.rawValue,
             "sentAt": sentAt,
             "expires": expires,
-            "status": status.rawValue
+            "status": status.rawValue,
         ]
     }
     

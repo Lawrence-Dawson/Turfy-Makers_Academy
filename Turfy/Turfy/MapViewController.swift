@@ -107,11 +107,15 @@ class MapViewController: UIViewController {
 		saveData(message: sampleMessage)
 		
 		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
-			print(snapshot)
-			
-			let message = Message(snapshot: snapshot)
-			print(message.toAnyObject())
-			self.addNewMessage(message: message)
+			var message = Message(snapshot: snapshot)
+			if message.status.rawValue == "Delivered"{
+				self.messages.append(message)
+			}
+			else{
+				message.status = Status(rawValue: "Delivered")!
+				self.addNewMessage(message: message)
+				self.inboxRef.child(message.id).setValue(message.toAnyObject())
+			}
 		})
 		
 
@@ -136,11 +140,12 @@ class MapViewController: UIViewController {
     }
     
     func loadAllMessages() {
-        messages = []
+		messages = []
         guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
-        print(savedItems)
+		print("Saved Items \(savedItems.count)")
         for savedItem in savedItems {
             guard let message = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Message else { continue }
+			
             add(message: message)
         }
     }
@@ -155,7 +160,8 @@ class MapViewController: UIViewController {
     }
     
     func add(message: Message) {
-        messages.append(message)
+		messages.append(message)
+
         // should we display them on the map too???
         // map.addAnnotation(notification)
         // addRadiusOverlay(forNotification: notifications)
@@ -176,7 +182,6 @@ class MapViewController: UIViewController {
     func updateMessagesCount() {
         //title = "Notifications (\(notifications.count))"
         //add a logic to ensure notifications.count < 20, iOS cannot handle more than that and may stop displaying them at all
-        print(messages)
         print("Messages (\(messages.count))")
     }
     
@@ -196,7 +201,13 @@ class MapViewController: UIViewController {
             //showAlert(withTitle:"Warning", message: "Please grant Türfy permission to access the device location (Always on) in order for the app to work correctly")
         }
         let region = self.region(withMessage: message)
-        locationManager.startMonitoring(for: region)
+		
+		if message.status.rawValue != "Notified" {
+			locationManager.startMonitoring(for: region)
+			message.status = Status(rawValue: "Notified")!
+			self.inboxRef.child(message.id).setValue(message.toAnyObject())
+		}
+		
     }
     
     func stopMonitoring(message: Message) {
