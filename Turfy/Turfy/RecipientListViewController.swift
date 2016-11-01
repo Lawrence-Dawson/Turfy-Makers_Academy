@@ -12,9 +12,8 @@ import Firebase
 
 class RecipientListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let data:[String] = ["James","Tam","Jimmy"]
-    var selectedRecipient: String = "DEFAULT"
-    
+   // let data:[String] = ["James","Tam","Jimmy"]
+    var selectedRecipient: [String:String] = ["":""]
     var emptyArrayOfDictionary = [[String : String]]()
     var name: String = "", email: String = "", uid: String = "";
     let ref = FIRDatabase.database().reference().child("user")
@@ -36,19 +35,19 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = emptyArrayOfDictionary[indexPath.row]["name"]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return emptyArrayOfDictionary.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("Selected \(data[indexPath.row])")
-        selectedRecipient = data[indexPath.row]
+        print("Selected \(emptyArrayOfDictionary[indexPath.row])")
+        selectedRecipient = emptyArrayOfDictionary[indexPath.row]
         
     
         self.performSegue(withIdentifier: "goToCompose", sender:self)
@@ -74,7 +73,7 @@ class RecipientListViewController: UIViewController, UITableViewDataSource, UITa
                 let name = (data["name"])!
                 let email = (data["email"])!
                 self.emptyArrayOfDictionary.append(["uid": uid , "name": name, "email": email])
-                print(self.emptyArrayOfDictionary)
+              //  print(self.emptyArrayOfDictionary)
                 print("dict above")
             }
         })

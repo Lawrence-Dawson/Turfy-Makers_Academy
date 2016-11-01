@@ -16,7 +16,7 @@ class ComposeViewController: UIViewController {
     let user = FIRAuth.auth()?.currentUser
     //let recipient: FIRUser? = nil
     
-    var recipient: String = ""
+    var recipient: [String:String] = ["":""]
     
     var message: Message?
 
@@ -41,7 +41,7 @@ class ComposeViewController: UIViewController {
       
         // Do any additional setup after loading the view.
         
-        messageText.text = recipient
+        messageText.text = recipient["name"]
         print(recipient)
         
         // some styling for the text field
