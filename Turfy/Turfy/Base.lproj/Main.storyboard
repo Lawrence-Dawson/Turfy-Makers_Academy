@@ -126,9 +126,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvt-Rw-D9i">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cvt-Rw-D9i">
                                 <frame key="frameInset" minY="20" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Write Your Message" id="mD8-9Q-0ij">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IWt-9S-0Fh">
@@ -174,9 +173,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
                                 <frame key="frameInset" minX="148" minY="82" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <segue destination="pYm-HK-3ep" kind="show" id="bDU-kZ-6co"/>
@@ -187,6 +185,7 @@
                         <constraints>
                             <constraint firstItem="sbu-SM-pdo" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="06U-fJ-h1O"/>
                             <constraint firstItem="Ndd-hy-Tnk" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="0i8-Y4-49h"/>
+                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="top" secondItem="m75-6H-8Iq" secondAttribute="bottom" constant="60" id="3gN-dB-ODW"/>
                             <constraint firstItem="iRS-6u-eu7" firstAttribute="top" secondItem="sbu-SM-pdo" secondAttribute="bottom" constant="8" id="5an-Bw-VNT"/>
                             <constraint firstItem="Ndd-hy-Tnk" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="AIX-tB-Mbj"/>
                             <constraint firstItem="ahX-yE-qo9" firstAttribute="top" secondItem="iRS-6u-eu7" secondAttribute="bottom" constant="8" id="L1y-sF-ehI"/>
@@ -199,6 +198,7 @@
                             <constraint firstItem="iRS-6u-eu7" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="jpH-g7-Xch"/>
                             <constraint firstItem="sbu-SM-pdo" firstAttribute="top" secondItem="Ndd-hy-Tnk" secondAttribute="bottom" constant="41" id="upN-Hb-1wS"/>
                             <constraint firstItem="ahX-yE-qo9" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="uza-0E-3ha"/>
+                            <constraint firstItem="m75-6H-8Iq" firstAttribute="top" secondItem="Cvt-Rw-D9i" secondAttribute="bottom" constant="18" id="vvW-gV-tEP"/>
                         </constraints>
                     </view>
                     <connections>
@@ -219,7 +219,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1757.5" y="390.5"/>
+            <point key="canvasLocation" x="1756" y="389.95502248875567"/>
         </scene>
         <!--Recipient List View Controller-->
         <scene sceneID="aQW-2T-uhR">
@@ -235,8 +235,22 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dZN-eA-gO0">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Z4B-YX-LSC">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4B-YX-LSC" id="upL-Cn-NEg">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CIq-iH-bdl" kind="show" identifier="goToCompose" id="cTl-ar-gh6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="pYm-HK-3ep" id="vDP-qd-vMd"/>
+                                    <outlet property="delegate" destination="pYm-HK-3ep" id="pHi-TT-w5u"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -382,4 +396,7 @@
         <image name="32x32-3" width="32" height="32"/>
         <image name="signs" width="256" height="256"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cTl-ar-gh6"/>
+    </inferredMetricsTieBreakers>
 </document>

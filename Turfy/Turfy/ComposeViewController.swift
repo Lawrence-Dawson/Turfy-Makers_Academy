@@ -14,7 +14,10 @@ class ComposeViewController: UIViewController {
     var latitude: Double = 0
     var radius: Float = 0
     let user = FIRAuth.auth()?.currentUser
-    let recipient: FIRUser? = nil
+    //let recipient: FIRUser? = nil
+    
+    var recipient: String = ""
+    
     var message: Message?
 
     
@@ -37,6 +40,9 @@ class ComposeViewController: UIViewController {
         super.viewDidLoad()
       
         // Do any additional setup after loading the view.
+        
+        messageText.text = recipient
+        print(recipient)
         
         // some styling for the text field
         messageText!.layer.borderWidth = 1

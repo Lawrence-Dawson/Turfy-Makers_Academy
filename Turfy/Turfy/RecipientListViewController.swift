@@ -8,13 +8,14 @@
 
 import UIKit
 
-class RecipientListViewController: UIViewController, UITableViewDataSource {
+class RecipientListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    let data:[String] = ["ONE","TWO","Three"]
+    let data:[String] = ["James","Tam","Jimmy"]
+    var selectedRecipient: String = "DEFAULT"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -25,7 +26,9 @@ class RecipientListViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        //let cell = UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = data[indexPath.row]
         
@@ -34,6 +37,27 @@ class RecipientListViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("Selected \(data[indexPath.row])")
+        selectedRecipient = data[indexPath.row]
+        
+    
+        self.performSegue(withIdentifier: "goToCompose", sender:self)
+        
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let composeVC:ComposeViewController = segue.destination as! ComposeViewController
+        print("In prepare part \(selectedRecipient)")
+        composeVC.recipient = selectedRecipient
+        
     }
     
 

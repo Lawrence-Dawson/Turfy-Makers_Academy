@@ -90,11 +90,104 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Turfy/ComposeViewController.swift"
-            timestampString = "499627239.869768"
+            timestampString = "499692169.866898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86">
+            startingLineNumber = "92"
+            endingLineNumber = "92">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Turfy/RecipientListViewController.swift"
+            timestampString = "499690800.929813"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "RecipientListViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Turfy.RecipientListViewController.__deallocating_deinit"
+                  moduleName = "Turfy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/James/Desktop/Makers/Final_Project/turfy/Turfy/Turfy/RecipientListViewController.swift"
+                  timestampString = "499690801.679196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Turfy.RecipientListViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Turfy.RecipientListViewController"
+                  moduleName = "Turfy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/James/Desktop/Makers/Final_Project/turfy/Turfy/Turfy/RecipientListViewController.swift"
+                  timestampString = "499690801.682615"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Turfy.RecipientListViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Turfy.RecipientListViewController"
+                  moduleName = "Turfy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/James/Desktop/Makers/Final_Project/turfy/Turfy/Turfy/RecipientListViewController.swift"
+                  timestampString = "499690801.684277"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Turfy.RecipientListViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Turfy.RecipientListViewController&gt;"
+                  moduleName = "Turfy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/James/Desktop/Makers/Final_Project/turfy/Turfy/Turfy/RecipientListViewController.swift"
+                  timestampString = "499690801.685588"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Turfy.RecipientListViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Turfy.RecipientListViewController&gt;"
+                  moduleName = "Turfy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/James/Desktop/Makers/Final_Project/turfy/Turfy/Turfy/RecipientListViewController.swift"
+                  timestampString = "499690801.687077"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "23">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
