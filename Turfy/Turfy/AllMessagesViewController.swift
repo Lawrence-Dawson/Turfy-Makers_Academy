@@ -11,8 +11,20 @@ import Firebase
 
 class AllMessagesViewController: UITableViewController {
     
+    let ref = FIRDatabase.database().reference().child("messages")
+    let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
+                        print(snapshot)
+            
+            			let message = Message(snapshot: snapshot)
+            			print(message.toAnyObject())
+            			//addNewMessage(message: message)
+                    })
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,7 +38,6 @@ class AllMessagesViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-//    let ref = FIR
     // MARK: - Table view data source
     var fruits = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry",
     "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
