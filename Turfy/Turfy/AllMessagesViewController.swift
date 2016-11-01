@@ -10,19 +10,36 @@ import UIKit
 import Firebase
 
 class AllMessagesViewController: UITableViewController {
-    
-    let ref = FIRDatabase.database().reference().child("messages")
+    let uid = "UdnAPLzDrsTG7hjnot696e00Rhh2"
     let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
-
+    var messages: [Message] = []
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-
+                    print("thisis the snapshot")
+        inboxRef.observe(.childAdded, with: { snapshot in
+            // 2
+            var newMessages: [Message] = []
+            
+            // 3
+            for messages in snapshot.children {
+                // 4
+                let message = Message(snapshot: messages as! FIRDataSnapshot)
+                newMessages.append(message)
+            }
+            
+            // 5
+            self.messages = newMessages
+            self.tableView.reloadData()
+        })
         inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
                         print(snapshot)
             
             			let message = Message(snapshot: snapshot)
-            			print(message.toAnyObject())
+                        let textMessage = message.text
+            
+            			print(textMessage)
             			//addNewMessage(message: message)
                     })
 
@@ -44,7 +61,6 @@ class AllMessagesViewController: UITableViewController {
     "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango",
     "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach",
     "Pear", "Pineapple", "Raspberry", "Strawberry"]
-    
     // MARK: - UITableViewDataSource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,7 +73,8 @@ class AllMessagesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
-        
+
+
         cell.textLabel?.text = fruits[indexPath.row]
         
         return cell
