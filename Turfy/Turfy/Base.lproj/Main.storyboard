@@ -64,18 +64,18 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ju5-3X-Kqk" id="xTU-Du-45m">
-                                    <frame key="frameInset" width="375" height="43.5"/>
+                                    <frame key="frameInset" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g4F-JN-Ic9">
-                                            <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
+                                            <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHo-Og-Zu5">
-                                            <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
+                                            <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -219,18 +219,7 @@
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-lN-KfV">
                                 <frame key="frameInset" minY="20" height="44"/>
                                 <items>
-                                    <navigationItem title="Compose message" id="EXY-aS-ljO">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="wOY-kn-J1a">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vY2-oL-uRf">
-                                                <rect key="frame" x="16" y="7" width="48" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Cancel"/>
-                                                <connections>
-                                                    <segue destination="49e-Tb-3d3" kind="show" id="ord-Ry-KJK"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Compose message" id="EXY-aS-ljO"/>
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
@@ -238,6 +227,14 @@
                                 <state key="normal" title="Select recipient"/>
                                 <connections>
                                     <segue destination="pYm-HK-3ep" kind="show" id="bDU-kZ-6co"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UK-xQ-67Y">
+                                <frame key="frameInset" minX="16" minY="28" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="49e-Tb-3d3" kind="show" id="0zI-i8-sht"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -301,12 +298,15 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="Z4B-YX-LSC">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4B-YX-LSC" id="upL-Cn-NEg">
-                                            <frame key="frameInset" width="1000" height="44"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CIq-iH-bdl" kind="show" identifier="goToCompose" id="vpU-Qp-dMN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -317,17 +317,12 @@
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKt-Bq-zEV">
                                 <frame key="frameInset" minY="20" height="44"/>
                                 <items>
-                                    <navigationItem title="Pick recipient" id="uyX-Dv-WJx">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nFo-xH-Tgq">
-                                            <connections>
-                                                <segue destination="8rJ-Kc-sve" kind="show" id="L5d-DO-bH8"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="Pick recipient" id="uyX-Dv-WJx"/>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" identifier="goToCompose"/>
                         <constraints>
                             <constraint firstItem="dZN-eA-gO0" firstAttribute="bottom" secondItem="zqm-wx-ooV" secondAttribute="top" id="0Ne-Yp-KGf"/>
                             <constraint firstItem="YKt-Bq-zEV" firstAttribute="width" secondItem="jx3-Zx-Ico" secondAttribute="width" id="9o6-Cv-Wjo"/>
@@ -474,7 +469,7 @@
         <image name="signs" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="L5d-DO-bH8"/>
-        <segue reference="ord-Ry-KJK"/>
+        <segue reference="0zI-i8-sht"/>
+        <segue reference="vpU-Qp-dMN"/>
     </inferredMetricsTieBreakers>
 </document>
