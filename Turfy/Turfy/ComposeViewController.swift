@@ -16,6 +16,16 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     var radius: Float = 0
     let user = FIRAuth.auth()?.currentUser
 	let ref = FIRDatabase.database().reference().child("messages")
+	var eventType = "On Entry"
+	
+	@IBAction func toggle(_ sender: UISegmentedControl){
+		if sender.selectedSegmentIndex == 0 {
+			eventType = "On Entry"
+		} else if sender.selectedSegmentIndex == 1 {
+			eventType = "On Exit"
+		}
+	}
+	
 	
     var recipient: [String:String] = ["name":"Select Recipient"]
     
@@ -36,7 +46,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func submitMessage(_ sender: AnyObject) {
 		let messageRecipient = recipient["uid"]
-		let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: MapVariables.latitude, longitude: MapVariables.longitude, radius: Double(radius), eventType: "On Entry")
+		let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: MapVariables.latitude, longitude: MapVariables.longitude, radius: Double(radius), eventType: eventType)
 		saveData(message: message)
     }
 	
