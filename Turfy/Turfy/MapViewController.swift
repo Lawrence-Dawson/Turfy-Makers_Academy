@@ -26,6 +26,12 @@ struct MapVariables {
     static let geoCoder: CLGeocoder! = CLGeocoder()
 }
 
+struct DBVariables {
+    static var messages: [Message] = []
+    static let ref = FIRDatabase.database().reference().child("messages")
+    static let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
+}
+
 class MapViewController: UIViewController {
 
 
@@ -34,16 +40,6 @@ class MapViewController: UIViewController {
 		MapVariables.latitude = self.map.centerCoordinate.latitude
 		MapVariables.longitude = self.map.centerCoordinate.longitude
     }
-
-	
-	//DB stuff below needs extraction
-    
-    
-    var messages: [Message] = []
-    let ref = FIRDatabase.database().reference().child("messages")
-	let inboxRef = FIRDatabase.database().reference().child("messages").child((FIRAuth.auth()?.currentUser?.uid)!)
-   	//DB stuff above needs extraction
-	
     
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var map: MKMapView!
@@ -54,13 +50,10 @@ class MapViewController: UIViewController {
         present(MapVariables.searchController, animated: true, completion: nil)
     }
     
-    
-    
  
 	override func viewDidLoad() {
         
 		super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         map.delegate = self
         MapVariables.locationManager.delegate = self
@@ -68,51 +61,27 @@ class MapViewController: UIViewController {
         MapVariables.locationManager.requestAlwaysAuthorization()
         MapVariables.locationManager.requestLocation()
         MapVariables.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
-
-        
-        //MessageHandler()
-        
 
         loadAllMessages()
+        startWatchingForMessages()
         
-        
-		
-		// DB Stuff below, needs extraction
-		
-		inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
-			let message = Message(snapshot: snapshot)
-			if message.status.rawValue != "Sent" {
-				self.messages.append(message)
-            } else {
-                message.status = Status(rawValue: "Delivered")!
-                self.addNewMessage(message: message)
-                self.inboxRef.child(message.id).setValue(message.toAnyObject())
-			}
-		})
-		
-
-		
-	}
-	
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
+    
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, MapVariables.regionRadius * 2.0, MapVariables.regionRadius * 2.0)
         self.map.setRegion(coordinateRegion, animated: true)
     }
     
-    
     func geoCode(location : CLLocation!){
-        /* Only one reverse geocoding can be in progress at a time hence we need to cancel existing
-         one if we are getting location updates */
         MapVariables.geoCoder.cancelGeocode()
         MapVariables.geoCoder.reverseGeocodeLocation(location, completionHandler: {(data, error) -> Void in
             guard let placeMarks = data as [CLPlacemark]! else
@@ -125,8 +94,20 @@ class MapViewController: UIViewController {
         })
     }
     
-    
     //consider extracting these elsewhere
+    
+    func startWatchingForMessages() {
+        DBVariables.inboxRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let message = Message(snapshot: snapshot)
+            if message.status.rawValue != "Sent" {
+                DBVariables.messages.append(message)
+            } else {
+                message.status = Status(rawValue: "Delivered")!
+                self.addNewMessage(message: message)
+                DBVariables.inboxRef.child(message.id).setValue(message.toAnyObject())
+            }
+        })
+    }
     
     func addNewMessage(message: Message) {
         add(message: message)
@@ -135,19 +116,17 @@ class MapViewController: UIViewController {
     }
     
     func loadAllMessages() {
-		messages = []
+		DBVariables.messages = []
         guard let savedItems = UserDefaults.standard.array(forKey: PreferencesKeys.savedItems) else { return }
-		print("Saved Items \(savedItems.count)")
         for savedItem in savedItems {
             guard let message = NSKeyedUnarchiver.unarchiveObject(with: savedItem as! Data) as? Message else { continue }
-			
             add(message: message)
         }
     }
     
     func saveAllMessages() {
         var items: [Data] = []
-        for message in messages {
+        for message in DBVariables.messages {
             let item = NSKeyedArchiver.archivedData(withRootObject: message)
             items.append(item)
         }
@@ -155,23 +134,20 @@ class MapViewController: UIViewController {
     }
     
     func add(message: Message) {
-		messages.append(message)
+		DBVariables.messages.append(message)
         updateMessagesCount()
     }
     
     func remove(message: Message) {
-        if let indexInArray = messages.index(of: message) {
-            messages.remove(at: indexInArray)
+        if let indexInArray = DBVariables.messages.index(of: message) {
+            DBVariables.messages.remove(at: indexInArray)
         }
-        // map.removeAnnotion(message)
-        // removeRadiusOverlay(forMessage: message)
         updateMessagesCount()
     }
     
     func updateMessagesCount() {
-        //title = "Notifications (\(notifications.count))"
         //add a logic to ensure notifications.count < 20, iOS cannot handle more than that and may stop displaying them at all
-        print("Messages (\(messages.count))")
+        print("Messages (\(DBVariables.messages.count))")
     }
     
     func region(withMessage message: Message) -> CLCircularRegion {
@@ -183,20 +159,18 @@ class MapViewController: UIViewController {
     
     func startMonitoring(message: Message) {
         if !CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
-            //showAlert(withTitle:"Error", message: "This device does not fully support Türfy, some functionalities may not work correctly")
+            showAlert(withTitle:"Error", message: "This device does not fully support Türfy, some functionalities may not work correctly")
             return
         }
         if CLLocationManager.authorizationStatus() != .authorizedAlways {
-            //showAlert(withTitle:"Warning", message: "Please grant Türfy permission to access the device location (Always on) in order for the app to work correctly")
+            showAlert(withTitle:"Warning", message: "Please grant Türfy permission to access the device location (Always on) in order for the app to work correctly")
         }
         let region = self.region(withMessage: message)
-		
 		if message.status.rawValue == "Delivered" {
 			MapVariables.locationManager.startMonitoring(for: region)
 			message.status = Status(rawValue: "Processed")!
-			self.inboxRef.child(message.id).setValue(message.toAnyObject())
+			DBVariables.inboxRef.child(message.id).setValue(message.toAnyObject())
 		}
-		
     }
     
     func stopMonitoring(message: Message) {
@@ -205,7 +179,4 @@ class MapViewController: UIViewController {
             MapVariables.locationManager.stopMonitoring(for: circularRegion)
         }
     }
-	
-
-
 }
