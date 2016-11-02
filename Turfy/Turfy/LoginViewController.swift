@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if fireCurrentUser != nil {
+        if FIRAuth.auth()?.currentUser != nil {
             retrieveData()
             DispatchQueue.main.async(){
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func firebaseSignInIfNotAlready(credential: FIRAuthCredential){
-        if fireCurrentUser != nil {
+        if FIRAuth.auth()?.currentUser != nil {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         } else {
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
@@ -81,10 +81,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     func getUserProfile() {
-        if (fireCurrentUser != nil) {
-            self.name = (fireCurrentUser!.displayName)!;
-            self.email = (fireCurrentUser!.email)!;
-            self.uid = (fireCurrentUser!.uid);
+        if (FIRAuth.auth()?.currentUser != nil) {
+            self.uid = (FIRAuth.auth()?.currentUser?.uid)!;
+            self.name = (FIRAuth.auth()?.currentUser?.displayName)!;
+            self.email = (FIRAuth.auth()?.currentUser?.email)!;
         }
     }
     
