@@ -47,9 +47,9 @@ extension MapViewController: MKMapViewDelegate, UISearchBarDelegate {
         dismiss(animated: true, completion: nil)
         
         //2
-        localSearchRequest = MKLocalSearchRequest()
+        let localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchBar.text
-        localSearch = MKLocalSearch(request: localSearchRequest)
+        let localSearch = MKLocalSearch(request: localSearchRequest)
         localSearch.start { (localSearchResponse, error) -> Void in
             
             if localSearchResponse == nil{
@@ -59,12 +59,12 @@ extension MapViewController: MKMapViewDelegate, UISearchBarDelegate {
                 return
             }
             //3
-            self.pointAnnotation = MKPointAnnotation()
-            self.pointAnnotation.title = searchBar.text
-            self.pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
+            let pointAnnotation = MKPointAnnotation()
+            pointAnnotation.title = searchBar.text
+            pointAnnotation.coordinate = CLLocationCoordinate2D(latitude: localSearchResponse!.boundingRegion.center.latitude, longitude:     localSearchResponse!.boundingRegion.center.longitude)
             
-            self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
-            self.map.centerCoordinate = self.pointAnnotation.coordinate
+            let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
+            self.map.centerCoordinate = pointAnnotation.coordinate
             //            self.map.addAnnotation(self.pinAnnotationView.annotation!)
         }
     }
