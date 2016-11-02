@@ -19,6 +19,7 @@ extension MapViewController: CLLocationManagerDelegate {
         self.map.setRegion(reg, animated: true)
         geoCode(location: location)
     }
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         map.showsUserLocation = (status == .authorizedAlways)
     }

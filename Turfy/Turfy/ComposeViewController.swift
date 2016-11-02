@@ -33,7 +33,7 @@ class ComposeViewController: UIViewController {
     
     @IBAction func submitMessage(_ sender: AnyObject) {
 		let messageRecipient = recipient["uid"]
-		let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: Coordinates.latitude, longitude: Coordinates.longitude, radius: Double(radius), eventType: "On Entry")
+		let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: MapVariables.latitude, longitude: MapVariables.longitude, radius: Double(radius), eventType: "On Entry")
 		saveData(message: message)
     }
 	
