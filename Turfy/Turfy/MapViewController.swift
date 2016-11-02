@@ -15,7 +15,16 @@ struct PreferencesKeys {
     static let savedItems = "savedItems"
 }
 
-
+struct MapVariables {
+    static var searchController:UISearchController! = UISearchController(searchResultsController: nil)
+    static let regionRadius: CLLocationDistance = 500
+    
+    static var latitude : Double = 0
+    static var longitude : Double = 0
+    
+    static let locationManager = CLLocationManager()
+    static let geoCoder: CLGeocoder! = CLGeocoder()
+}
 
 class MapViewController: UIViewController {
 
@@ -56,8 +65,6 @@ class MapViewController: UIViewController {
         map.delegate = self
         MapVariables.locationManager.delegate = self
         
-        let geoHandler: GeoHandler = GeoHandler(map: map, address: address)
-        
         MapVariables.locationManager.requestAlwaysAuthorization()
         MapVariables.locationManager.requestLocation()
         MapVariables.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -96,6 +103,28 @@ class MapViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
+    
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, MapVariables.regionRadius * 2.0, MapVariables.regionRadius * 2.0)
+        self.map.setRegion(coordinateRegion, animated: true)
+    }
+    
+    
+    func geoCode(location : CLLocation!){
+        /* Only one reverse geocoding can be in progress at a time hence we need to cancel existing
+         one if we are getting location updates */
+        MapVariables.geoCoder.cancelGeocode()
+        MapVariables.geoCoder.reverseGeocodeLocation(location, completionHandler: {(data, error) -> Void in
+            guard let placeMarks = data as [CLPlacemark]! else
+            {return}
+            let loc: CLPlacemark = placeMarks[0]
+            let addressDict : [NSString:NSObject] = loc.addressDictionary as! [NSString: NSObject]
+            let addrList = addressDict["FormattedAddressLines"] as! [String]
+            let address = addrList.joined(separator: ", ")
+            self.address.text = address
+        })
+    }
+    
     
     //consider extracting these elsewhere
     
