@@ -23,14 +23,6 @@
                                 <frame key="frameInset" minY="243" width="375" height="424"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5x-Ql-jZn">
-                                <frame key="frameInset" minX="22" minY="20" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <segue destination="9Zj-r9-u3O" kind="unwind" unwindAction="backFromModalWithSegue:" id="Tne-UD-GhP"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-vP-xwY">
                                 <frame key="frameInset" minX="53" minY="51" width="268" height="161"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,6 +30,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLh-Al-fqQ">
+                                <frame key="frameInset" minY="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Message" id="hp1-j4-6ie">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="dbv-LR-2Yc">
+                                            <connections>
+                                                <segue destination="9Zj-r9-u3O" kind="unwind" unwindAction="backFromModalWithSegue:" id="AUe-aa-5qA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -72,7 +77,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="g4F-JN-Ic9" detailTextLabel="bHo-Og-Zu5" style="IBUITableViewCellStyleSubtitle" id="ju5-3X-Kqk">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ju5-3X-Kqk" id="xTU-Du-45m">
                                     <frame key="frameInset" width="375" height="43"/>
@@ -197,88 +202,91 @@
                                     <navigationItem title="Write Your Message" id="mD8-9Q-0ij"/>
                                 </items>
                             </navigationBar>
-                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
-                                <frame key="frameInset" minX="-2" minY="392" width="379" height="31"/>
-                                <connections>
-                                    <action selector="radiusSlider:" destination="CIq-iH-bdl" eventType="valueChanged" id="Nha-qU-QCT"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
-                                <frame key="frameInset" minY="430" width="375" height="25"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Radius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-SM-pdo">
-                                <frame key="frameInset" minY="363" width="375" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-Ya-xOn">
-                                <state key="normal" title="Submit Message"/>
-                                <connections>
-                                    <action selector="submitMessage:" destination="CIq-iH-bdl" eventType="touchUpInside" id="MaK-6B-OKx"/>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="cD3-MG-85E"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Enter your message text here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-hy-Tnk">
-                                <frame key="frameInset" minY="172" width="375" height="150"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="R8Z-N4-X0m"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-lN-KfV">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NjC-y5-6Iw">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-GD-Rr0">
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
+                                                <frame key="frameInset" minX="20" minY="20" width="287" height="26"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Select recipient"/>
+                                                <connections>
+                                                    <segue destination="pYm-HK-3ep" kind="show" id="bDU-kZ-6co"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Radius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-SM-pdo">
+                                                <frame key="frameInset" minX="117" minY="220" width="92" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
+                                                <frame key="frameInset" minX="84" minY="249" width="158" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="radiusSlider:" destination="CIq-iH-bdl" eventType="valueChanged" id="Nha-qU-QCT"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
+                                                <frame key="frameInset" minX="126" minY="287" width="75" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-Ya-xOn">
+                                                <frame key="frameInset" minX="103" minY="320" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Submit Message"/>
+                                                <connections>
+                                                    <action selector="submitMessage:" destination="CIq-iH-bdl" eventType="touchUpInside" id="MaK-6B-OKx"/>
+                                                    <segue destination="49e-Tb-3d3" kind="show" id="cD3-MG-85E"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-hy-Tnk">
+                                                <frame key="frameInset" minX="50.00%" minY="28.18%" width="287" height="150"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHd-1z-uCz">
+                                                <frame key="frameInset" minX="20" minY="62" width="287" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGW-lN-KfV">
                                 <frame key="frameInset" minY="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Compose message" id="EXY-aS-ljO"/>
+                                    <navigationItem title="Compose message" id="EXY-aS-ljO">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="g92-YX-IOo">
+                                            <connections>
+                                                <segue destination="49e-Tb-3d3" kind="show" id="D2r-Rl-Alc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
-                                <frame key="frameInset" minY="98" width="375" height="26"/>
-                                <state key="normal" title="Select recipient"/>
-                                <connections>
-                                    <segue destination="pYm-HK-3ep" kind="show" id="bDU-kZ-6co"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UK-xQ-67Y">
-                                <frame key="frameInset" minX="16" minY="28" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <segue destination="49e-Tb-3d3" kind="show" id="0zI-i8-sht"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sbu-SM-pdo" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="06U-fJ-h1O"/>
-                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="0i8-Y4-49h"/>
-                            <constraint firstItem="iRS-6u-eu7" firstAttribute="top" secondItem="sbu-SM-pdo" secondAttribute="bottom" constant="8" id="5an-Bw-VNT"/>
-                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="top" secondItem="m75-6H-8Iq" secondAttribute="bottom" constant="48" id="7gS-Oe-Dco"/>
-                            <constraint firstItem="Ndd-hy-Tnk" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="AIX-tB-Mbj"/>
-                            <constraint firstItem="m75-6H-8Iq" firstAttribute="top" secondItem="IGW-lN-KfV" secondAttribute="bottom" constant="34" id="DXB-ia-zcQ"/>
-                            <constraint firstItem="IGW-lN-KfV" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" id="IxE-tz-4sK"/>
-                            <constraint firstItem="ahX-yE-qo9" firstAttribute="top" secondItem="iRS-6u-eu7" secondAttribute="bottom" constant="8" id="L1y-sF-ehI"/>
-                            <constraint firstItem="m75-6H-8Iq" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="Lrc-lG-zYG"/>
-                            <constraint firstItem="iRS-6u-eu7" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="N4Q-7J-ONr"/>
-                            <constraint firstItem="sbu-SM-pdo" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="NPw-2Z-ZFD"/>
-                            <constraint firstItem="m75-6H-8Iq" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="TeN-Mm-zHy"/>
-                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="top" secondItem="ahX-yE-qo9" secondAttribute="bottom" constant="29" id="ZyO-uu-Aih"/>
-                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="b6G-wS-g8Y"/>
-                            <constraint firstItem="ahX-yE-qo9" firstAttribute="centerX" secondItem="Bsz-1y-NdF" secondAttribute="centerX" id="d7r-IN-0S3"/>
-                            <constraint firstItem="rDr-Ya-xOn" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="dSV-nZ-voc"/>
-                            <constraint firstItem="iRS-6u-eu7" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="jpH-g7-Xch"/>
-                            <constraint firstItem="IGW-lN-KfV" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="rNc-bQ-ZUw"/>
-                            <constraint firstItem="sbu-SM-pdo" firstAttribute="top" secondItem="Ndd-hy-Tnk" secondAttribute="bottom" constant="41" id="upN-Hb-1wS"/>
-                            <constraint firstItem="ahX-yE-qo9" firstAttribute="width" secondItem="Bsz-1y-NdF" secondAttribute="width" id="uza-0E-3ha"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NjC-y5-6Iw" secondAttribute="trailing" constant="8" id="9Xa-96-7mP"/>
+                            <constraint firstItem="NjC-y5-6Iw" firstAttribute="leading" secondItem="Bsz-1y-NdF" secondAttribute="leadingMargin" constant="8" id="FLM-3j-oux"/>
+                            <constraint firstItem="NjC-y5-6Iw" firstAttribute="top" secondItem="vJH-6K-DtP" secondAttribute="bottom" constant="128" id="Gpn-Fk-xw1"/>
+                            <constraint firstItem="ahi-jd-VxJ" firstAttribute="top" secondItem="NjC-y5-6Iw" secondAttribute="bottom" constant="149" id="WLM-bw-UAa"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="messageText" destination="Ndd-hy-Tnk" id="kpY-Hc-mYa"/>
+                        <outlet property="placeholderLabel" destination="wHd-1z-uCz" id="1et-CR-wET"/>
                         <outlet property="radiusSlider" destination="iRS-6u-eu7" id="SCw-7g-fIg"/>
                         <outlet property="radiusText" destination="ahX-yE-qo9" id="25V-Ck-Bd6"/>
                         <outlet property="recipientButtonField" destination="m75-6H-8Iq" id="rSR-Xc-afx"/>
@@ -316,7 +324,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4B-YX-LSC" id="upL-Cn-NEg">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -484,7 +492,7 @@
         <image name="signs" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0zI-i8-sht"/>
         <segue reference="vpU-Qp-dMN"/>
+        <segue reference="cD3-MG-85E"/>
     </inferredMetricsTieBreakers>
 </document>
