@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UITextViewDelegate {
 	var longitude: Double = 0
 	var latitude: Double = 0
     var radius: Float = 0
@@ -22,10 +22,13 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var recipientButtonField: UIButton!
     var message: Message?
     
+    let placeholderText = "Write your message here..."
+    
     @IBOutlet weak var radiusText: UILabel!
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var messageText: UITextView!
     
+    @IBOutlet weak var placeholderLabel: UILabel!
     @IBAction func radiusSlider(_ sender: UISlider) {
         radiusText.text = "\(Int(radiusSlider.value))"
         radius = radiusSlider.value
@@ -38,9 +41,39 @@ class ComposeViewController: UIViewController {
     }
 	
     
+    func textViewDidEndEditing(_ theTextView: UITextView) {
+        if !messageText.hasText {
+            placeholderLabel.isHidden = false
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if !messageText.hasText {
+            placeholderLabel.isHidden = false
+        }
+        else {
+            placeholderLabel.isHidden = true
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        messageText.delegate = self
+
+        //styling for the textbox
+            messageText.layer.cornerRadius = 5
+            messageText.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+            messageText.layer.borderWidth = 0.5
+            messageText.clipsToBounds = true
+        
+
+        placeholderLabel.text = placeholderText
+        // placeholderLabel is instance variable retained by view controller
+        placeholderLabel.backgroundColor = UIColor.clear
+        placeholderLabel.textColor = UIColor.lightGray
+        // textView is UITextView object you want add placeholder text to
+        messageText.addSubview(placeholderLabel)
+        
+
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         
@@ -53,8 +86,6 @@ class ComposeViewController: UIViewController {
         
         print(recipient)
         
-        // some styling for the text field
-        messageText!.layer.borderWidth = 1
 
         radiusText.text = "\(Int(radiusSlider.value))"
         radius = radiusSlider.value
