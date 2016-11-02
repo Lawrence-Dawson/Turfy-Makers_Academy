@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F07D0011DCA4E650016908C /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07D0001DCA4E650016908C /* MessageHandler.swift */; };
 		0F41CB0B1DC9F67D008DC613 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F41CB0A1DC9F67D008DC613 /* UserTests.swift */; };
 		0FE44A011DC75C4D00E10623 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE44A001DC75C4D00E10623 /* User.swift */; };
 		1A32AAC71DC0C09D00BA35FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A32AAC61DC0C09D00BA35FE /* MapKit.framework */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F07D0001DCA4E650016908C /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		0F41CB0A1DC9F67D008DC613 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		0FA5909B1DC218A100A79347 /* Turfy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Turfy.entitlements; sourceTree = "<group>"; };
 		0FE44A001DC75C4D00E10623 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				89A9E74F1DC0C27800267676 /* Message.swift */,
 				0FE44A001DC75C4D00E10623 /* User.swift */,
+				0F07D0001DCA4E650016908C /* MessageHandler.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -565,6 +568,7 @@
 				D71078F51DC4BBF70015C38A /* Utilities.swift in Sources */,
 				89F1A96E1DBF699B00A080B1 /* AppDelegate.swift in Sources */,
 				89F1A9A21DBF9E3500A080B1 /* SettingsViewController.swift in Sources */,
+				0F07D0011DCA4E650016908C /* MessageHandler.swift in Sources */,
 				1A95D7DC1DC8A478006A09B7 /* RecipientListViewController.swift in Sources */,
 				1AD16A811DC0E062007145AC /* Pin.swift in Sources */,
 				89A9E7501DC0C27800267676 /* Message.swift in Sources */,
