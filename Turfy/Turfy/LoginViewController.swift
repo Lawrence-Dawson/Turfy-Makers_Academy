@@ -12,7 +12,7 @@ import FirebaseAuth
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
-//retrieveData() <= a function to get a lit of all users from the db
+
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     var emptyArrayOfDictionary = [[String : String]]()
     var name: String = "", email: String = "", uid: String = "";
@@ -21,9 +21,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var loginButton: FBSDKLoginButton!
     var login = FBSDKLoginManager()
     
+    let fireCurrentUser = FIRAuth.auth()?.currentUser
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (FIRAuth.auth()?.currentUser) != nil {
+        if fireCurrentUser != nil {
             retrieveData()
             DispatchQueue.main.async(){
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
@@ -48,7 +50,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         else if result.isCancelled {
-            
+            // TODO: add an alert saying to the user something like, "you must login to proced"
+            print("User cancelled the facebook login")
         }
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -57,7 +60,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func firebaseSignInIfNotAlready(credential: FIRAuthCredential){
-        if (FIRAuth.auth()?.currentUser) != nil {
+        if fireCurrentUser != nil {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         } else {
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
@@ -70,19 +73,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 else if (error != nil) {
                     print(error?.localizedDescription)
                 }
-                
             }
         }
     }
     
     
     func getUserProfile() {
-        let user = FIRAuth.auth()?.currentUser;
-        if (user != nil) {
-            self.name = (user?.displayName)!;
-            self.email = (user?.email)!;
-            // photoUrl = user.photoURL;
-            self.uid = (user?.uid)!;
+        if (fireCurrentUser != nil) {
+            self.name = (fireCurrentUser!.displayName)!;
+            self.email = (fireCurrentUser!.email)!;
+            self.uid = (fireCurrentUser!.uid);
         }
     }
     
@@ -102,16 +102,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.emptyArrayOfDictionary.append(["uid": uid , "name": name, "email": email])
             }
         })
-    
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
 
