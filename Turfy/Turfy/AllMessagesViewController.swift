@@ -85,6 +85,8 @@ class AllMessagesViewController: UITableViewController {
 
 
         cell.textLabel?.text = messages[indexPath.row].text
+        cell.detailTextLabel?.text = messages[indexPath.row].sender
+
         
         return cell
     }
