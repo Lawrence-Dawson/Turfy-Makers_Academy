@@ -205,6 +205,7 @@
                                 <state key="normal" title="Submit Message"/>
                                 <connections>
                                     <action selector="submitMessage:" destination="CIq-iH-bdl" eventType="touchUpInside" id="MaK-6B-OKx"/>
+                                    <segue destination="49e-Tb-3d3" kind="show" id="cD3-MG-85E"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Enter your message text here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-hy-Tnk">
