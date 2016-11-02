@@ -134,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				89F1A9781DBF699B00A080B1 /* LaunchScreen.storyboard */,
-				1A5E062D1DC0EC69002EA04C /* VCMapView.swift */,
 				1AD16A801DC0E062007145AC /* Pin.swift */,
 				89F1A9731DBF699B00A080B1 /* Main.storyboard */,
 			);
@@ -145,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				1AFD4AA21DBFAD25003B3355 /* ContactsViewController.swift */,
+				1A5E062D1DC0EC69002EA04C /* VCMapView.swift */,
 				D4C9A2D41DC23E1400B5E800 /* ComposeViewController.swift */,
 				1A5D95411DC102F2006D59D5 /* LoginViewController.swift */,
 				89F1A9A11DBF9E3500A080B1 /* SettingsViewController.swift */,
