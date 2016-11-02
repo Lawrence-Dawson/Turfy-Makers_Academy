@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ContactsViewController: UITableViewController {
     
     let ref = FIRDatabase.database().reference().child("user")
     var selectedRecipient: [String:String] = ["":""]
@@ -30,7 +30,7 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = emptyArrayOfDictionary[indexPath.row]["name"]
@@ -38,11 +38,11 @@ class ContactsViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return emptyArrayOfDictionary.count
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRecipient = emptyArrayOfDictionary[indexPath.row]
         
         self.performSegue(withIdentifier: "goToCompose", sender:self)
