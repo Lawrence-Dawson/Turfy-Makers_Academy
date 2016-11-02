@@ -59,6 +59,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="RnF-u4-fXd">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3jJ-eU-dxw">
+                                    <items>
+                                        <navigationItem title="Inbox" id="Ir2-0m-3tY"/>
+                                    </items>
+                                </navigationBar>
+                            </subviews>
+                        </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" textLabel="g4F-JN-Ic9" detailTextLabel="bHo-Og-Zu5" style="IBUITableViewCellStyleSubtitle" id="ju5-3X-Kqk">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
