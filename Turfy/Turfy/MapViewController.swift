@@ -34,11 +34,14 @@ class MapViewController: UIViewController {
     var pinAnnotationView:MKPinAnnotationView!
     
     var messages: [Message] = []
-
+    
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var map: MKMapView!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let composeViewController = segue.destination as! ComposeViewController
         composeViewController.latitude = self.map.centerCoordinate.latitude
-        composeViewController.longitude = self.map.centerCoordinate.longitude
+        composeViewController.longitude = self.map.centerCoordinate.longitude //map is defined below
 		Coordinates.latitude = self.map.centerCoordinate.latitude
 		Coordinates.longitude = self.map.centerCoordinate.longitude
     }
@@ -52,8 +55,7 @@ class MapViewController: UIViewController {
 
 	//DB stuff above needs extraction
 	
-    @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var map: MKMapView!
+
     @IBAction func showSearchBar(_ sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
