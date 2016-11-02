@@ -57,11 +57,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-            firebaseSignInIfNotAlready(credential: credential)
+            firebaseSignIn(credential: credential)
         }
     }
     
-    func firebaseSignInIfNotAlready(credential: FIRAuthCredential){
+    func firebaseSignIn(credential: FIRAuthCredential){
         if FIRAuth.auth()?.currentUser != nil {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         } else {
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                 }
                 else if (error != nil) {
-                    print(error?.localizedDescription)
+					print(error?.localizedDescription)
                 }
             }
         }
