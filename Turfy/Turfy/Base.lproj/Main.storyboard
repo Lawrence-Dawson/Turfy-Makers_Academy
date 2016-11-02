@@ -304,6 +304,9 @@
                                             <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="CIq-iH-bdl" kind="show" identifier="goToCompose" id="vpU-Qp-dMN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -467,5 +470,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0zI-i8-sht"/>
+        <segue reference="vpU-Qp-dMN"/>
     </inferredMetricsTieBreakers>
 </document>
