@@ -50,8 +50,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             return
         }
         else if result.isCancelled {
-            // TODO: add an alert saying to the user something like, "you must login to proced"
-            print("User cancelled the facebook login")
+            let alert = UIAlertController(title: "Login cancelled", message: "You must login or sign up to use the app.", preferredStyle: UIAlertControllerStyle.alert)
+            let button = UIAlertAction(title: "Ok", style: UIAlertActionStyle.cancel, handler: nil)
+            alert.addAction(button)
+            
+            present(alert, animated: false, completion: nil)
         }
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
