@@ -9,17 +9,18 @@
 import UIKit
 import Firebase
 
-class ContactsViewController: UIViewController, UITableViewDelegate {
+class ContactsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let ref = FIRDatabase.database().reference().child("user")
     var selectedRecipient: [String:String] = ["":""]
     var emptyArrayOfDictionary = [[String : String]]()
     var name: String = "", email: String = "", uid: String = "";
-    let ref = FIRDatabase.database().reference().child("user")
+    var recipient: [String:String] = ["name":"Select Recipient"]
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         retrieveData()
+        retrieveData()
 
         // Do any additional setup after loading the view.
     }
@@ -29,7 +30,7 @@ class ContactsViewController: UIViewController, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = emptyArrayOfDictionary[indexPath.row]["name"]
