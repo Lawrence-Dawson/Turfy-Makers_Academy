@@ -12,7 +12,6 @@ import CoreLocation
 
 
 class MessageHandler {
-    //consider extracting these elsewhere
     
     let mapViewController: MapViewController
     
