@@ -230,7 +230,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UK-xQ-67Y">
-                                <frame key="frameInset" minX="16" minY="20" width="48" height="30"/>
+                                <frame key="frameInset" minX="16" minY="28" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
@@ -317,16 +317,9 @@
                                     <navigationItem title="Pick recipient" id="uyX-Dv-WJx"/>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7Y-Qm-C6Q">
-                                <frame key="frameInset" minX="15" minY="20" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <segue destination="8rJ-Kc-sve" kind="show" id="f72-Dh-G11"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration" identifier="goToCompose"/>
                         <constraints>
                             <constraint firstItem="dZN-eA-gO0" firstAttribute="bottom" secondItem="zqm-wx-ooV" secondAttribute="top" id="0Ne-Yp-KGf"/>
                             <constraint firstItem="YKt-Bq-zEV" firstAttribute="width" secondItem="jx3-Zx-Ico" secondAttribute="width" id="9o6-Cv-Wjo"/>
@@ -474,6 +467,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0zI-i8-sht"/>
-        <segue reference="f72-Dh-G11"/>
     </inferredMetricsTieBreakers>
 </document>
