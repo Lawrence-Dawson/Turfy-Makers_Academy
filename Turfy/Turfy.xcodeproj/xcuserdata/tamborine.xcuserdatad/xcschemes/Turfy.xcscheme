@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "89F1A97F1DBF699B00A080B1"
+               BuildableName = "TurfyTests.xctest"
+               BlueprintName = "TurfyTests"
+               ReferencedContainer = "container:Turfy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "89F1A98A1DBF699B00A080B1"
+               BuildableName = "TurfyUITests.xctest"
+               BlueprintName = "TurfyUITests"
+               ReferencedContainer = "container:Turfy.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
