@@ -8,9 +8,10 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class SingleMessageViewController: UIViewController {
-
+    var addressOfPlace = ""
     let regionRadius: CLLocationDistance = 500
     
     var searchController:UISearchController!
@@ -36,6 +37,8 @@ class SingleMessageViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        
         if let annotation = annotation as? Pin {
             let identifier = "pin"
             var view: MKPinAnnotationView
@@ -54,16 +57,17 @@ class SingleMessageViewController: UIViewController {
         }
         return nil
     }
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         messageTitle.text = textMessage
-        
-        
+
         let initialLocation = coordMessage
         centerMapOnLocation(location: initialLocation!)
 
-        let pin = Pin(title: "London", locationName: "Current Location", discipline: "Location", coordinate: coordMessage!)
+        let pin = Pin(title: "Pin Location", locationName: "Current Location", discipline: "Location", coordinate: coordMessage!)
         mapView.addAnnotation(pin)
 
         // Do any additional setup after loading the view.
