@@ -57,6 +57,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             firebaseSignInIfNotAlready(credential: credential)
+            loginButton.isHidden = true
         }
     }
     

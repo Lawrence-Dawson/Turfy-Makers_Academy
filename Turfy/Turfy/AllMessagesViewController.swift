@@ -16,7 +16,10 @@ class AllMessagesViewController: UITableViewController {
 
     var messages: [Message] = []
     
-
+    @IBAction func backToInbox(segue: UIStoryboardSegue) {
+        // Switch to the second tab (tabs are numbered 0, 1, 2)
+        self.tabBarController?.selectedIndex = 2
+    }
     
     override func viewDidLoad() {
         

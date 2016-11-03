@@ -27,7 +27,6 @@ class SingleMessageViewController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
 
-
     var textMessage = ""
     var coordMessage: CLLocationCoordinate2D? = nil
   //  var messageObject["latitude"]: Int
