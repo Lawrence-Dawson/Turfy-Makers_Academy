@@ -7,9 +7,22 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FBSDKLoginKit
+
 
 class SettingsViewController: UIViewController {
 
+    @IBAction func ForgetMeFacebookSwitchClicked(_ sender: AnyObject) {
+        FBSDKAccessToken.setCurrent(nil)
+        FBSDKProfile.setCurrent(nil)
+        do {
+            try FIRAuth.auth()!.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: \(signOutError)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
