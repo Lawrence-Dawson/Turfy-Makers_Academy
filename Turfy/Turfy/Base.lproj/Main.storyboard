@@ -141,11 +141,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt">
-                                <frame key="frameInset" minY="58" maxY="49"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-i9-CTt">
-                                <frame key="frameInset" minX="165" minY="315" width="45" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-i9-CTt">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Wyg-pt-cRt"/>
                                     <constraint firstAttribute="width" constant="45" id="mLV-nD-vRB"/>
@@ -155,40 +151,44 @@
                                     <segue destination="CIq-iH-bdl" kind="presentation" id="VK1-oe-JMz"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="krl-y5-XAc">
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-Yr-0GM">
+                                <frame key="frameInset" height="44"/>
                                 <items>
-                                    <navigationItem id="joc-2Q-yPV">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="Kdg-m3-3DB">
+                                    <navigationItem title="Map" id="Ria-ae-fAN">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="6JI-di-O0m">
                                             <connections>
-                                                <action selector="showSearchBar:" destination="8rJ-Kc-sve" id="fSo-ec-ZjL"/>
+                                                <action selector="showSearchBar:" destination="8rJ-Kc-sve" id="nQs-ki-n02"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Map" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixK-Pj-5Rn">
-                                <frame key="frameInset" minX="36" minY="23" width="303" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANT-lU-gMt">
+                                <frame key="frameInset" minY="50" width="375" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="krl-y5-XAc" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="CQ7-OM-ZNn"/>
-                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerX" secondItem="QNJ-z1-iQt" secondAttribute="centerX" id="H80-67-wnd"/>
-                            <constraint firstItem="ixK-Pj-5Rn" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="3" id="QwD-oQ-ssD"/>
-                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerY" secondItem="QNJ-z1-iQt" secondAttribute="centerY" id="SxW-Lt-jZ5"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ixK-Pj-5Rn" secondAttribute="trailing" constant="20" id="XGk-0P-grO"/>
-                            <constraint firstItem="krl-y5-XAc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="dqm-xU-FUa"/>
-                            <constraint firstAttribute="trailing" secondItem="krl-y5-XAc" secondAttribute="trailing" id="ebY-bc-LiC"/>
-                            <constraint firstItem="ixK-Pj-5Rn" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="20" id="n7p-pd-SwK"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="DOc-BE-pO6"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="QNJ-z1-iQt" secondAttribute="bottom" id="Dxl-sD-AUt"/>
+                            <constraint firstItem="ANT-lU-gMt" firstAttribute="centerX" secondItem="QNJ-z1-iQt" secondAttribute="centerX" id="EWl-Ea-w8u"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="top" secondItem="ANT-lU-gMt" secondAttribute="bottom" constant="-44" id="FHZ-Hm-CrC"/>
+                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="HzC-cF-3dF"/>
+                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerX" secondItem="QNJ-z1-iQt" secondAttribute="centerX" id="ILx-J4-Zz5"/>
+                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerY" secondItem="QNJ-z1-iQt" secondAttribute="centerY" id="X9y-PL-cTi"/>
+                            <constraint firstItem="ANT-lU-gMt" firstAttribute="width" secondItem="QNJ-z1-iQt" secondAttribute="width" id="Xfg-SO-gGZ"/>
+                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="bqd-yC-2wE"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="gSn-DQ-UYc"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="25" id="tez-y7-og7"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="32x32-3" selectedImage="32x32-3" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="address" destination="ixK-Pj-5Rn" id="dJB-cP-yke"/>
+                        <outlet property="address" destination="ANT-lU-gMt" id="cRn-hh-XEv"/>
                         <outlet property="map" destination="QNJ-z1-iQt" id="6qa-SZ-5Cz"/>
                     </connections>
                 </viewController>
