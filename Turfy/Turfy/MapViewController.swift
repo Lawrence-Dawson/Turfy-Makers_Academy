@@ -43,6 +43,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var map: MKMapView!
+    
     @IBAction func showSearchBar(_ sender: AnyObject) {
         MapVariables.searchController = UISearchController(searchResultsController: nil)
         MapVariables.searchController.hidesNavigationBarDuringPresentation = false
