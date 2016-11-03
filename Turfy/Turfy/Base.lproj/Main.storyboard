@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -146,25 +146,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt">
-                                <rect key="frame" x="0.0" y="45" width="375" height="573"/>
-                            </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-i9-CTt">
-                                <rect key="frame" x="165" y="309" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Wyg-pt-cRt"/>
-                                    <constraint firstAttribute="width" constant="45" id="mLV-nD-vRB"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="signs"/>
-                                <connections>
-                                    <segue destination="CIq-iH-bdl" kind="presentation" id="VK1-oe-JMz"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-Yr-0GM">
-                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-Yr-0GM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Map" id="Ria-ae-fAN">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="6JI-di-O0m">
+                                    <navigationItem id="Ria-ae-fAN">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="6JI-di-O0m">
                                             <connections>
                                                 <action selector="showSearchBar:" destination="8rJ-Kc-sve" id="nQs-ki-n02"/>
                                             </connections>
@@ -172,26 +158,43 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANT-lU-gMt">
-                                <rect key="frame" x="0.0" y="50" width="375" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt">
+                                <rect key="frame" x="0.0" y="67" width="375" height="551"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-i9-CTt">
+                                <rect key="frame" x="165" y="309" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Bjn-VV-iCt"/>
+                                    <constraint firstAttribute="height" constant="45" id="KcC-bJ-CQV"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="signs"/>
+                                <connections>
+                                    <segue destination="CIq-iH-bdl" kind="presentation" id="VK1-oe-JMz"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANT-lU-gMt">
+                                <rect key="frame" x="16" y="20" width="311" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="DOc-BE-pO6"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="QNJ-z1-iQt" secondAttribute="bottom" id="Dxl-sD-AUt"/>
-                            <constraint firstItem="ANT-lU-gMt" firstAttribute="centerX" secondItem="QNJ-z1-iQt" secondAttribute="centerX" id="EWl-Ea-w8u"/>
-                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="top" secondItem="ANT-lU-gMt" secondAttribute="bottom" constant="-44" id="FHZ-Hm-CrC"/>
-                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="HzC-cF-3dF"/>
-                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerX" secondItem="QNJ-z1-iQt" secondAttribute="centerX" id="ILx-J4-Zz5"/>
-                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerY" secondItem="QNJ-z1-iQt" secondAttribute="centerY" id="X9y-PL-cTi"/>
-                            <constraint firstItem="ANT-lU-gMt" firstAttribute="width" secondItem="QNJ-z1-iQt" secondAttribute="width" id="Xfg-SO-gGZ"/>
-                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="bqd-yC-2wE"/>
-                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="gSn-DQ-UYc"/>
-                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="25" id="tez-y7-og7"/>
+                            <constraint firstAttribute="trailing" secondItem="zr9-Yr-0GM" secondAttribute="trailing" id="3Gu-c6-5Ti"/>
+                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" constant="20" id="6Cq-st-DHd"/>
+                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="BRN-We-YpL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sx7-i9-CTt" secondAttribute="trailing" constant="149" id="Dkw-X3-5jd"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="QNJ-z1-iQt" secondAttribute="bottom" id="Emq-pF-edG"/>
+                            <constraint firstItem="zr9-Yr-0GM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="HKT-0r-JBy"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="top" secondItem="zr9-Yr-0GM" secondAttribute="bottom" constant="3" id="Sbc-Ay-sOR"/>
+                            <constraint firstAttribute="trailing" secondItem="QNJ-z1-iQt" secondAttribute="trailing" id="a6i-sw-QSX"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="top" secondItem="zr9-Yr-0GM" secondAttribute="bottom" constant="3" id="bbg-eo-HRb"/>
+                            <constraint firstItem="QNJ-z1-iQt" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="gKy-6c-cAs"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="sx7-i9-CTt" secondAttribute="bottom" constant="264" id="i24-sq-VmE"/>
+                            <constraint firstItem="sx7-i9-CTt" firstAttribute="top" secondItem="zr9-Yr-0GM" secondAttribute="bottom" constant="245" id="jbo-82-9EJ"/>
+                            <constraint firstItem="sx7-i9-CTt" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="149" id="r35-GN-dEl"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="32x32-3" selectedImage="32x32-3" id="cPa-gy-q4n"/>
