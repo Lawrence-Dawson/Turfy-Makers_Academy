@@ -141,14 +141,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-z1-iQt">
                                 <frame key="frameInset" minY="58" maxY="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-i9-CTt">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sx7-i9-CTt">
+                                <frame key="frameInset" minX="165" minY="315" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="bbp-xI-Yyf"/>
-                                    <constraint firstAttribute="height" constant="45" id="tqe-nl-Kb1"/>
+                                    <constraint firstAttribute="height" constant="45" id="Wyg-pt-cRt"/>
+                                    <constraint firstAttribute="width" constant="45" id="mLV-nD-vRB"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="signs"/>
                                 <connections>
@@ -167,7 +167,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixK-Pj-5Rn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Map" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ixK-Pj-5Rn">
+                                <frame key="frameInset" minX="36" minY="23" width="303" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -176,14 +177,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="krl-y5-XAc" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="CQ7-OM-ZNn"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="sx7-i9-CTt" secondAttribute="bottom" constant="261" id="OIK-sW-ycW"/>
+                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerX" secondItem="QNJ-z1-iQt" secondAttribute="centerX" id="H80-67-wnd"/>
                             <constraint firstItem="ixK-Pj-5Rn" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="3" id="QwD-oQ-ssD"/>
+                            <constraint firstItem="sx7-i9-CTt" firstAttribute="centerY" secondItem="QNJ-z1-iQt" secondAttribute="centerY" id="SxW-Lt-jZ5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ixK-Pj-5Rn" secondAttribute="trailing" constant="20" id="XGk-0P-grO"/>
                             <constraint firstItem="krl-y5-XAc" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="dqm-xU-FUa"/>
-                            <constraint firstItem="sx7-i9-CTt" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="149" id="eQf-Ku-zVX"/>
                             <constraint firstAttribute="trailing" secondItem="krl-y5-XAc" secondAttribute="trailing" id="ebY-bc-LiC"/>
-                            <constraint firstItem="sx7-i9-CTt" firstAttribute="top" secondItem="ixK-Pj-5Rn" secondAttribute="bottom" constant="250" id="fFF-uY-gRh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="sx7-i9-CTt" secondAttribute="trailing" constant="149" id="kgS-Rv-R3N"/>
                             <constraint firstItem="ixK-Pj-5Rn" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="20" id="n7p-pd-SwK"/>
                         </constraints>
                     </view>
@@ -549,7 +548,7 @@
         <image name="signs" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="VK1-oe-JMz"/>
         <segue reference="cD3-MG-85E"/>
-        <segue reference="vpU-Qp-dMN"/>
     </inferredMetricsTieBreakers>
 </document>
