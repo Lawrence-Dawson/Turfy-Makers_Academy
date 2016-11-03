@@ -17,6 +17,9 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     let user = FIRAuth.auth()?.currentUser
 	let ref = FIRDatabase.database().reference().child("messages")
 	var eventType = "On Entry"
+    
+    let usersRef = FIRDatabase.database().reference().child("user")
+    var contacts = [[String : String]]()
 	
 	@IBAction func toggle(_ sender: UISegmentedControl){
 		if sender.selectedSegmentIndex == 0 {
@@ -44,12 +47,68 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         radius = radiusSlider.value
     }
     
-    @IBAction func submitMessage(_ sender: AnyObject) {
-		let messageRecipient = recipient["uid"]
-		let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: MapVariables.latitude, longitude: MapVariables.longitude, radius: Double(radius), eventType: eventType)
-		saveData(message: message)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        messageText.delegate = self
+        
+        retrieveData()
+        
+        //styling for the textbox
+        messageText.layer.cornerRadius = 5
+        messageText.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
+        messageText.layer.borderWidth = 0.5
+        messageText.clipsToBounds = true
+        
+        
+        placeholderLabel.text = placeholderText
+        // placeholderLabel is instance variable retained by view controller
+        placeholderLabel.backgroundColor = UIColor.clear
+        placeholderLabel.textColor = UIColor.lightGray
+        // textView is UITextView object you want add placeholder text to
+        messageText.addSubview(placeholderLabel)
+        
+        
+        // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+        
+        recipientButtonField.setTitle("Recipient: \(recipient["name"]!)", for: UIControlState.normal)
+        
+        print(recipient)
+        
+        
+        radiusText.text = "\(Int(radiusSlider.value))"
+        radius = radiusSlider.value
     }
-	
+    
+    
+    @IBAction func submitMessage(_ sender: AnyObject) {
+        let messageRecipient = recipient["uid"]
+        let message: Message = Message(id: "", sender: (user?.displayName)!, recipient: messageRecipient!, text: messageText.text, latitude: MapVariables.latitude, longitude: MapVariables.longitude, radius: Double(radius), eventType: eventType)
+        saveData(message: message)
+    }
+    
+
+    @IBAction func pickRecipient(_ sender: AnyObject) {
+        print("Going to new view")
+        print(contacts)
+        
+        self.performSegue(withIdentifier: "pickRecipient", sender:self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pickRecipient" {
+            let recipientVC:RecipientListViewController = segue.destination as! RecipientListViewController
+            recipientVC.contacts = contacts
+        }
+        else {
+            super.prepare(for: segue, sender: sender)
+        }
+    }
     
     func textViewDidEndEditing(_ theTextView: UITextView) {
         if !messageText.hasText {
@@ -65,41 +124,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
             placeholderLabel.isHidden = true
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        messageText.delegate = self
 
-        //styling for the textbox
-            messageText.layer.cornerRadius = 5
-            messageText.layer.borderColor = UIColor.gray.withAlphaComponent(0.5).cgColor
-            messageText.layer.borderWidth = 0.5
-            messageText.clipsToBounds = true
-        
-
-        placeholderLabel.text = placeholderText
-        // placeholderLabel is instance variable retained by view controller
-        placeholderLabel.backgroundColor = UIColor.clear
-        placeholderLabel.textColor = UIColor.lightGray
-        // textView is UITextView object you want add placeholder text to
-        messageText.addSubview(placeholderLabel)
-        
-
-        // Do any additional setup after loading the view.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        
-        view.addGestureRecognizer(tap)
-        
-        recipientButtonField.setTitle("Recipient: \(recipient["name"]!)", for: UIControlState.normal)
-        
-        print(recipient)
-        
-
-        radiusText.text = "\(Int(radiusSlider.value))"
-        radius = radiusSlider.value
-    }
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
@@ -117,6 +142,19 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.§
+    }
+    
+    func retrieveData() {
+        usersRef.observe(.value, with: { snapshot in
+            for child in snapshot.children {
+                let data = (child as! FIRDataSnapshot).value! as! [String:String]
+                let uid = (data["uid"])!
+                let name = (data["name"])!
+                let email = (data["email"])!
+                self.contacts.append(["uid": uid , "name": name, "email": email])
+            }
+        })
+        print(contacts)
     }
 
 	
