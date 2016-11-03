@@ -152,7 +152,7 @@
                                     <segue destination="CIq-iH-bdl" kind="presentation" id="VK1-oe-JMz"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-Yr-0GM">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zr9-Yr-0GM">
                                 <frame key="frameInset" height="44"/>
                                 <items>
                                     <navigationItem title="Map" id="Ria-ae-fAN">
@@ -557,8 +557,19 @@
                                     <navigationItem title="Settings" id="WLt-j8-pih"/>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8T-zO-JxK">
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Log me out of Facebook"/>
+                                <connections>
+                                    <action selector="forgetMeFacebookSwitchClicked:" destination="akT-W3-qTm" eventType="touchUpInside" id="oep-6X-0AA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x8T-zO-JxK" firstAttribute="centerY" secondItem="xDA-ve-dVR" secondAttribute="centerY" id="Jsy-C1-Cq2"/>
+                            <constraint firstItem="x8T-zO-JxK" firstAttribute="centerX" secondItem="xDA-ve-dVR" secondAttribute="centerX" id="mJi-0O-H7K"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="32x32" selectedImage="32x32" id="5sU-TZ-kGD">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="2"/>
