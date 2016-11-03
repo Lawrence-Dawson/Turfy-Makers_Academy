@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cb6-Pn-7rR">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+>>>>>>> master
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -19,6 +27,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5h6-un-6DW">
                                 <frame key="frameInset" minY="243" width="375" height="424"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -33,6 +42,13 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLh-Al-fqQ">
                                 <frame key="frameInset" minY="20" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+=======
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5h6-un-6DW">
+                                <rect key="frame" x="0.0" y="233" width="375" height="385"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLh-Al-fqQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+>>>>>>> master
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 </textAttributes>
@@ -41,13 +57,31 @@
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="dbv-LR-2Yc">
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <segue destination="9Zj-r9-u3O" kind="unwind" unwindAction="backFromModalWithSegue:" id="AUe-aa-5qA"/>
+                                                <segue destination="9Zj-r9-u3O" kind="unwind" unwindAction="backToInboxWithSegue:" id="qTN-qM-J8n"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Message Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmi-vP-xwY">
+                                <rect key="frame" x="53" y="87" width="268" height="138"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qLh-Al-fqQ" secondAttribute="trailing" id="66U-W8-cRP"/>
+                            <constraint firstItem="qLh-Al-fqQ" firstAttribute="leading" secondItem="HhE-B9-xsb" secondAttribute="leading" id="CnA-J5-s1l"/>
+                            <constraint firstItem="5h6-un-6DW" firstAttribute="top" secondItem="Bmi-vP-xwY" secondAttribute="bottom" constant="23" id="F7I-cD-Vab"/>
+                            <constraint firstItem="qLh-Al-fqQ" firstAttribute="top" secondItem="idB-tg-0SL" secondAttribute="bottom" id="hsL-gk-W4a"/>
+                            <constraint firstItem="Bmi-vP-xwY" firstAttribute="top" secondItem="qLh-Al-fqQ" secondAttribute="bottom" constant="23" id="kmE-sg-Y9k"/>
+                            <constraint firstItem="5h6-un-6DW" firstAttribute="leading" secondItem="HhE-B9-xsb" secondAttribute="leading" id="lls-xS-ZD8"/>
+                            <constraint firstAttribute="trailing" secondItem="5h6-un-6DW" secondAttribute="trailing" id="oLR-Ti-RNu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bmi-vP-xwY" secondAttribute="trailing" constant="38" id="ttg-TF-2p5"/>
+                            <constraint firstItem="wNC-l6-wWS" firstAttribute="top" secondItem="5h6-un-6DW" secondAttribute="bottom" id="wGH-Bt-bUx"/>
+                            <constraint firstItem="Bmi-vP-xwY" firstAttribute="leading" secondItem="HhE-B9-xsb" secondAttribute="leadingMargin" constant="37" id="xlw-v2-mD4"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="5h6-un-6DW" id="lsd-cj-2gm"/>
@@ -90,16 +124,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g4F-JN-Ic9">
+<<<<<<< HEAD
                                             <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
+=======
+                                            <rect key="frame" x="15" y="0.0" width="37" height="26"/>
+>>>>>>> master
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bHo-Og-Zu5">
+<<<<<<< HEAD
                                             <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
+=======
+                                            <rect key="frame" x="15" y="26" width="42" height="17"/>
+>>>>>>> master
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -205,24 +247,53 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ms-GD-Rr0">
                                         <subviews>
+<<<<<<< HEAD
                                             <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
                                                 <frame key="frameInset" minX="84" minY="249" width="158" height="31"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="vZs-Zq-i3R"/>
                                                     <constraint firstAttribute="width" constant="154" id="y4Z-iL-oKh"/>
                                                 </constraints>
+=======
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m75-6H-8Iq">
+                                                <frame key="frameInset" minX="20" minY="8" width="287" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <state key="normal" title="Recipient">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="pYm-HK-3ep" kind="show" id="bDU-kZ-6co"/>
+                                                </connections>
+                                            </button>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="iRS-6u-eu7">
+                                                <frame key="frameInset" minX="84" minY="249" width="158" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> master
                                                 <color key="minimumTrackTintColor" red="0.30980392156862746" green="0.85882352941176465" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>
                                                     <action selector="radiusSlider:" destination="CIq-iH-bdl" eventType="valueChanged" id="Nha-qU-QCT"/>
                                                 </connections>
                                             </slider>
+<<<<<<< HEAD
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
                                                 <frame key="frameInset" minX="126" minY="287" width="75" height="25"/>
+=======
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahX-yE-qo9">
+                                                <frame key="frameInset" minX="126" minY="287" width="75" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> master
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+<<<<<<< HEAD
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-hy-Tnk">
+=======
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ndd-hy-Tnk">
+                                                <frame key="frameInset" minX="50.00%" minY="28.18%" width="287" height="150"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+>>>>>>> master
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="6Qp-kP-Fcn"/>
@@ -231,6 +302,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+<<<<<<< HEAD
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rAC-97-T4K">
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-Ya-xOn">
@@ -263,6 +335,20 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="Recipient">
+=======
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHd-1z-uCz">
+                                                <frame key="frameInset" minX="20" minY="62" width="287" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-Ya-xOn">
+                                                <frame key="frameInset" minX="61" minY="320" width="204" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                <state key="normal" title="Submit Message">
+>>>>>>> master
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -270,10 +356,18 @@
                                                     <segue destination="pYm-HK-3ep" kind="show" identifier="pickRecipient" id="bDU-kZ-6co"/>
                                                 </connections>
                                             </button>
+<<<<<<< HEAD
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHd-1z-uCz">
                                                 <frame key="frameInset" minX="32" minY="127" width="262" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
+=======
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Metres Radius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbu-SM-pdo">
+                                                <frame key="frameInset" minX="99" minY="213" width="129" height="28"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+>>>>>>> master
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -297,14 +391,43 @@
                                     </view>
                                 </subviews>
                             </stackView>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Message Recipient" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ro8-9I-Yfk">
                                 <frame key="frameInset" minX="75" minY="75" width="230" height="38"/>
+=======
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ayB-I9-1ev">
+                                <frame key="frameInset" minY="20" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Compose Message" id="WEg-Pq-gai">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="hqh-Nd-Z86">
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <segue destination="hte-hd-pBb" kind="unwind" unwindAction="backFromModalWithSegue:" id="g6o-Dw-de8"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message Recipient" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ro8-9I-Yfk">
+                                <frame key="frameInset" minX="75" minY="75" width="230" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> master
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+<<<<<<< HEAD
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="diu-kG-4yh">
                                 <frame key="frameInset" minX="109" minY="121" width="157" height="29"/>
+=======
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="diu-kG-4yh">
+                                <frame key="frameInset" minX="109" minY="121" width="157" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+>>>>>>> master
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <segments>
                                     <segment title="On Entry"/>
@@ -386,7 +509,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4B-YX-LSC" id="upL-Cn-NEg">
+<<<<<<< HEAD
                                             <frame key="frameInset" width="375" height="44"/>
+=======
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+>>>>>>> master
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -551,6 +678,20 @@
                                     <navigationItem title="Settings" id="WLt-j8-pih"/>
                                 </items>
                             </navigationBar>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mGd-YD-rh4">
+                                <frame key="frameInset" minX="220" minY="129" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="ForgetMeFacebookSwitchClicked:" destination="akT-W3-qTm" eventType="valueChanged" id="PM6-yx-huQ"/>
+                                </connections>
+                            </switch>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ForgetMeFacebook" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-2Q-0xr">
+                                <frame key="frameInset" minX="69" minY="129" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -573,6 +714,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cD3-MG-85E"/>
-        <segue reference="vpU-Qp-dMN"/>
+        <segue reference="VK1-oe-JMz"/>
     </inferredMetricsTieBreakers>
 </document>

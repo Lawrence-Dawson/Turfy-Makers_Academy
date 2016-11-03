@@ -18,13 +18,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     let ref = FIRDatabase.database().reference().child("user")
     
     @IBOutlet weak var loginButton: FBSDKLoginButton!
-    var login = FBSDKLoginManager()
     
     let fireCurrentUser = FIRAuth.auth()?.currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if FIRAuth.auth()?.currentUser != nil {
+        if (currentUserExists()) {
             retrieveData()
             DispatchQueue.main.async(){
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
@@ -58,11 +57,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         else {
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             firebaseSignInIfNotAlready(credential: credential)
+            loginButton.isHidden = true
         }
     }
     
     func firebaseSignInIfNotAlready(credential: FIRAuthCredential){
-        if FIRAuth.auth()?.currentUser != nil {
+        if (currentUserExists()) {
             self.performSegue(withIdentifier: "loginSegue", sender: self)
         } else {
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     
     func getUserProfile() {
-        if (FIRAuth.auth()?.currentUser != nil) {
+        if (currentUserExists()) {
             self.uid = (FIRAuth.auth()?.currentUser?.uid)!;
             self.name = (FIRAuth.auth()?.currentUser?.displayName)!;
             self.email = (FIRAuth.auth()?.currentUser?.email)!;
@@ -106,8 +106,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         })
     }
     
+    func currentUserExists() -> Bool{
+        return FIRAuth.auth()?.currentUser != nil
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
+
