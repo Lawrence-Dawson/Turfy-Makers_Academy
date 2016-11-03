@@ -36,7 +36,7 @@ class AllMessagesViewController: UITableViewController {
         })
         print()
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMessage", let destination = segue.destination as? SingleMessageViewController {
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell){
@@ -45,7 +45,10 @@ class AllMessagesViewController: UITableViewController {
             }
         }
     }
-
+    @IBAction func backFrom(segue: UIStoryboardSegue) {
+        // Switch to the second tab (tabs are numbered 0, 1, 2)
+        self.tabBarController?.selectedIndex = 3
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
